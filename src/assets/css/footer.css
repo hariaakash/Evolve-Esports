@@ -1,0 +1,74 @@
+.footer {
+    padding-top: 120px;
+    overflow: hidden;
+    position: relative;
+    background-color: #070b28;
+    background-image: url(../img/extras/footerbg.jpg);
+    background-repeat: no-repeat;
+    background-position: center 140px;
+    background-size: cover; }
+    .footer .footer-logo {
+      margin-top: -10px;
+      margin-bottom: 25px; }
+    .footer .footer-widget .title {
+      text-transform: uppercase;
+      font-size: 28px;
+      line-height: 38px;
+      font-weight: 600;
+      text-transform: uppercase; }
+    .footer .footer-widget ul {
+      padding-left: 0px;
+      margin-bottom: 0px; }
+      .footer .footer-widget ul li {
+        list-style: none; }
+        .footer .footer-widget ul li a {
+          -webkit-transition: all 0.3s ease-in;
+          -o-transition: all 0.3s ease-in;
+          transition: all 0.3s ease-in;
+          line-height: 40px;
+          font-weight: 400;
+          color: #a1aed4; }
+          .footer .footer-widget ul li a:hover {
+            color: #f9314b;
+            padding-left: 10px; }
+          .footer .footer-widget ul li a i {
+            font-size: 15px;
+            padding-right: 4px; }
+    .footer .copy-bg {
+      margin-top: 110px;
+      padding: 10px 15px 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      background: #0b122e; }
+      .footer .copy-bg .left-area p {
+        font-size: 16px;
+        line-height: 26px;
+        margin-bottom: 0px; }
+      .footer .copy-bg .left-area a {
+        font-size: 16px;
+        line-height: 26px;
+        margin-bottom: 0px;
+        color: #045cf0; }
+      .footer .copy-bg .copright-area-links {
+        text-align: right; }
+        .footer .copy-bg .copright-area-links li {
+          display: inline-block;
+          margin-right: 30px;
+          position: relative; }
+          .footer .copy-bg .copright-area-links li::after {
+            position: absolute;
+            content: "|";
+            right: -22px;
+            top: 0px; }
+          .footer .copy-bg .copright-area-links li:last-child {
+            margin-right: 0px; }
+            .footer .copy-bg .copright-area-links li:last-child::after {
+              display: none; }
+          .footer .copy-bg .copright-area-links li a {
+            font-size: 16px;
+            font-weight: 400;
+            color: #a1aed4;
+            -webkit-transition: all 0.3s ease-in;
+            -o-transition: all 0.3s ease-in;
+            transition: all 0.3s ease-in; }
+            .footer .copy-bg .copright-area-links li a:hover {
+              color: #f9314b; }

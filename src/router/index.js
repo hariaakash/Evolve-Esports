@@ -7,12 +7,20 @@ Vue.use(VueRouter);
 const routes = [
 	{
 		path: '/',
-		name: 'Home',
-		component: Main
-	},
-	{
-		path: '/404',
-		component: () => import(/* webpackChunkName: "404" */ '@/components/global/404.vue')
+		redirect: '/home',
+		component: Main,
+		children: [
+			{
+				path: '/home',
+				name: 'Home',
+				component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue')
+			},
+			{
+				path: '/404',
+				name: '404',
+				component: () => import(/* webpackChunkName: "404" */ '@/components/global/404.vue')
+			},
+		],
 	},
 	{
 		path: '*',

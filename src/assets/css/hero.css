@@ -1,0 +1,123 @@
+.hero-area {
+    position: relative;
+    padding: 317px 0px 354px;
+    position: relative;
+    background: #070b28;
+    overflow: hidden; }
+    .hero-area .left-content {
+      position: inherit;
+      z-index: 9; }
+      .hero-area .left-content .content .title {
+        font-size: 70px;
+        font-weight: 700;
+        line-height: 70px;
+        color: #FFF;
+        text-transform: uppercase;
+        margin-bottom: 13px;
+        letter-spacing: -1px; }
+      .hero-area .left-content .content .subtitle {
+        font-size: 28px;
+        line-height: 38px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        background: -webkit-linear-gradient(to left, #ff344d, #d2273c);
+        background: -moz-linear-gradient(to left, #ff344d, #d2273c);
+        background: -ms-linear-gradient(to left, #ff344d, #d2273c);
+        background: -o-linear-gradient(to left, #ff344d, #d2273c);
+        background: -webkit-gradient(linear, right top, left top, from(#ff344d), to(#d2273c));
+        background: -webkit-linear-gradient(right, #ff344d, #d2273c);
+        background: -o-linear-gradient(right, #ff344d, #d2273c);
+        background: linear-gradient(to left, #ff344d, #d2273c);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent; }
+      .hero-area .left-content .content .text {
+        font-size: 28px;
+        line-height: 38px;
+        font-weight: 300;
+        margin-bottom: 40px; }
+    .hero-area .hero-img {
+      position: relative;
+      top: -50px; }
+      .hero-area .hero-img .full-image {
+        display: none; }
+      .hero-area .hero-img .shape {
+        position: absolute; }
+        .hero-area .hero-img .shape.phone {
+          top: -6px;
+          left: 124px; }
+        .hero-area .hero-img .shape.man {
+          top: 157px;
+          left: 213px;
+          -webkit-animation: manAni 3s linear infinite;
+          animation: manAni 3s linear infinite; }
+        .hero-area .hero-img .shape.ripple {
+          top: 132px;
+          right: 70px;
+          width: 85px;
+          -webkit-animation: rippleAni 5s linear infinite;
+          animation: rippleAni 5s linear infinite; }
+        .hero-area .hero-img .shape.ripple2 {
+          top: 142px;
+          left: 10px;
+          width: 100px;
+          -webkit-animation: ripple2Ani 5s linear infinite;
+          animation: ripple2Ani 5s linear infinite; }
+        .hero-area .hero-img .shape.bitcoin1 {
+          top: 220px;
+          left: 25px;
+          width: 100px;
+          -webkit-animation: ripple2Ani 4s linear infinite;
+          animation: ripple2Ani 4s linear infinite; }
+        .hero-area .hero-img .shape.bitcoin2 {
+          top: 46px;
+          right: 55px;
+          width: 92px;
+          -webkit-animation: rippleAni 4s linear infinite;
+          animation: rippleAni 4s linear infinite; }
+        .hero-area .hero-img .shape.shape-icon {
+          top: 112px;
+          right: -3px;
+          width: 55px; }
+        .hero-area .hero-img .shape.award-bg {
+          top: 178px;
+          right: 26px; }
+        .hero-area .hero-img .shape.award {
+          top: 178px;
+          right: 53px;
+          width: 27px;
+          -webkit-animation: shieldAni 3s linear infinite;
+          animation: shieldAni 3s linear infinite; }
+        .hero-area .hero-img .shape.gift-bg {
+          top: 304px;
+          left: 125px;
+          width: 76px; }
+        .hero-area .hero-img .shape.gift {
+          top: 299px;
+          left: 150px;
+          width: 30px;
+          -webkit-animation: shieldAni 4s linear infinite;
+          animation: shieldAni 4s linear infinite; }
+        .hero-area .hero-img .shape.shield-bg {
+          top: 345px;
+          left: 197px;
+          width: 70px; }
+        .hero-area .hero-img .shape.shield {
+          top: 338px;
+          left: 222px;
+          width: 25px;
+          -webkit-animation: shieldAni 4.5s linear infinite;
+          animation: shieldAni 4.5s linear infinite; }
+
+
+  .hero-area {
+    background: url(https://ak.picdn.net/shutterstock/videos/1039270925/thumb/1.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding: 300px 0px 424px; }
+  
+  .hero-area .left-content .content {
+    text-align: center; }
+  

@@ -1,0 +1,154 @@
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+    .header.nav-fixed {
+      background: #252f5a;
+      -webkit-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15); }
+      .header.nav-fixed .top-header {
+        display: none; }
+      .header.nav-fixed .navbar::after {
+        visibility: hidden; }
+      .header.nav-fixed .navbar::before {
+        visibility: hidden; }
+  /* Main Menu Area Start */ 
+  .header .mainmenu-area {
+      background: #252f5a; }
+      .header .mainmenu-area .navbar {
+        padding: 0px 0px;
+        position: relative; }
+        .header .mainmenu-area .navbar::before {
+          position: absolute;
+          content: "";
+          width: 1800px;
+          height: 100%;
+          top: 0;
+          right: 100%;
+          background: #070b28; }
+        .header .mainmenu-area .navbar::after {
+          position: absolute;
+          content: "";
+          width: 0;
+          height: 0;
+          left: 0px;
+          bottom: 0px;
+          border-bottom: 83px solid #070b28;
+          border-right: 35px solid transparent; }
+        .header .mainmenu-area .navbar .navbar-brand {
+          padding: 0px;
+          margin: 0px;
+          padding-left: 50px; }
+        .header .mainmenu-area .navbar .mybtn1 {
+          margin-left: 20px; }
+        .header .mainmenu-area .navbar #main_menu .navbar-nav .nav-item .nav-link {
+          color: #a1aed4;
+          line-height: 26px;
+          font-size: 16px;
+          font-weight: 600;
+          position: relative;
+          padding: 28px 20px;
+          text-transform: uppercase;
+          -webkit-transition: all linear .3s;
+          -o-transition: all linear .3s;
+          transition: all linear .3s; }
+          .header .mainmenu-area .navbar #main_menu .navbar-nav .nav-item .nav-link .mr-hover-effect {
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            left: 0;
+            width: 100%;
+            height: 50%;
+            opacity: 0;
+            border-top: 2px solid #f9314b;
+            border-bottom: 2px solid #f9314b;
+            -webkit-transition: all 0.3s ease-in;
+            -o-transition: all 0.3s ease-in;
+            transition: all 0.3s ease-in; }
+            .header .mainmenu-area .navbar #main_menu .navbar-nav .nav-item .nav-link .mr-hover-effect::after {
+              position: absolute;
+              content: "";
+              top: 0px;
+              left: 50%;
+              -webkit-transform: translateX(-50%);
+              -ms-transform: translateX(-50%);
+              transform: translateX(-50%);
+              width: 0;
+              height: 0;
+              border-left: 5px solid transparent;
+              border-right: 5px solid transparent;
+              border-top: 5px solid #f9314b; }
+            .header .mainmenu-area .navbar #main_menu .navbar-nav .nav-item .nav-link .mr-hover-effect::before {
+              position: absolute;
+              content: "";
+              bottom: 0px;
+              left: 50%;
+              -webkit-transform: translateX(-50%) rotate(180deg);
+              -ms-transform: translateX(-50%) rotate(180deg);
+              transform: translateX(-50%) rotate(180deg);
+              width: 0;
+              height: 0;
+              border-left: 5px solid transparent;
+              border-right: 5px solid transparent;
+              border-top: 5px solid #f9314b; }
+          .header .mainmenu-area .navbar #main_menu .navbar-nav .nav-item .nav-link.active, .header .mainmenu-area .navbar #main_menu .navbar-nav .nav-item .nav-link:hover {
+            color: #f9314b; }
+            .header .mainmenu-area .navbar #main_menu .navbar-nav .nav-item .nav-link.active .mr-hover-effect, .header .mainmenu-area .navbar #main_menu .navbar-nav .nav-item .nav-link:hover .mr-hover-effect {
+              opacity: 1;
+              height: 100%; }
+        .header .mainmenu-area .navbar #main_menu .navbar-nav .nav-item .dropdown-menu {
+          position: absolute;
+          z-index: 99;
+          margin-top: 0px !important;
+          background: #0b122e;
+          border-radius: 0px;
+          border: 0px;
+          padding-bottom: 0px;
+          padding-top: 0px;
+          -webkit-box-shadow: 0px 8px 14px 0px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 8px 14px 0px rgba(0, 0, 0, 0.15);
+          border-top: 4px solid #f9314b;
+          -webkit-transition: all linear .3s;
+          -o-transition: all linear .3s;
+          transition: all linear .3s; }
+          .header .mainmenu-area .navbar #main_menu .navbar-nav .nav-item .dropdown-menu .dropdown-item {
+            line-height: 26px;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 8px 15px 8px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            -webkit-transition: all linear .3s;
+            -o-transition: all linear .3s;
+            transition: all linear .3s;
+            color: #a1aed4; }
+            .header .mainmenu-area .navbar #main_menu .navbar-nav .nav-item .dropdown-menu .dropdown-item i {
+              margin-right: 5px;
+              font-size: 12px; }
+            .header .mainmenu-area .navbar #main_menu .navbar-nav .nav-item .dropdown-menu .dropdown-item:hover {
+              background: #070b28; }
+            .header .mainmenu-area .navbar #main_menu .navbar-nav .nav-item .dropdown-menu .dropdown-item:focus {
+              background: none; }
+        .header .mainmenu-area .navbar #main_menu .navbar-nav .nav-item.dropdown:hover .dropdown-menu {
+          display: block; }
+
+/*	Index 2 Css Start */
+.header .mainmenu-area {
+    background: none; }
+  
+  .header .mainmenu-area .navbar::before,
+  .header .mainmenu-area .navbar::after {
+    display: none; }
+  
+  .header .mainmenu-area .navbar .navbar-brand {
+    padding-left: 0px; }
+  
+  .header .mainmenu-area .navbar #main_menu .navbar-nav .nav-item .nav-link .mr-hover-effect {
+    display: none; }
+  

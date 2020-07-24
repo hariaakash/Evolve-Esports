@@ -1,22 +1,20 @@
 <template>
   <div>
     <Header />
-    <Body />
+    <router-view />
     <Footer />
   </div>
 </template>
 
 <script>
-import Header from "./Header.vue";
-import Body from "./Body.vue";
-import Footer from "./Footer.vue";
+import Header from "@/components/global/Header.vue";
+import Footer from "@/components/global/Footer.vue";
 
 export default {
   name: "Main",
   components: {
     Header,
     Footer,
-    Body,
   },
 };
 </script>

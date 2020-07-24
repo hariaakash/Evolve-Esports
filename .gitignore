@@ -2,6 +2,7 @@
 node_modules
 /dist
 /theme
+/src/assets/images/
 
 # local env files
 .env.local
