@@ -21,23 +21,11 @@
               </button>
               <div class="collapse navbar-collapse fixed-height" id="main_menu">
                 <ul class="navbar-nav ml-auto">
-                  <li class="nav-item">
-                    <a class="nav-link active">
-                      Home
+                  <li v-for="item in menuItems" :key="item.key" class="nav-item">
+                    <router-link class="nav-link" :to="item.route">
+                      {{ item.title }}
                       <div class="mr-hover-effect"></div>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="tournaments.html">
-                      tournaments
-                      <div class="mr-hover-effect"></div>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="contact.html">
-                      Contact
-                      <div class="mr-hover-effect"></div>
-                    </a>
+                    </router-link>
                   </li>
                 </ul>
                 <a href="#" class="mybtn1" data-toggle="modal" data-target="#signin">Join us</a>
@@ -49,5 +37,17 @@
     </div>
   </header>
 </template>
+
+<script>
+export default {
+  data: () => ({
+    menuItems: [
+      { title: "Home", route: "home" },
+      { title: "Tournaments", route: "tournaments" },
+      { title: "Contact", route: "contact" },
+    ],
+  }),
+};
+</script>
 
 <style src="@/assets/css/header.css" />

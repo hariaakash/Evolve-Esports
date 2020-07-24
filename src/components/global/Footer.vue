@@ -1,201 +1,70 @@
 <template>
-  <div>
-    <footer class="footer" id="footer">
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="subscribe-box">
+            <form action="#">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="heading-area">
+                    <h5 class="sub-title">Join our social channel</h5>
+                    <h4 class="title">To Get Exclusive Updates</h4>
+                  </div>
+                </div>
+                <div class="col-12 text-center">
+                  <ul class="list-inline">
+                    <li v-for="(item, index) in socialList" :key="index" class="list-inline-item">
+                      <font-awesome-icon :icon="['fab', item.icon]" size="2x" />
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="copy-bg">
       <div class="container">
         <div class="row">
-          <div class="col-sm-6 col-lg-3">
-            <div class="footer-widget info-link-widget">
-              <h4 class="title">About</h4>
-              <ul class="link-list">
-                <li>
-                  <a href="#">
-                    <i class="fas fa-angle-double-right"></i> About Us
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-angle-double-right"></i> Contact Us
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-angle-double-right"></i> Latest Blog
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-angle-double-right"></i> Authenticity Guarantee
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-angle-double-right"></i> Customer Reviews
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-angle-double-right"></i>
-                    Privacy Policy
-                  </a>
-                </li>
-              </ul>
+          <div class="col-lg-5">
+            <div class="left-area">
+              <p>Copyright © {{ this.year }} Evolve Esports</p>
             </div>
           </div>
-          <div class="col-sm-6 col-lg-3">
-            <div class="footer-widget info-link-widget">
-              <h4 class="title">My Account</h4>
-              <ul class="link-list">
-                <li>
-                  <a href="#">
-                    <i class="fas fa-angle-double-right"></i> Manage Your Account
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-angle-double-right"></i> How to Deposit
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-angle-double-right"></i> How to Withdraw
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-angle-double-right"></i> Account Varification
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-angle-double-right"></i> Safety & Security
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-angle-double-right"></i>
-                    Membership Level
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-3">
-            <div class="footer-widget info-link-widget">
-              <h4 class="title">help center</h4>
-              <ul class="link-list">
-                <li>
-                  <a href="#">
-                    <i class="fas fa-angle-double-right"></i>Help centre
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-angle-double-right"></i>FAQ
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-angle-double-right"></i>Quick Start Guide
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-angle-double-right"></i>Tutorials
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-angle-double-right"></i>Borrow
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-angle-double-right"></i>
-                    Lend
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-3">
-            <div class="footer-widget info-link-widget">
-              <h4 class="title">Legal Info</h4>
-              <ul class="link-list">
-                <li>
-                  <a href="#">
-                    <i class="fas fa-angle-double-right"></i>Risk Warnings
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-angle-double-right"></i>Privacy Notice
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-angle-double-right"></i>Security
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-angle-double-right"></i>Terms of Service
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-angle-double-right"></i>Become Affiliate
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fas fa-angle-double-right"></i>
-                    Complaints Policy
-                  </a>
-                </li>
-              </ul>
-            </div>
+          <div class="col-lg-7">
+            <ul class="copright-area-links">
+              <li>
+                <a href="#">Terms Of Use</a>
+              </li>
+              <li>
+                <a href="#">Privacy Policy</a>
+              </li>
+              <li>
+                <a href="#">Support</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-      <div class="copy-bg">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-5">
-              <div class="left-area">
-                <p>
-                  Copyright © 2019.All Rights Reserved By
-                  <a href="#">Dooplo</a>
-                </p>
-              </div>
-            </div>
-            <div class="col-lg-7">
-              <ul class="copright-area-links">
-                <li>
-                  <a href="#">Terms Of Use</a>
-                </li>
-                <li>
-                  <a href="#">Privacy Policy</a>
-                </li>
-                <li>
-                  <a href="#">Gamble</a>
-                </li>
-                <li>
-                  <a href="#">Aware</a>
-                </li>
-                <li>
-                  <a href="#">Help Cente</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <div class="bottomtotop">
-      <i class="fas fa-chevron-right"></i>
     </div>
-  </div>
+  </footer>
 </template>
+
+<script>
+export default {
+  data: () => ({
+    year: new Date().getFullYear(),
+    socialList: [
+      { icon: "whatsapp" },
+      { icon: "instagram" },
+      { icon: "facebook-square" },
+      { icon: "youtube" },
+      { icon: "twitch" },
+    ],
+  }),
+};
+</script>
 
 <style src="@/assets/css/footer.css" />

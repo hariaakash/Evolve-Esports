@@ -11,50 +11,49 @@
         </div>
       </div>
       <div class="row text-center">
-        <div class="col-lg-3 col-md-6">
+        <div v-for="(step, index) in steps" :key="index" class="col-lg-3 col-md-6">
           <div class="single-h-play">
-            <img src="@/assets/img/h-play/ic1.png" alt />
+            <img :src="step.src" alt />
             <p class="steps">
-              First step
+              {{ step.step }} step
               <i class="fas fa-arrow-right"></i>
             </p>
-            <h4 class="title">SIGN UP</h4>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="single-h-play">
-            <img src="@/assets/img/h-play/ic2.png" alt />
-            <p class="steps">
-              SECOND STEP
-              <i class="fas fa-arrow-right"></i>
-            </p>
-            <h4 class="title">Join GAMES</h4>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="single-h-play">
-            <img src="@/assets/img/h-play/ic3.png" alt />
-            <p class="steps">
-              THIRD STEP
-              <i class="fas fa-arrow-right"></i>
-            </p>
-            <h4 class="title">Earn REWARDS</h4>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="single-h-play">
-            <img src="@/assets/img/h-play/ic4.png" alt />
-            <p class="steps">
-              fourth STEP
-              <i class="fas fa-arrow-right"></i>
-            </p>
-            <h4 class="title">INSTANT WITHDRAW</h4>
+            <h4 class="title">{{ step.title }}</h4>
           </div>
         </div>
       </div>
     </div>
   </section>
 </template>
+
+<script>
+export default {
+  data: () => ({
+    steps: [
+      {
+        title: "Sign Up",
+        step: "FIRST",
+        src: require("@/assets/img/h-play/ic1.png"),
+      },
+      {
+        title: "Join Games",
+        step: "SECOND",
+        src: require("@/assets/img/h-play/ic2.png"),
+      },
+      {
+        title: "Earn Rewards",
+        step: "THIRD",
+        src: require("@/assets/img/h-play/ic3.png"),
+      },
+      {
+        title: "Instant Withdraw",
+        step: "FOURTH",
+        src: require("@/assets/img/h-play/ic4.png"),
+      },
+    ],
+  }),
+};
+</script>
 
 <style scoped>
 .how-to {
@@ -81,5 +80,9 @@
 .how-to .steps {
   font-size: 14px;
   color: #f9314b;
+}
+.how-to .steps i,
+svg {
+  margin-left: 8px;
 }
 </style>

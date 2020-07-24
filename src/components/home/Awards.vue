@@ -10,75 +10,15 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-4 col-md-6">
+        <div v-for="(award, index) in awards" :key="index" class="col-lg-4 col-md-6">
           <div class="single-awards">
             <div class="content">
-              <img src="@/assets/img/awards/ic1.png" alt />
-              <h4 class="title">Luck power</h4>
+              <img :src="award.src" alt />
+              <h4 class="title">{{ award.title }}</h4>
               <p>
                 <i class="fas fa-users"></i>0
               </p>
-              <a href="#" class="mybtn2">Read MOre</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="single-awards">
-            <div class="content">
-              <img src="@/assets/img/awards/ic2.png" alt />
-              <h4 class="title">Zero Hunter</h4>
-              <p>
-                <i class="fas fa-users"></i>0
-              </p>
-              <a href="#" class="mybtn2">Read MOre</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="single-awards">
-            <div class="content">
-              <img src="@/assets/img/awards/ic3.png" alt />
-              <h4 class="title">BTC Top</h4>
-              <p>
-                <i class="fas fa-users"></i>0
-              </p>
-              <a href="#" class="mybtn2">Read MOre</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="single-awards">
-            <div class="content">
-              <img src="@/assets/img/awards/ic4.png" alt />
-              <h4 class="title">King</h4>
-              <p>
-                <i class="fas fa-users"></i>0
-              </p>
-              <a href="#" class="mybtn2">Read MOre</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="single-awards">
-            <div class="content">
-              <img src="@/assets/img/awards/ic5.png" alt />
-              <h4 class="title">Money Bag</h4>
-              <p>
-                <i class="fas fa-users"></i>0
-              </p>
-              <a href="#" class="mybtn2">Read MOre</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="single-awards">
-            <div class="content">
-              <img src="@/assets/img/awards/ic6.png" alt />
-              <h4 class="title">BTC Top</h4>
-              <p>
-                <i class="fas fa-users"></i>0
-              </p>
-              <a href="#" class="mybtn2">Read MOre</a>
+              <a href="#" class="mybtn2">Read More</a>
             </div>
           </div>
         </div>
@@ -86,5 +26,20 @@
     </div>
   </section>
 </template>
+
+<script>
+export default {
+  data: () => ({
+    awards: [
+      { title: "Luck Power", src: require("@/assets/img/awards/ic1.png") },
+      { title: "Zero Hunter", src: require("@/assets/img/awards/ic2.png") },
+      { title: "Gold", src: require("@/assets/img/awards/ic3.png") },
+      { title: "King", src: require("@/assets/img/awards/ic4.png") },
+      { title: "Money Bag", src: require("@/assets/img/awards/ic5.png") },
+      { title: "Top", src: require("@/assets/img/awards/ic6.png") },
+    ],
+  }),
+};
+</script>
 
 <style src="@/assets/css/awards.css" />

@@ -16,12 +16,11 @@
 
 <script>
 import Timer from "@/components/global/Timer";
+
 export default {
-  data: function () {
-    return {
-      time: parseInt((new Date("01-01-2022").getTime() / 1000).toFixed(0)),
-    };
-  },
+  data: () => ({
+    time: parseInt((new Date("01-01-2022").getTime() / 1000).toFixed(0)),
+  }),
   components: { Timer },
 };
 </script>

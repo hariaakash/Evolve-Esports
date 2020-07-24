@@ -26,7 +26,7 @@
       font-weight: 700;
       text-transform: uppercase;
       margin-bottom: 21px; }
-    .single-awards .content p {
+    .single-awards .content p{
       font-size: 16px;
       line-height: 26px;
       margin-bottom: 0px;
@@ -34,7 +34,7 @@
       border-radius: 50px;
       display: inline-block;
       padding: 2px 25px; }
-      .single-awards .content p i {
+      .single-awards .content p i, svg {
         margin-right: 8px; }
     .single-awards .content .mybtn2 {
       position: absolute;
