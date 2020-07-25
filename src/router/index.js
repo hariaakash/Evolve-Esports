@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 import { auth } from '@/db';
 import { store as $store } from '@/store';
 
-import Main from '../views/Main.vue';
+import Main from '@/views/Main.vue';
 
 Vue.use(VueRouter);
 
@@ -22,7 +22,7 @@ const routes = [
 			},
 			{
 				path: '/support',
-				component: () => import(/* webpackChunkName: "contact" */ '@/components/global/Support.vue'),
+				component: () => import(/* webpackChunkName: "support" */ '@/views/Support.vue'),
 				meta: {
 					title: 'Support',
 				}
@@ -54,6 +54,9 @@ const router = new VueRouter({
 	mode: 'history',
 	base: process.env.BASE_URL,
 	routes,
+	scrollBehavior(to, from, savedPosition) {
+		return savedPosition ? savedPosition : { x: 0, y: 0 };
+	},
 });
 
 const suffix = 'Evolve Esports';

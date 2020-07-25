@@ -13,7 +13,7 @@
         <div v-for="(award, index) in awards" :key="index" class="col-lg-4 col-md-6">
           <div class="single-awards">
             <div class="content">
-              <img :src="award.src" alt />
+              <img :src="award.imgSrc" alt />
               <h4 class="title">{{ award.title }}</h4>
               <p>
                 <i class="fas fa-users"></i>0
@@ -31,12 +31,12 @@
 export default {
   data: () => ({
     awards: [
-      { title: "Luck Power", src: require("@/assets/img/awards/ic1.png") },
-      { title: "Zero Hunter", src: require("@/assets/img/awards/ic2.png") },
-      { title: "Gold", src: require("@/assets/img/awards/ic3.png") },
-      { title: "King", src: require("@/assets/img/awards/ic4.png") },
-      { title: "Money Bag", src: require("@/assets/img/awards/ic5.png") },
-      { title: "Top", src: require("@/assets/img/awards/ic6.png") },
+      { title: "Luck Power", imgSrc: require("@/assets/img/awards/ic1.png") },
+      { title: "Zero Hunter", imgSrc: require("@/assets/img/awards/ic2.png") },
+      { title: "Gold", imgSrc: require("@/assets/img/awards/ic3.png") },
+      { title: "King", imgSrc: require("@/assets/img/awards/ic4.png") },
+      { title: "Money Bag", imgSrc: require("@/assets/img/awards/ic5.png") },
+      { title: "Top", imgSrc: require("@/assets/img/awards/ic6.png") },
     ],
   }),
 };

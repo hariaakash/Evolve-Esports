@@ -22,7 +22,7 @@
   </section>
 </template>
 
-<style scoped>
+<style  lang="scss" scoped>
 .join {
   padding: 120px 0px 120px;
   background: #0b122e;

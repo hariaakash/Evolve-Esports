@@ -55,7 +55,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style  lang="scss" scoped>
 .how-to {
   padding: 110px 0px 113px;
   position: relative;

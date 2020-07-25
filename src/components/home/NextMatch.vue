@@ -25,7 +25,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style  lang="scss" scoped>
 .next-match-section {
   background: #070b28;
   margin-top: -164px;

@@ -71,4 +71,4 @@ export default {
 };
 </script>
 
-<style src="@/assets/css/auth.css" />
+<style src="@/assets/css/auth.css" scoped />
