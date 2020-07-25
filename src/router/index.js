@@ -67,7 +67,7 @@ router.beforeEach((to, from, next) => {
 		next('/');
 		$store.dispatch("toggleModal");
 	} else {
-		if (auth.currentUser && !$store.state.user.auth) $store.commit("authUser", auth.currentUser);
+		if (auth.currentUser && !$store.state.user.auth) $store.dispatch("userAuth", { user: auth.currentUser });
 		next();
 	}
 });

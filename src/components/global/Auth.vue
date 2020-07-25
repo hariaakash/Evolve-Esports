@@ -54,9 +54,11 @@ export default {
     },
     async auth(social) {
       try {
-        await this.$store.dispatch("userAuth", social);
+        await this.$store.dispatch("userAuth", { social });
         this.$router.push("account");
+        this.$swal("Hooray", "Authenticated successfully", "success");
       } catch (err) {
+        this.$swal("Oops..", "Authentication failed, try again", "error");
         console.log(err);
       }
     },

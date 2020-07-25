@@ -42,4 +42,4 @@ export default {
 };
 </script>
 
-<style src="@/assets/css/awards.css" />
+<style src="@/assets/css/awards.css" scoped />

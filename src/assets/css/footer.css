@@ -1,5 +1,5 @@
 .footer {
-    padding-top: 120px;
+    /* padding-top: 120px; */
     overflow: hidden;
     position: relative;
     background-color: #070b28;
@@ -35,7 +35,7 @@
             font-size: 15px;
             padding-right: 4px; }
     .footer .copy-bg {
-      margin-top: 110px;
+      /* margin-top: 110px; */
       padding: 10px 15px 10px;
       border-top: 1px solid rgba(255, 255, 255, 0.2);
       background: #0b122e; }
@@ -161,6 +161,7 @@
 	padding-left: 10px;
 }
 
+.fa-discord { color: #7289DA; }
 .fa-whatsapp { color: #4FCE5D; }
 .fa-instagram { color: #D6249F; }
 .fa-facebook-f { color: #3C599F; }

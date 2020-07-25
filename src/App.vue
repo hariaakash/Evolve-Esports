@@ -8,7 +8,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "assets/css/bootstrap.min.css";
 @import "assets/css/global.css";
 @import "assets/css/responsive.css";

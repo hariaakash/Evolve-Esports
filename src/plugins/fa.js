@@ -7,14 +7,19 @@ import {
     faChevronRight,
     faUsers, faHome,
 } from '@fortawesome/free-solid-svg-icons';
-import { faWhatsapp, faFacebookF, faInstagram, faYoutube, faTwitch, faGoogle } from '@fortawesome/free-brands-svg-icons';
+import {
+    faDiscord, faWhatsapp, faFacebookF, faInstagram,
+    faYoutube, faTwitch, faGoogle
+} from '@fortawesome/free-brands-svg-icons';
 
 const list = [
     faAngleDoubleLeft, faAngleDoubleRight,
     faArrowRight,
     faChevronRight,
     faUsers, faHome,
-    faWhatsapp, faFacebookF, faInstagram, faYoutube, faTwitch, faGoogle,
+
+    faDiscord, faWhatsapp, faFacebookF, faInstagram,
+    faYoutube, faTwitch, faGoogle,
 ];
 
 library.add(...list);

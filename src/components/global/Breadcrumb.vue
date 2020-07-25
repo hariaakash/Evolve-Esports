@@ -26,4 +26,4 @@
   </section>
 </template>
 
-<style src="@/assets/css/breadcrumb.css" />
+<style src="@/assets/css/breadcrumb.css" scoped />

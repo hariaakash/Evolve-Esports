@@ -33,4 +33,4 @@
   </section>
 </template>
 
-<style src="@/assets/css/support.css" />
+<style src="@/assets/css/support.css" scoped />

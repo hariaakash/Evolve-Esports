@@ -27,10 +27,20 @@
                       <div class="mr-hover-effect"></div>
                     </router-link>
                   </li>
+                  <li class="nav-item" v-if="showAccount">
+                    <router-link class="nav-link" to="account">
+                      Account
+                      <div class="mr-hover-effect"></div>
+                    </router-link>
+                  </li>
+                  <li class="nav-item" v-if="showAccount">
+                    <a class="nav-link" @click="logoutUser" href="#">
+                      Logout
+                      <div class="mr-hover-effect"></div>
+                    </a>
+                  </li>
                 </ul>
                 <button class="mybtn1" @click="toggleModal" v-if="!showAccount">Join us</button>
-                <router-link class="mybtn1" to="account" v-if="showAccount">Account</router-link>
-                <button class="btn btn-info" @click="logoutUser" v-if="showAccount">Sign out</button>
               </div>
             </nav>
           </div>
@@ -56,8 +66,10 @@ export default {
     async logoutUser() {
       try {
         await this.$store.dispatch("userLogout");
-        this.$router.push("/");
+        if (!["/", "/home"].includes(this.$route.path)) this.$router.push("/");
+        this.$swal("Success", "Logout successful", "success");
       } catch (err) {
+        this.$swal("Oops..", "Logout failed", "error");
         console.log("logout failed", err.message);
       }
     },
@@ -70,4 +82,4 @@ export default {
 };
 </script>
 
-<style src="@/assets/css/header.css" />
+<style src="@/assets/css/header.css" scoped />

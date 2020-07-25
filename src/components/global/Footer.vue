@@ -57,6 +57,7 @@ export default {
   data: () => ({
     year: new Date().getFullYear(),
     socialList: [
+      { icon: "discord" },
       { icon: "whatsapp" },
       { icon: "instagram" },
       { icon: "facebook-f" },
@@ -67,4 +68,4 @@ export default {
 };
 </script>
 
-<style src="@/assets/css/footer.css" />
+<style src="@/assets/css/footer.css" scoped />

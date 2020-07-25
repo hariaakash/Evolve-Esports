@@ -22,4 +22,4 @@
   </section>
 </template>
 
-<style src="@/assets/css/404.css" />
+<style src="@/assets/css/404.css" scoped />
