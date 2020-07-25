@@ -4,6 +4,7 @@
     <Breadcrumb v-if="showBreadcrumb()" />
     <router-view />
     <Footer />
+    <Auth />
   </div>
 </template>
 
@@ -11,6 +12,7 @@
 import Header from "@/components/global/Header.vue";
 import Breadcrumb from "@/components/global/Breadcrumb.vue";
 import Footer from "@/components/global/Footer.vue";
+import Auth from "@/components/global/Auth.vue";
 
 export default {
   name: "Main",
@@ -18,6 +20,7 @@ export default {
     Header,
     Breadcrumb,
     Footer,
+    Auth,
   },
   methods: {
     showBreadcrumb() {

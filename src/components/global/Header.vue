@@ -28,7 +28,7 @@
                     </router-link>
                   </li>
                 </ul>
-                <a href="#" class="mybtn1" data-toggle="modal" data-target="#signin">Join us</a>
+                <button class="mybtn1" @click="toggleModal">Join us</button>
               </div>
             </nav>
           </div>
@@ -47,6 +47,11 @@ export default {
       { title: "Support", route: "support" },
     ],
   }),
+  methods: {
+    toggleModal() {
+      this.$store.dispatch("toggleModal");
+    },
+  },
 };
 </script>
 
