@@ -1,5 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import { auth } from '@/db';
+import { store as $store } from '@/store';
+
 import Main from '../views/Main.vue';
 
 Vue.use(VueRouter);
@@ -25,6 +28,14 @@ const routes = [
 				}
 			},
 			{
+				path: '/account',
+				component: () => import(/* webpackChunkName: "account" */ '@/components/Account.vue'),
+				meta: {
+					title: 'Account',
+					requiresAuth: true,
+				}
+			},
+			{
 				path: '/404',
 				component: () => import(/* webpackChunkName: "404" */ '@/components/global/404.vue'),
 				meta: {
@@ -47,10 +58,18 @@ const router = new VueRouter({
 
 const suffix = 'Evolve Esports';
 router.beforeEach((to, from, next) => {
+	// Set title
 	if (to.meta && to.meta.title) {
 		document.title = `${to.meta.title} | ${suffix}`;
 	}
-	next();
+
+	// auth check
+	const requiresAuth = to.matched.some(x => x.meta.requiresAuth)
+	if (requiresAuth && !auth.currentUser) {
+		next('/');
+		$store.dispatch("toggleModal");
+	} else next();
+
 });
 
 export default router;

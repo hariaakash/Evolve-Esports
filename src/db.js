@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import 'firebase/auth';
 
 const firebaseConfig = {
     apiKey: "AIzaSyCUlk0i046ScqhZ5mFzyYO-9YZdHVNjshw",
@@ -12,9 +13,16 @@ const firebaseConfig = {
     measurementId: "G-NR7MH2XXEE"
 };
 
-export const db = firebase
-    .initializeApp(firebaseConfig)
-    .firestore();
+firebase.initializeApp(firebaseConfig);
+
+const db = firebase.firestore();
+const auth = firebase.auth();
 
 const { TimeStamp, GeoPoint } = firebase.firestore;
-export { TimeStamp, GeoPoint };
+
+export {
+    db,
+    auth,
+    TimeStamp,
+    GeoPoint
+};
