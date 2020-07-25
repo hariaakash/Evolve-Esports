@@ -59,7 +59,7 @@ export default {
     socialList: [
       { icon: "whatsapp" },
       { icon: "instagram" },
-      { icon: "facebook-square" },
+      { icon: "facebook-f" },
       { icon: "youtube" },
       { icon: "twitch" },
     ],

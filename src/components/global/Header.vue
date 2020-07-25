@@ -28,7 +28,9 @@
                     </router-link>
                   </li>
                 </ul>
-                <button class="mybtn1" @click="toggleModal">Join us</button>
+                <button class="mybtn1" @click="toggleModal" v-if="!showAccount">Join us</button>
+                <router-link class="mybtn1" to="account" v-if="showAccount">Account</router-link>
+                <button class="btn btn-info" @click="logoutUser" v-if="showAccount">Sign out</button>
               </div>
             </nav>
           </div>
@@ -50,6 +52,19 @@ export default {
   methods: {
     toggleModal() {
       this.$store.dispatch("toggleModal");
+    },
+    async logoutUser() {
+      try {
+        await this.$store.dispatch("userLogout");
+        this.$router.push("/");
+      } catch (err) {
+        console.log("logout failed", err.message);
+      }
+    },
+  },
+  computed: {
+    showAccount() {
+      return this.$store.state.user.auth;
     },
   },
 };

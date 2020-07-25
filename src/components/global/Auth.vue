@@ -15,7 +15,7 @@
           <button type="button" class="close" @click="close">
             <span>&times;</span>
           </button>
-          <div class="modal-body">
+          <div class="modal-body text-center">
             <div class="logo-area">
               <img class="logo" src="@/assets/img/logo.png" height="50" width="50" alt />
             </div>
@@ -23,6 +23,16 @@
               <h4 class="title">Great to have you back!</h4>
               <p class="sub-title">Authenticate yourself using any of the following methods.</p>
             </div>
+            <button
+              v-for="(button, index) in buttons"
+              :key="index"
+              class="btn-social mb-3"
+              :class="button.class"
+              @click="auth(button.name)"
+            >
+              <font-awesome-icon :icon="['fab', button.icon]" size="lg" style="color: #FFF;" />
+              {{ "Login with " + button.name }}
+            </button>
           </div>
         </div>
       </div>
@@ -32,9 +42,23 @@
 
 <script>
 export default {
+  data: () => ({
+    buttons: [
+      { name: "Google", icon: "google", class: "google" },
+      { name: "Facebook", icon: "facebook-f", class: "facebook" },
+    ],
+  }),
   methods: {
     close() {
       this.$store.state.ui.authModal = false;
+    },
+    async auth(social) {
+      try {
+        await this.$store.dispatch("userAuth", social);
+        this.$router.push("account");
+      } catch (err) {
+        console.log(err);
+      }
     },
   },
   computed: {
