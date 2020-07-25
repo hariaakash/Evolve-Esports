@@ -1,6 +1,6 @@
 <template>
   <section class="contact">
-    <img class="left-img" src="@/assets/images/contact-left.png" alt />
+    <img class="left-img" src="@/assets/img/extras/contact-left.png" alt />
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8 col-md-10">
