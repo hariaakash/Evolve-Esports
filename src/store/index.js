@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import "firebase/auth";
 import { vuexfireMutations, firestoreAction } from 'vuexfire';
 import { DB } from '@/firebase';
 
@@ -40,14 +41,8 @@ export const store = new Vuex.Store({
         toggleModal(ctx) {
             ctx.commit('toggleModal');
         },
-        async userAuth(ctx, { social, user }) {
-            if (!user) {
-                const provider = social === 'Google' ? new firebase.auth.GoogleAuthProvider() : new firebase.auth.FacebookAuthProvider();
-                const res = await firebase.auth().signInWithPopup(provider);
-                user = res.user;
-            }
+        async userAuth(ctx, { user }) {
             ctx.commit("authUser", user);
-            if (social) ctx.commit("toggleModal");
         },
         async userLogout(ctx) {
             await firebase.auth().signOut();

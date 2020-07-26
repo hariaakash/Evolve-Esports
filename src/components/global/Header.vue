@@ -67,7 +67,7 @@ export default {
       try {
         await this.$store.dispatch("userLogout");
         if (!["/", "/home"].includes(this.$route.path)) this.$router.push("/");
-        this.$swal("Success", "Logout successful", "success");
+        this.$swal("Success", "Logged out", "success");
       } catch (err) {
         this.$swal("Oops..", "Logout failed", "error");
         console.log("logout failed", err.message);

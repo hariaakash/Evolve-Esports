@@ -30,7 +30,12 @@
               :class="button.class"
               @click="auth(button.name)"
             >
-              <font-awesome-icon :icon="['fab', button.icon]" size="lg" style="color: #FFF;" />
+              <font-awesome-icon
+                :icon="['fab', button.icon]"
+                class="mr-2"
+                size="lg"
+                style="color: #FFF;"
+              />
               {{ "Login with " + button.name }}
             </button>
           </div>
@@ -41,6 +46,9 @@
 </template>
 
 <script>
+import firebase from "firebase/app";
+import "firebase/auth";
+
 export default {
   data: () => ({
     buttons: [
@@ -50,17 +58,14 @@ export default {
   }),
   methods: {
     close() {
-      this.$store.state.ui.authModal = false;
+      this.$store.dispatch("toggleModal");
     },
-    async auth(social) {
-      try {
-        await this.$store.dispatch("userAuth", { social });
-        this.$router.push("account");
-        this.$swal("Hooray", "Authenticated successfully", "success");
-      } catch (err) {
-        this.$swal("Oops..", "Authentication failed, try again", "error");
-        console.log(err);
-      }
+    auth(social) {
+      const provider =
+        social === "Google"
+          ? new firebase.auth.GoogleAuthProvider()
+          : new firebase.auth.FacebookAuthProvider();
+      firebase.auth().signInWithRedirect(provider);
     },
   },
   computed: {

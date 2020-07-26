@@ -1,8 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import firebase from "firebase/app";
-import "firebase/auth";
 import { store as $store } from '@/store';
+import getUserStatus from './getUserStatus';
 
 import Main from '@/views/Main.vue';
 
@@ -58,18 +57,6 @@ const router = new VueRouter({
 	scrollBehavior(to, from, savedPosition) {
 		return savedPosition ? savedPosition : { x: 0, y: 0 };
 	},
-});
-
-const getUserStatus = () => new Promise(function (resolve) {
-	firebase.auth().onAuthStateChanged(function (user) {
-		if (user) {
-			$store.dispatch('userAuth', { user });
-			resolve();
-		} else {
-			$store.dispatch('userLogout');
-			resolve();
-		}
-	});
 });
 
 let initUserCheck = true;
