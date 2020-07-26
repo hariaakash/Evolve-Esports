@@ -15,14 +15,14 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-const db = firebase.firestore();
-const auth = firebase.auth();
+const DB = firebase.firestore();
+const Auth = firebase.auth();
 
 const { TimeStamp, GeoPoint } = firebase.firestore;
 
 export {
-    db,
-    auth,
+    DB,
+    Auth,
     TimeStamp,
     GeoPoint
 };

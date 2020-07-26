@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import { auth } from '@/db';
+import firebase from "firebase/app";
+import "firebase/auth";
 import { store as $store } from '@/store';
 
 import Main from '@/views/Main.vue';
@@ -59,20 +60,32 @@ const router = new VueRouter({
 	},
 });
 
+const getUserStatus = () => new Promise(function (resolve) {
+	firebase.auth().onAuthStateChanged(function (user) {
+		if (user) {
+			$store.dispatch('userAuth', { user });
+			resolve();
+		} else {
+			$store.dispatch('userLogout');
+			resolve();
+		}
+	});
+});
+
+let initUserCheck = true;
+
 const suffix = 'Evolve Esports';
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
 	// Set title
 	if (to.meta && to.meta.title) document.title = `${to.meta.title} | ${suffix}`;
 
-	// auth check
+	// get auth check for first time
+	if (initUserCheck) { initUserCheck = false; await getUserStatus(); }
+
+	// route guard
 	const requiresAuth = to.matched.some(x => x.meta.requiresAuth)
-	if (requiresAuth && !auth.currentUser) {
-		next('/');
-		$store.dispatch("toggleModal");
-	} else {
-		if (auth.currentUser && !$store.state.user.auth) $store.dispatch("userAuth", { user: auth.currentUser });
-		next();
-	}
+	if (requiresAuth && !$store.state.user.auth) next('/');
+	else next();
 });
 
 export default router;

@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import firebase from 'firebase';
 import { vuexfireMutations, firestoreAction } from 'vuexfire';
-import { db } from '../db';
+import { DB } from '@/firebase';
 
 Vue.use(Vuex);
 
@@ -35,7 +35,7 @@ export const store = new Vuex.Store({
     },
     actions: {
         bindMatches: firestoreAction(({ bindFirestoreRef }) => {
-            return bindFirestoreRef('matches', db.collection('matches'));
+            return bindFirestoreRef('matches', DB.collection('matches'));
         }),
         toggleModal(ctx) {
             ctx.commit('toggleModal');
