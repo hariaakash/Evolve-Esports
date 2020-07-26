@@ -1,6 +1,6 @@
 <template>
   <section class="breadcrumb-area main">
-    <img class="bc-img" src="@/assets/img/breadcrumb/contact.png" alt />
+    <img class="bc-img" :src="getImage()" alt />
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -25,5 +25,34 @@
     </div>
   </section>
 </template>
+
+<script>
+export default {
+  data: () => ({
+    images: [
+      {
+        routes: ["/tournaments"],
+        imgSrc: require("@/assets/img/breadcrumb/tournaments.png"),
+      },
+      {
+        routes: ["/account"],
+        imgSrc: require("@/assets/img/breadcrumb/play.png"),
+      },
+      {
+        routes: ["/support"],
+        imgSrc: require("@/assets/img/breadcrumb/contact.png"),
+      },
+    ],
+  }),
+  methods: {
+    getImage() {
+      const image = this.images.find((x) =>
+        x.routes.includes(this.$route.path)
+      );
+      return image.imgSrc;
+    },
+  },
+};
+</script>
 
 <style src="@/assets/css/breadcrumb.css" scoped />

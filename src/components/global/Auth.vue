@@ -13,7 +13,9 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <button type="button" class="close" @click="close">
-            <span>&times;</span>
+            <span>
+              <font-awesome-icon :icon="['fa', 'times']" size="lg" />
+            </span>
           </button>
           <div class="modal-body text-center">
             <div class="logo-area">
@@ -58,7 +60,7 @@ export default {
   }),
   methods: {
     close() {
-      this.$store.dispatch("toggleModal");
+      this.$store.commit("ui/TOGGLE_AUTHMODAL");
     },
     auth(social) {
       const provider =

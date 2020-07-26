@@ -61,11 +61,11 @@ export default {
   }),
   methods: {
     toggleModal() {
-      this.$store.dispatch("toggleModal");
+      this.$store.commit("ui/TOGGLE_AUTHMODAL");
     },
     async logoutUser() {
       try {
-        await this.$store.dispatch("userLogout");
+        await this.$store.dispatch("user/logout");
         if (!["/", "/home"].includes(this.$route.path)) this.$router.push("/");
         this.$swal("Success", "Logged out", "success");
       } catch (err) {

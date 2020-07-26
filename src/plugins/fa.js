@@ -6,6 +6,7 @@ import {
     faArrowRight,
     faChevronRight,
     faUsers, faHome,
+    faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 import {
     faDiscord, faWhatsapp, faFacebookF, faInstagram,
@@ -17,6 +18,7 @@ const list = [
     faArrowRight,
     faChevronRight,
     faUsers, faHome,
+    faTimes,
 
     faDiscord, faWhatsapp, faFacebookF, faInstagram,
     faYoutube, faTwitch, faGoogle,

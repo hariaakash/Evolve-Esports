@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
+import '@/firebase';
 import './plugins/fa';
 import './plugins/swal';
 import { store } from './store';
