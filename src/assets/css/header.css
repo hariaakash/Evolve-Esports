@@ -16,6 +16,7 @@
         visibility: hidden; }
       .header.nav-fixed .navbar::before {
         visibility: hidden; }
+        
   /* Main Menu Area Start */ 
   .header .mainmenu-area {
       background: #252f5a; }

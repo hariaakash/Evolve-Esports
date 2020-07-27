@@ -1,0 +1,27 @@
+.account ul .nav-item .nav-link {
+  line-height: 50px;
+  padding: 0px 50px;
+  border-radius: 50px;
+  font-size: 18px;
+  text-transform: uppercase;
+  background: #252f5a;
+}
+
+.account ul .nav-item .nav-link.active {
+  background: #f9314b;
+  color: #fff;
+}
+
+.account .nav {
+  padding: 30px 25px;
+}
+
+.account .nav li a {
+  margin-bottom: 0px;
+  font-size: 28px;
+  line-height: 38px;
+  font-weight: 700;
+  margin: 0px 10px;
+  text-transform: uppercase;
+  color: #fff;
+}

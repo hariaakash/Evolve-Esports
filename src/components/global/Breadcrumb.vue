@@ -29,17 +29,18 @@
 <script>
 export default {
   data: () => ({
+    defaultImgSrc: require("@/assets/img/breadcrumb/play.png"),
     images: [
       {
-        routes: ["/tournaments"],
+        routes: ["tournaments"],
         imgSrc: require("@/assets/img/breadcrumb/tournaments.png"),
       },
       {
-        routes: ["/account"],
+        routes: ["account", "profile"],
         imgSrc: require("@/assets/img/breadcrumb/play.png"),
       },
       {
-        routes: ["/support"],
+        routes: ["support"],
         imgSrc: require("@/assets/img/breadcrumb/contact.png"),
       },
     ],
@@ -47,9 +48,9 @@ export default {
   methods: {
     getImage() {
       const image = this.images.find((x) =>
-        x.routes.includes(this.$route.path)
+        x.routes.includes(this.$route.name)
       );
-      return image.imgSrc;
+      return image ? image.imgSrc : this.defaultImgSrc;
     },
   },
 };

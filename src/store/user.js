@@ -1,5 +1,7 @@
 import firebase from 'firebase/app';
 import "firebase/auth";
+import { firestoreAction } from 'vuexfire'
+import { DB } from '@/firebase';
 
 export default {
     namespaced: true,
@@ -10,10 +12,11 @@ export default {
             email: null,
             photoURL: null,
         },
+        details: null,
         auth: false,
     },
     mutations: {
-        SET_USER(state, { displayName: name, email, photoURL, uid } = {}) {
+        SET_USER(state, { displayName: name, email, photoURL, uid }) {
             state.info = { name, email, photoURL, uid };
             state.auth = true;
         },
@@ -25,12 +28,15 @@ export default {
                 photoURL: null,
             };
             state.auth = false;
-        }
+        },
     },
     actions: {
         async logout(ctx) {
             await firebase.auth().signOut();
             ctx.commit('DEL_USER');
-        }
+        },
+        bindUserRef: firestoreAction((ctx) => {
+            return ctx.bindFirestoreRef('details', DB.collection('users').doc(ctx.state.info.uid));
+        }),
     },
 }

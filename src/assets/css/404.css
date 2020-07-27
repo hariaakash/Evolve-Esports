@@ -11,28 +11,28 @@
     background: #070b28;
     position: relative;
   }
-  .four-zero-four .bg-img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-  }
-  .four-zero-four .content {
-    text-align: center;
-  }
-  .four-zero-four .content img {
-    display: inline-block;
-    margin-bottom: 50px;
-  }
-  .four-zero-four .content .inner-content .title {
-    font-size: 36px;
-    line-height: 46px;
-    font-weight: 700;
-    color: #dfe3ff;
-  }
-  .four-zero-four .content .inner-content .mybtn1 {
-    margin-top: 38px;
-    display: inline-block;
-  }
+.four-zero-four .bg-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.four-zero-four .content {
+  text-align: center;
+}
+.four-zero-four .content img {
+  display: inline-block;
+  margin-bottom: 50px;
+}
+.four-zero-four .content .inner-content .title {
+  font-size: 36px;
+  line-height: 46px;
+  font-weight: 700;
+  color: #dfe3ff;
+}
+.four-zero-four .content .inner-content .mybtn1 {
+  margin-top: 38px;
+  display: inline-block;
+}

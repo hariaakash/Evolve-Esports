@@ -22,13 +22,13 @@
               <div class="collapse navbar-collapse fixed-height" id="main_menu">
                 <ul class="navbar-nav ml-auto">
                   <li v-for="item in menuItems" :key="item.key" class="nav-item">
-                    <router-link class="nav-link" :to="item.route">
+                    <router-link class="nav-link" :to="{ name: item.route }">
                       {{ item.title }}
                       <div class="mr-hover-effect"></div>
                     </router-link>
                   </li>
                   <li class="nav-item" v-if="showAccount">
-                    <router-link class="nav-link" to="account">
+                    <router-link class="nav-link" :to="{ name: 'account' }">
                       Account
                       <div class="mr-hover-effect"></div>
                     </router-link>

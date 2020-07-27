@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-// import { vuexfireMutations, firestoreAction } from 'vuexfire';
-// import { DB } from '@/firebase';
+import { vuexfireMutations } from 'vuexfire';
 
 import ui from './ui';
 import user from './user';
@@ -12,5 +11,8 @@ export const store = new Vuex.Store({
     modules: {
         ui,
         user,
+    },
+    mutations: {
+        ...vuexfireMutations,
     }
 });
