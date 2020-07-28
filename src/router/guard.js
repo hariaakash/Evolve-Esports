@@ -1,6 +1,6 @@
 import { store as $store } from '@/store';
 
-import getUserStatus from './getUserStatus';
+import getUserStatus from './guards/getUserStatus';
 
 let initUserCheck = true;
 const suffix = 'Evolve Esports';
@@ -10,7 +10,7 @@ const guard = async (to, from, next) => {
     if (to.meta && to.meta.title) document.title = `${to.meta.title} | ${suffix}`;
 
     // get auth check for first time
-    if (initUserCheck) { initUserCheck = false; await getUserStatus(next); }
+    if (initUserCheck) { initUserCheck = false; getUserStatus(next); }
 
     // route guard
     const requiresAuth = to.matched.some(x => x.meta.requiresAuth)
