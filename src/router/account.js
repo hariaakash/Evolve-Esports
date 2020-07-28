@@ -17,5 +17,14 @@ export default {
                 requiresAuth: true,
             },
         },
+        {
+            path: 'edit',
+            name: 'edit',
+            component: () => import(/* webpackChunkName: "edit" */ '@/components/account/Edit.vue'),
+            meta: {
+                title: 'Edit',
+                requiresAuth: true,
+            },
+        },
     ],
 };

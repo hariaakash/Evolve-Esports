@@ -8,16 +8,16 @@ export default {
     state: {
         info: {
             uid: null,
-            name: null,
+            displayName: null,
             email: null,
             photoURL: null,
         },
-        details: null,
+        db: null,
         auth: false,
     },
     mutations: {
-        SET_USER(state, { displayName: name, email, photoURL, uid }) {
-            state.info = { name, email, photoURL, uid };
+        SET_USER(state, { displayName, email, photoURL, uid }) {
+            state.info = { displayName, email, photoURL, uid };
             state.auth = true;
         },
         DEL_USER(state) {
@@ -27,6 +27,7 @@ export default {
                 email: null,
                 photoURL: null,
             };
+            state.db = null;
             state.auth = false;
         },
     },
@@ -35,8 +36,29 @@ export default {
             await firebase.auth().signOut();
             ctx.commit('DEL_USER');
         },
+        async initProfile(ctx, data) {
+            ctx.commit('SET_USER', data);
+            await ctx.dispatch('bindUserRef');
+        },
+        // async profileSetCheck(ctx) {
+        //     const doc = await DB.collection('users').doc(ctx.state.info.uid).get();
+        //     if (doc.exists) {
+        //         const data = doc.data();
+        //         ctx.commit('SET_PROFILE', data);
+        //         ctx.dispatch('bindUserRef');
+        //     }
+        //     return doc.exists;
+        // },
+        async setProfile(ctx, { name, phone, gamerTag, desc }) {
+            await DB.collection('users')
+                .doc(ctx.state.info.uid)
+                .set({ details: { name, phone, gamerTag, desc } }, { merge: true, });
+        },
         bindUserRef: firestoreAction((ctx) => {
-            return ctx.bindFirestoreRef('details', DB.collection('users').doc(ctx.state.info.uid));
+            return ctx.bindFirestoreRef('db', DB.collection('users').doc(ctx.state.info.uid));
         }),
     },
+    getters: {
+        getProfile: (state) => state.db
+    }
 }

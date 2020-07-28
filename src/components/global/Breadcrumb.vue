@@ -7,7 +7,7 @@
           <h4 class="title">{{ this.$route.meta.title }}</h4>
           <ul class="breadcrumb-list">
             <li>
-              <router-link to="home">
+              <router-link :to="{ name:'home' }">
                 <font-awesome-icon :icon="['fas', 'home']" class="mr-2" />Home
               </router-link>
             </li>
@@ -36,7 +36,7 @@ export default {
         imgSrc: require("@/assets/img/breadcrumb/tournaments.png"),
       },
       {
-        routes: ["account", "profile"],
+        routes: ["account", "profile", "edit"],
         imgSrc: require("@/assets/img/breadcrumb/play.png"),
       },
       {

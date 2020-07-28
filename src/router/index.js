@@ -1,10 +1,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import { store as $store } from '@/store';
 
 import accountRoute from './account';
 
-import getUserStatus from './getUserStatus';
+import guard from './guard';
 
 Vue.use(VueRouter);
 
@@ -66,20 +65,6 @@ const router = new VueRouter({
 	},
 });
 
-let initUserCheck = true;
-
-const suffix = 'Evolve Esports';
-router.beforeEach(async (to, from, next) => {
-	// Set title
-	if (to.meta && to.meta.title) document.title = `${to.meta.title} | ${suffix}`;
-
-	// get auth check for first time
-	if (initUserCheck) { initUserCheck = false; await getUserStatus(); }
-
-	// route guard
-	const requiresAuth = to.matched.some(x => x.meta.requiresAuth)
-	if (requiresAuth && !$store.state.user.auth) next('/');
-	else next();
-});
+router.beforeEach(guard);
 
 export default router;

@@ -4,7 +4,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <Nav />
+            <Nav :profileSet="profileSet" />
             <router-view></router-view>
           </div>
         </div>
@@ -14,11 +14,26 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 import Nav from "@/components/account/Nav.vue";
 
 export default {
+  created() {
+    if (!this.profileSet && this.$route.name !== "edit") {
+      this.$router.push("edit");
+    }
+  },
   components: {
     Nav,
+  },
+  computed: {
+    ...mapGetters({
+      getProfile: "user/getProfile",
+    }),
+    profileSet() {
+      return this.getProfile ? true : false;
+    },
   },
 };
 </script>

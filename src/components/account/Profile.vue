@@ -3,13 +3,11 @@
     <div class="row">
       <div class="col-4">
         <div class="card bg-main">
-          <div class="card-body text-center">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7pmT3lMtcAaI0HyFel0IYCH9KnZnmU0ivlsl96QdtFVhq8FvB"
-            />
-            <h5 class="card-title text-white pt-4">Name: Hari</h5>
-            <h6 class="card-subtitle text-white pt-2">Gamer Tag: Hari</h6>
-            <p class="card-text text-white text-justify pt-3">I'm a Gamer, I have lot's of lives.</p>
+          <div class="card-body text-center" v-if="getProfile">
+            <img :src="profile.imgSrc" />
+            <h5 class="card-title text-white pt-4">Name: {{ getProfile.details.name }}</h5>
+            <h6 class="card-subtitle text-white pt-2">Gamer Tag: {{ getProfile.details.gamerTag }}</h6>
+            <p class="card-text text-white text-justify pt-3">{{ getProfile.details.desc }}</p>
           </div>
         </div>
       </div>
@@ -34,21 +32,36 @@
             </button>
           </div>
         </div>
+        <div class="card mt-4">
+          <div class="card-body text-center">
+            <h5 class="card-title text-dark">Game Stats</h5>
+            <p class="card-text text-dark">Coming Soon...</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   data: () => ({
     socialAuth: [
       { name: "Google", icon: "google", class: "google" },
       { name: "Facebook", icon: "facebook-f", class: "facebook" },
     ],
-    name: "Hari",
-    tag: "Hari",
+    profile: {
+      imgSrc:
+        "https://www.apklat.com/wp-content/uploads/2019/01/Database-Tracker-for-PUBG-Download-Latest-Version-APK.png",
+    },
   }),
+  computed: {
+    ...mapGetters({
+      getProfile: "user/getProfile",
+    }),
+  },
 };
 </script>
 

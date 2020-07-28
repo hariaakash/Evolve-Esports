@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-lg-12">
             <nav class="navbar navbar-expand-lg navbar-light">
-              <router-link class="navbar-brand" to="home">
+              <router-link class="navbar-brand" :to="{ name: 'home' }">
                 <img src="@/assets/img/logo.png" height="50" alt />
               </router-link>
               <button
@@ -70,7 +70,6 @@ export default {
         this.$swal("Success", "Logged out", "success");
       } catch (err) {
         this.$swal("Oops..", "Logout failed", "error");
-        console.log("logout failed", err.message);
       }
     },
   },

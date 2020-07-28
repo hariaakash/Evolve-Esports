@@ -4,9 +4,9 @@ import "firebase/auth";
 import { store as $store } from '@/store';
 
 const getUserStatus = () => new Promise(function (resolve) {
-    firebase.auth().onAuthStateChanged(function (user) {
+    firebase.auth().onAuthStateChanged(async (user) => {
         if (user) {
-            $store.commit('user/SET_USER', user);
+            await $store.dispatch("user/initProfile", user);
             Vue.prototype.$swal("Hooray", `Hi ${user.displayName}`, "success");
             resolve();
         } else {
