@@ -2,13 +2,10 @@
   <div v-if="showModal">
     <div class="modal-backdrop fade show"></div>
     <div
-      class="modal fade login-modal show"
-      id="login"
+      class="modal fade show"
       tabindex="-1"
       role="dialog"
-      aria-labelledby="login"
       style="padding-right: 15px; display: block;"
-      aria-modal="true"
     >
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -78,4 +75,4 @@ export default {
 };
 </script>
 
-<style src="@/assets/css/auth.css" scoped />
+<style src="@/assets/css/global/auth.css" scoped />

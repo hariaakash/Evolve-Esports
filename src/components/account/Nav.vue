@@ -3,8 +3,8 @@
     <li class="nav-item" v-for="(item, index) in items" :key="index">
       <router-link
         class="nav-link"
-        v-if="profileSet || item.route == 'edit'"
-        :to="item.route"
+        v-if="profileSet || item.route == 'account/edit'"
+        :to="{ name: item.route }"
       >{{ item.name }}</router-link>
       <a class="nav-link" v-else @click="setProfileMsg">{{ item.name }}</a>
     </li>
@@ -18,9 +18,9 @@ export default {
   },
   data: () => ({
     items: [
-      { name: "Profile", route: "profile" },
-      { name: "edit", route: "edit" },
-      { name: "Tournaments", route: "tournaments" },
+      { name: "Profile", route: "account/profile" },
+      { name: "Edit", route: "account/edit" },
+      // { name: "Tournaments", route: "account/tournaments" },
     ],
   }),
   methods: {
@@ -31,4 +31,4 @@ export default {
 };
 </script>
 
-<style src="@/assets/css/account/nav.css" scoped />
+<style src="@/assets/css/global/nav.css" scoped />

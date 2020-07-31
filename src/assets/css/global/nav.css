@@ -1,4 +1,4 @@
-.account ul .nav-item .nav-link {
+ul .nav-item .nav-link {
   line-height: 50px;
   padding: 0px 50px;
   border-radius: 50px;
@@ -7,16 +7,16 @@
   background: #252f5a;
 }
 
-.account ul .nav-item .nav-link.active {
+ul .nav-item .nav-link.active {
   background: #f9314b;
   color: #fff;
 }
 
-.account .nav {
+.nav {
   padding: 30px 25px;
 }
 
-.account .nav li a {
+.nav li a {
   margin-bottom: 0px;
   font-size: 28px;
   line-height: 38px;

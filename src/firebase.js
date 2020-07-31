@@ -18,11 +18,11 @@ firebase.initializeApp(firebaseConfig);
 const DB = firebase.firestore();
 const Auth = firebase.auth();
 
-const { TimeStamp, GeoPoint } = firebase.firestore;
+const { Timestamp, GeoPoint } = firebase.firestore;
 
 export {
     DB,
     Auth,
-    TimeStamp,
+    Timestamp,
     GeoPoint
 };

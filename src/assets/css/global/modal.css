@@ -1,0 +1,59 @@
+.modal-content {
+  background: #252f5a;
+  border-radius: 10px;
+}
+
+.modal-content .modal-header {
+  border-bottom: 1px solid #000000;
+}
+
+.modal-content .modal-footer {
+  border-top: 1px solid #000000;
+}
+
+.modal-content .modal-body .header-area .title {
+  font-size: 24px;
+  line-height: 34px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.modal-content .modal-body .header-area .sub-title {
+  font-size: 24px;
+  line-height: 34px;
+  font-weight: 300;
+}
+
+.modal-dialog .modal-content .close {
+  position: absolute;
+  right: 9px;
+  z-index: 9;
+}
+
+.modal-dialog .modal-content .close span {
+  color: #fff;
+  font-size: 20px;
+}
+
+.btn-social {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 14px 35px;
+  display: inline-block;
+  color: #fff;
+  border: 0px;
+  border-radius: 3px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+
+.btn-social:hover {
+  -webkit-transform: translateY(-2px);
+  -ms-transform: translateY(-2px);
+  transform: translateY(-2px);
+}

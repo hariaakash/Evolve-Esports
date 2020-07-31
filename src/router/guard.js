@@ -10,7 +10,7 @@ const guard = async (to, from, next) => {
     if (to.meta && to.meta.title) document.title = `${to.meta.title} | ${suffix}`;
 
     // get auth check for first time
-    if (initUserCheck) { initUserCheck = false; getUserStatus(next); }
+    if (initUserCheck) { initUserCheck = false; await getUserStatus(next); $store.commit('ui/SET_INIT'); }
 
     // route guard
     const requiresAuth = to.matched.some(x => x.meta.requiresAuth)

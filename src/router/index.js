@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import accountRoute from './account';
+import adminRoute from './admin';
 
 import guard from './guard';
 
@@ -29,7 +30,6 @@ const routes = [
 					title: 'Support',
 				},
 			},
-			accountRoute,
 			{
 				path: '/tournaments',
 				name: 'tournaments',
@@ -46,6 +46,8 @@ const routes = [
 					title: '404',
 				},
 			},
+			accountRoute,
+			adminRoute,
 		],
 	},
 	{

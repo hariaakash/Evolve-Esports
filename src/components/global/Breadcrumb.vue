@@ -36,7 +36,7 @@ export default {
         imgSrc: require("@/assets/img/breadcrumb/tournaments.png"),
       },
       {
-        routes: ["account", "profile", "edit"],
+        routes: ["account/profile", "account/edit"],
         imgSrc: require("@/assets/img/breadcrumb/play.png"),
       },
       {

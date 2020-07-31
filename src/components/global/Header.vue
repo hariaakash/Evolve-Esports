@@ -21,26 +21,32 @@
               </button>
               <div class="collapse navbar-collapse fixed-height" id="main_menu">
                 <ul class="navbar-nav ml-auto">
-                  <li v-for="item in menuItems" :key="item.key" class="nav-item">
+                  <li v-for="(item, index) in globalMenu" :key="index" class="nav-item">
                     <router-link class="nav-link" :to="{ name: item.route }">
                       {{ item.title }}
                       <div class="mr-hover-effect"></div>
                     </router-link>
                   </li>
-                  <li class="nav-item" v-if="showAccount">
+                  <li class="nav-item" v-if="userSet">
                     <router-link class="nav-link" :to="{ name: 'account' }">
                       Account
                       <div class="mr-hover-effect"></div>
                     </router-link>
                   </li>
-                  <li class="nav-item" v-if="showAccount">
-                    <a class="nav-link" @click="logoutUser" href="#">
+                  <li class="nav-item" v-if="userSet && adminSet">
+                    <router-link class="nav-link" :to="{ name: 'admin' }">
+                      Admin
+                      <div class="mr-hover-effect"></div>
+                    </router-link>
+                  </li>
+                  <li class="nav-item" v-if="userSet">
+                    <a class="nav-link" @click="logoutUser">
                       Logout
                       <div class="mr-hover-effect"></div>
                     </a>
                   </li>
                 </ul>
-                <button class="mybtn1" @click="toggleModal" v-if="!showAccount">Join us</button>
+                <button class="mybtn1" @click="toggleModal" v-if="!userSet">Join us</button>
               </div>
             </nav>
           </div>
@@ -51,9 +57,11 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   data: () => ({
-    menuItems: [
+    globalMenu: [
       { title: "Home", route: "home" },
       { title: "Tournaments", route: "tournaments" },
       { title: "Support", route: "support" },
@@ -74,8 +82,18 @@ export default {
     },
   },
   computed: {
-    showAccount() {
+    ...mapGetters({
+      getProfile: "user/getProfile",
+    }),
+    userSet() {
       return this.$store.state.user.auth;
+    },
+    adminSet() {
+      return (
+        this.getProfile &&
+        this.getProfile.role &&
+        this.getProfile.role === "admin"
+      );
     },
   },
 };

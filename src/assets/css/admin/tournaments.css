@@ -1,0 +1,37 @@
+.tournaments {
+    padding: 50px 0px;
+}
+
+.bg-main {
+  background: #0c1330;
+}
+
+.table tr td,
+.table tr th {
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.table tr th {
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-top: 0px;
+  border-bottom: 0px;
+  padding: 20px 15px;
+  background: #12193a;
+  color: #fff;
+}
+
+.table tr td {
+  vertical-align: middle;
+  padding: 20px 15px;
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #f0ad4e;
+}
+
+.table tr:hover {
+  background: #192246;
+}

@@ -5,7 +5,8 @@ html {
   font-family: "Open Sans", sans-serif;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  scroll-behavior: smooth; }
 
 body {
   font-family: "Open Sans", sans-serif;

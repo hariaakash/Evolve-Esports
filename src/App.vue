@@ -1,13 +1,17 @@
 <template>
   <div id="app">
     <router-view />
-    <vue-progress-bar />
+    <vue-progress-bar v-if="appInit" />
+    <Preloader v-if="!appInit" />
   </div>
 </template>
 
 <script>
+import Preloader from "@/components/global/Preloader.vue";
+
 export default {
   name: "App",
+  components: { Preloader },
   mounted() {
     this.$Progress.finish();
   },
@@ -26,6 +30,11 @@ export default {
     this.$router.afterEach(() => {
       this.$Progress.finish();
     });
+  },
+  computed: {
+    appInit() {
+      return this.$store.state.ui.init;
+    },
   },
 };
 </script>

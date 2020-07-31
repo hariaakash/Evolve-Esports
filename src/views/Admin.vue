@@ -1,10 +1,10 @@
 <template>
-  <section class="account">
+  <section class="admin">
     <div class="info-table">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <Nav :profileSet="profileSet" />
+            <Nav />
             <router-view></router-view>
           </div>
         </div>
@@ -16,12 +16,13 @@
 <script>
 import { mapGetters } from "vuex";
 
-import Nav from "@/components/account/Nav.vue";
+import Nav from "@/components/admin/Nav.vue";
 
 export default {
   created() {
-    if (!this.profileSet && this.$route.name !== "account/edit") {
-      this.$router.push({ name: "account/edit" });
+    if (!this.adminSet) {
+      this.$router.push({ name: "home" });
+      this.$swal("Naughty !", "You're not admin", "warning");
     }
   },
   components: {
@@ -31,11 +32,15 @@ export default {
     ...mapGetters({
       getProfile: "user/getProfile",
     }),
-    profileSet() {
-      return this.getProfile ? true : false;
+    adminSet() {
+      return (
+        this.getProfile &&
+        this.getProfile.role &&
+        this.getProfile.role === "admin"
+      );
     },
   },
 };
 </script>
 
-<style src="@/assets/css/account/account.css" scoped />
+<style src="@/assets/css/admin/admin.css" scoped />
