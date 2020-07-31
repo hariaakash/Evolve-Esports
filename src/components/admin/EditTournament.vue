@@ -1,11 +1,11 @@
 <template>
   <ValidationObserver v-slot="{ invalid, handleSubmit }">
-    <Modal :id="createTournamentModalId">
+    <Modal :id="editTournamentModalId">
       <template v-slot:header>
         <h5 class="modal-title text-center w-100">Create Tournament</h5>
       </template>
       <template v-slot:body>
-        <form @submit.prevent="handleSubmit(setData)" id="createTournamentForm">
+        <form @submit.prevent="handleSubmit(setData)" id="editTournamentForm">
           <div class="form-row">
             <div class="form-group col-md-12" v-for="(field, index) in form.fields" :key="index">
               <label>{{field.label}}</label>
@@ -41,7 +41,7 @@
           type="submit"
           class="btn btn-primary"
           :disabled="invalid"
-          form="createTournamentForm"
+          form="editTournamentForm"
         >Submit</button>
       </template>
     </Modal>
@@ -56,7 +56,7 @@ import { Timestamp } from "@/firebase";
 export default {
   components: { Modal },
   data: () => ({
-    createTournamentModalId: "admin/tournaments/create",
+    editTournamentModalId: "admin/tournaments/editTournament",
     form: {
       fields: [
         {
@@ -111,13 +111,24 @@ export default {
   methods: {
     async setData() {
       const editData = cloneDeep(this.editData);
-      const payload = { uid: this.uid, data: { ...editData, status: true } };
-      if (this.uid.length) payload.data.updatedAt = Timestamp.now();
-      else payload.data.createdAt = Timestamp.now();
+      const time = Timestamp.now();
+      const payload = {
+        uid: this.uid,
+        data: { ...editData, status: true, updatedAt: time },
+      };
+      if (this.uid.length === 0) payload.data.createdAt = time;
+
       try {
         await this.$store.dispatch("tournament/setTournament", payload);
-        this.$store.commit("ui/TOGGLE_MODAL", this.createTournamentModalId);
+        this.$store.commit("ui/TOGGLE_MODAL", this.editTournamentModalId);
         this.$swal("Success", "Successfully processed", "info");
+        this.editData = {
+          name: "",
+          game: "pubgm",
+          teamType: "",
+          frequency: "",
+          payment: 0,
+        };
       } catch (err) {
         this.$swal("Oops", "Something wrong, try again", "error");
       }

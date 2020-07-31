@@ -4,7 +4,7 @@
       <div class="card-header">
         <button
           class="btn btn-primary float-right"
-          @click="toggleModal(createTournamentModalId)"
+          @click="toggleModal(editTournamentModalId)"
         >Create</button>
       </div>
       <div class="card-body">
@@ -12,50 +12,65 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Name</th>
+                <th scope="col">Game</th>
+                <th scope="col">Team Type</th>
+                <th scope="col">Frequency</th>
+                <th scope="col">Status</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
+              <tr v-for="(tournament, index) in tournaments" :key="'tournaments' + index">
+                <td>{{ tournament.name }}</td>
+                <td>{{ tournament.game }}</td>
+                <td>{{ tournament.teamType }}</td>
+                <td>{{ tournament.frequency }}</td>
+                <td>{{ tournament.status }}</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
-    <CreateTournament />
+    <EditTournament />
   </section>
 </template>
 
 <script>
-import CreateTournament from "./CreateTournament.vue";
+import EditTournament from "./EditTournament.vue";
+import { DB } from "@/firebase";
 
 export default {
-  components: { CreateTournament },
+  async created() {
+    await this.initPage();
+  },
+  components: { EditTournament },
   data: () => ({
-    createTournamentModalId: "admin/tournaments/create",
+    tournaments: [],
+    editTournamentModalId: "admin/tournaments/editTournament",
+    pagination: {
+      field: "createdAt",
+      limit: 10,
+      last: null,
+      first: null,
+    },
   }),
   methods: {
     toggleModal(id) {
       this.$store.commit("ui/TOGGLE_MODAL", id);
+    },
+    async initPage() {
+      const res = await DB.collection("tournaments")
+        .orderBy(this.pagination.field)
+        .limit(this.pagination.limit)
+        .get();
+      const data = [];
+      res.docs.forEach((x) => {
+        data.push(x.data());
+      });
+      this.pagination.first = data[0];
+      this.pagination.last = data[data.length - 1];
+      this.tournaments = data;
     },
   },
 };

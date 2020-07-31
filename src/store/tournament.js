@@ -4,7 +4,11 @@ import { DB } from '@/firebase';
 export default {
     namespaced: true,
     state: {},
-    mutations: {},
+    mutations: {
+        SET_TOURNAMENTS(state, { tournaments }) {
+            state.tournaments = tournaments;
+        },
+    },
     actions: {
         async setTournament(ctx, { uid, data }) {
             if (uid.length === 0) uid = DB.collection('tournaments').doc().id;
@@ -14,5 +18,4 @@ export default {
                 .set(data, { merge: true });
         },
     },
-    getters: {}
 }
