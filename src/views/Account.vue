@@ -29,10 +29,10 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getProfile: "user/getProfile",
+      getUser: "user/getUser",
     }),
     profileSet() {
-      return this.getProfile ? true : false;
+      return !!this.getUser.info;
     },
   },
 };

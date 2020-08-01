@@ -39,6 +39,14 @@ const routes = [
 				},
 			},
 			{
+				path: '/oauth',
+				name: 'oauth',
+				component: () => import(/* webpackChunkName: "oauth" */ '@/components/global/oauth.vue'),
+				meta: {
+					title: 'OAUTH',
+				},
+			},
+			{
 				path: '/404',
 				name: '404',
 				component: () => import(/* webpackChunkName: "404" */ '@/components/global/404.vue'),

@@ -83,17 +83,13 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getProfile: "user/getProfile",
+      getUser: "user/getUser",
     }),
     userSet() {
-      return this.$store.state.user.auth;
+      return this.getUser.auth;
     },
     adminSet() {
-      return (
-        this.getProfile &&
-        this.getProfile.role &&
-        this.getProfile.role === "admin"
-      );
+      return this.getUser.role === "admin";
     },
   },
 };

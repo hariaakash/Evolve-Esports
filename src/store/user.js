@@ -1,55 +1,50 @@
-import firebase from 'firebase/app';
-import "firebase/auth";
-import { firestoreAction } from 'vuexfire'
-import { DB } from '@/firebase';
+import VueCookies from 'vue-cookies';
 
 export default {
     namespaced: true,
     state: {
+        _id: null,
+        email: null,
         info: {
-            uid: null,
-            displayName: null,
-            email: null,
-            photoURL: null,
+            name: null,
+            gamerTag: null,
+            desc: null,
+            phone: null,
         },
-        db: null,
+        role: null,
         auth: false,
     },
     mutations: {
-        SET_USER(state, { displayName, email, photoURL, uid }) {
-            state.info = { displayName, email, photoURL, uid };
+        SET_USER(state, { _id, email, info, role }) {
+            state.id = _id;
+            state.email = email;
+            state.info = info;
+            state.role = role;
             state.auth = true;
         },
         DEL_USER(state) {
+            state._id = null;
+            state.email = null;
             state.info = {
-                uid: null,
                 name: null,
-                email: null,
-                photoURL: null,
+                gamerTag: null,
+                desc: null,
+                phone: null,
             };
-            state.db = null;
+            state.role = null;
             state.auth = false;
         },
     },
     actions: {
         async logout(ctx) {
-            await firebase.auth().signOut();
+            VueCookies.remove('authkey');
             ctx.commit('DEL_USER');
         },
-        async initProfile(ctx, data) {
+        async authUser(ctx, data) {
             ctx.commit('SET_USER', data);
-            await ctx.dispatch('bindUserRef');
         },
-        async setProfile(ctx, { name, phone, gamerTag, desc }) {
-            await DB.collection('users')
-                .doc(ctx.state.info.uid)
-                .set({ details: { name, phone, gamerTag, desc } }, { merge: true, });
-        },
-        bindUserRef: firestoreAction((ctx) => {
-            return ctx.bindFirestoreRef('db', DB.collection('users').doc(ctx.state.info.uid));
-        }),
     },
     getters: {
-        getProfile: (state) => state.db
+        getUser: (state) => state
     }
 }

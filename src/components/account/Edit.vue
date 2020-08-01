@@ -127,8 +127,8 @@ export default {
       } else this.$swal("Oh no", "No change detected", "info");
     },
     setEditData() {
-      if (this.getProfile && this.getProfile.details) {
-        this.originalData = cloneDeep(this.getProfile.details);
+      if (this.getUser && this.getUser.info) {
+        this.originalData = cloneDeep(this.getUser.info);
         const fields = ["name", "phone", "gamerTag", "desc"];
         fields.forEach((x) => {
           this.editData[x] = this.originalData[x];
@@ -138,7 +138,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getProfile: "user/getProfile",
+      getUser: "user/getUser",
     }),
   },
 };

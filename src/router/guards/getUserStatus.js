@@ -1,18 +1,22 @@
 import Vue from 'vue';
-import firebase from "firebase/app";
-import "firebase/auth";
+import VueCookies from 'vue-cookies';
 import { store as $store } from '@/store';
 
-const getUserStatus = () => new Promise(function (resolve) {
-    firebase.auth().onAuthStateChanged(async (user) => {
-        if (user) {
-            await $store.dispatch("user/initProfile", user);
-            Vue.prototype.$swal("Hooray", `Hi ${user.displayName}`, "success");
-            resolve();
-        } else {
-            resolve();
+import { getUser } from "@/api/user.api";
+
+const getUserStatus = async () => {
+    if (!$store.state.user.auth) {
+        if (VueCookies.isKey('authkey')) {
+            try {
+                const { data } = await getUser();
+                await $store.dispatch("user/authUser", data);
+                Vue.prototype.$swal("Hooray", `Welcome`, "success");
+            } catch (err) {
+                VueCookies.remove('authkey');
+            }
         }
-    });
-});
+    }
+    $store.commit('ui/SET_INIT');
+};
 
 export default getUserStatus;

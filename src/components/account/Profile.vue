@@ -3,11 +3,11 @@
     <div class="row">
       <div class="col-4">
         <div class="card bg-main">
-          <div class="card-body text-center" v-if="getProfile">
+          <div class="card-body text-center" v-if="getUser.info">
             <img :src="profile.imgSrc" />
-            <h5 class="card-title text-white pt-4">Name: {{ getProfile.details.name }}</h5>
-            <h6 class="card-subtitle text-white pt-2">Gamer Tag: {{ getProfile.details.gamerTag }}</h6>
-            <p class="card-text text-white text-justify pt-3">{{ getProfile.details.desc }}</p>
+            <h5 class="card-title text-white pt-4">Name: {{ getUser.info.name }}</h5>
+            <h6 class="card-subtitle text-white pt-2">Gamer Tag: {{ getUser.info.gamerTag }}</h6>
+            <p class="card-text text-white text-justify pt-3">{{ getUser.info.desc }}</p>
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@ export default {
   }),
   computed: {
     ...mapGetters({
-      getProfile: "user/getProfile",
+      getUser: "user/getUser",
     }),
   },
 };

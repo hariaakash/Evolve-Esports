@@ -8,7 +8,7 @@
         >Create</button>
       </div>
       <div class="card-body">
-        <div class="table-responsive">
+        <div v-if="tournaments.length" class="table-responsive">
           <table class="table table-hover">
             <thead>
               <tr>
@@ -30,6 +30,7 @@
             </tbody>
           </table>
         </div>
+        <h5 v-else class="text-center">Empty data</h5>
       </div>
     </div>
     <EditTournament />
@@ -38,11 +39,10 @@
 
 <script>
 import EditTournament from "./EditTournament.vue";
-import { DB } from "@/firebase";
 
 export default {
   async created() {
-    await this.initPage();
+    // await this.initPage();
   },
   components: { EditTournament },
   data: () => ({
@@ -58,19 +58,6 @@ export default {
   methods: {
     toggleModal(id) {
       this.$store.commit("ui/TOGGLE_MODAL", id);
-    },
-    async initPage() {
-      const res = await DB.collection("tournaments")
-        .orderBy(this.pagination.field)
-        .limit(this.pagination.limit)
-        .get();
-      const data = [];
-      res.docs.forEach((x) => {
-        data.push(x.data());
-      });
-      this.pagination.first = data[0];
-      this.pagination.last = data[data.length - 1];
-      this.tournaments = data;
     },
   },
 };

@@ -30,14 +30,10 @@ export default {
   },
   computed: {
     ...mapGetters({
-      getProfile: "user/getProfile",
+      getUser: "user/getUser",
     }),
     adminSet() {
-      return (
-        this.getProfile &&
-        this.getProfile.role &&
-        this.getProfile.role === "admin"
-      );
+      return this.getUser.role === "admin";
     },
   },
 };

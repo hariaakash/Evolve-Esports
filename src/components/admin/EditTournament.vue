@@ -51,7 +51,6 @@
 <script>
 import Modal from "@/components/global/Modal.vue";
 import cloneDeep from "lodash/cloneDeep";
-import { Timestamp } from "@/firebase";
 
 export default {
   components: { Modal },
@@ -111,7 +110,7 @@ export default {
   methods: {
     async setData() {
       const editData = cloneDeep(this.editData);
-      const time = Timestamp.now();
+      const time = new Date();
       const payload = {
         uid: this.uid,
         data: { ...editData, status: true, updatedAt: time },
