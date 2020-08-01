@@ -1,5 +1,7 @@
 import VueCookies from 'vue-cookies';
 
+import { getUser, editUser } from '@/api/user.api';
+
 export default {
     namespaced: true,
     state: {
@@ -15,8 +17,8 @@ export default {
         auth: false,
     },
     mutations: {
-        SET_USER(state, { _id, email, info, role }) {
-            state.id = _id;
+        SET_USER(state, { _id: id, email, info, role }) {
+            state.id = id;
             state.email = email;
             state.info = info;
             state.role = role;
@@ -40,9 +42,14 @@ export default {
             VueCookies.remove('authkey');
             ctx.commit('DEL_USER');
         },
-        async authUser(ctx, data) {
+        async authUser(ctx) {
+            const { data } = await getUser();
             ctx.commit('SET_USER', data);
         },
+        async editProfile(ctx, data) {
+            await editUser({ info: data });
+            await ctx.dispatch('authUser');
+        }
     },
     getters: {
         getUser: (state) => state

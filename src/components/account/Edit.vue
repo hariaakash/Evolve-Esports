@@ -1,7 +1,7 @@
 <template>
   <section class="profile-edit">
     <ValidationObserver ref="editProfileForm" v-slot="{ invalid, handleSubmit }">
-      <form @submit.prevent="handleSubmit(setProfileData)">
+      <form @submit.prevent="handleSubmit(editProfileData)">
         <div class="form-row">
           <div class="form-group col-md-6">
             <label>Name</label>
@@ -23,7 +23,10 @@
             <label>Phone</label>
             <ValidationProvider rules="required|digits:10" v-slot="{ errors, classes }">
               <input type="number" v-model="editData.phone" class="form-control" :class="classes" />
-              <div v-if="errors[0]" class="invalid-feedback">Enter valid mobile number of length 10</div>
+              <div
+                v-if="errors[0]"
+                class="invalid-feedback"
+              >Enter valid mobile number witout international code</div>
             </ValidationProvider>
           </div>
         </div>
@@ -112,13 +115,13 @@ export default {
     this.setEditData();
   },
   methods: {
-    async setProfileData() {
+    async editProfileData() {
       const editData = cloneDeep(this.editData);
       const originalData = cloneDeep(this.originalData);
       delete editData.terms;
       if (!isEqual(originalData, editData)) {
         try {
-          await this.$store.dispatch("user/setProfile", editData);
+          await this.$store.dispatch("user/editProfile", editData);
           this.$swal("Success", "Successfully updated", "info");
           this.$router.push({ name: "account/profile" });
         } catch (err) {
