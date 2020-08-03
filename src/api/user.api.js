@@ -1,13 +1,15 @@
-import httpClient from './httpClient';
+import MainService from './main.api';
 
-const oauthUser = ({ social, code }) => httpClient.post('/user/oauth', { social, code });
+class UserService extends MainService {
+    constructor() {
+        super('user');
+    }
+    self() {
+        return this.http.post(`${this.entity}/self`);
+    }
+    oauth({ social, code }) {
+        return this.http.post(`${this.entity}/oauth`, { social, code });
+    }
+}
 
-const getUser = () => httpClient.get('/user');
-
-const editUser = (data) => httpClient.put('/user', data);
-
-export {
-    oauthUser,
-    getUser,
-    editUser,
-};
+export default new UserService;

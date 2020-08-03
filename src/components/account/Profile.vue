@@ -20,7 +20,6 @@
               :key="index"
               class="btn btn-lg btn-block btn-social mb-3"
               :class="button.class"
-              @click="auth(button.name)"
             >
               <font-awesome-icon
                 :icon="['fab', button.icon]"
@@ -49,8 +48,8 @@ import { mapGetters } from "vuex";
 export default {
   data: () => ({
     socialAuth: [
-      { name: "Google", icon: "google", class: "google" },
-      { name: "Facebook", icon: "facebook-f", class: "facebook" },
+      { name: "google", icon: "google", class: "google" },
+      { name: "facebook", icon: "facebook-f", class: "facebook" },
     ],
     profile: {
       imgSrc:

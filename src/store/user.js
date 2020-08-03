@@ -1,6 +1,6 @@
 import VueCookies from 'vue-cookies';
 
-import { getUser, editUser } from '@/api/user.api';
+import UserService from '@/api/user.api';
 
 export default {
     namespaced: true,
@@ -14,14 +14,16 @@ export default {
             phone: null,
         },
         role: null,
+        social: {},
         auth: false,
     },
     mutations: {
-        SET_USER(state, { _id: id, email, info, role }) {
+        SET_USER(state, { _id: id, email, info, role, social }) {
             state.id = id;
             state.email = email;
             state.info = info;
             state.role = role;
+            state.social = social;
             state.auth = true;
         },
         DEL_USER(state) {
@@ -34,6 +36,7 @@ export default {
                 phone: null,
             };
             state.role = null;
+            state.social = null;
             state.auth = false;
         },
     },
@@ -43,11 +46,11 @@ export default {
             ctx.commit('DEL_USER');
         },
         async authUser(ctx) {
-            const { data } = await getUser();
+            const { data } = await UserService.self();
             ctx.commit('SET_USER', data);
         },
-        async editProfile(ctx, data) {
-            await editUser({ info: data });
+        async editProfile(ctx, info) {
+            await UserService.edit({ info });
             await ctx.dispatch('authUser');
         }
     },

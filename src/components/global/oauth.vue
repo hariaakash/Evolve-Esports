@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { oauthUser } from "@/api/user.api";
+import UserService from "@/api/user.api";
 
 export default {
   created() {
@@ -16,7 +16,7 @@ export default {
   methods: {
     async socialAuth(req) {
       try {
-        const { data: res } = await oauthUser(req);
+        const { data: res } = await UserService.oauth(req);
         this.$cookies.set("authkey", res.authKey);
         this.$router.push({ name: "account" });
       } catch ({ response: { status, data } }) {
