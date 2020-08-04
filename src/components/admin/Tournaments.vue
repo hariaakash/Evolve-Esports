@@ -8,12 +8,12 @@
         >Create</button>
       </div>
       <div class="card-body">
-        <Table :tableData="tableData">
+        <Table :tableMeta="tableMeta">
           <template #header>
             <th scope="col">#</th>
             <th
               scope="col"
-              v-for="(item, index) in tableData.fields"
+              v-for="(item, index) in tableMeta.fields"
               :key="'head' + index"
             >{{ item.name }}</th>
             <th scope="col">View</th>
@@ -22,7 +22,7 @@
             <tr v-for="(tournament, index) in docs" :key="'docs' + index">
               <td>{{ ((page-1) * limit) + index+1 }}</td>
               <td
-                v-for="(item, index) in tableData.fields"
+                v-for="(item, index) in tableMeta.fields"
                 :key="'body' + index"
               >{{ tournament[item.field] }}</td>
               <td>
@@ -43,7 +43,6 @@
 import CreateTournament from "./CreateTournament.vue";
 import Table from "@/components/global/Table.vue";
 
-import TournamentService from "@/api/tournament.api";
 import { helpersMixin } from "@/mixins";
 
 export default {
@@ -53,9 +52,10 @@ export default {
     modals: {
       createTournament: "admin/createTournament",
     },
-    tableData: {
-      name: "Tournaments",
-      ApiService: TournamentService,
+    tableMeta: {
+      id: "admin/tournaments",
+      entity: "tournament",
+      method: "main",
       fields: [
         { name: "Name", field: "name" },
         { name: "Game", field: "game" },

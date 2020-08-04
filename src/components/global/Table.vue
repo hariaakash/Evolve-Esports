@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="docs.length" class="table-responsive">
+    <div v-if="tableData.docs.length" class="table-responsive">
       <table class="table table-hover">
         <thead>
           <tr>
@@ -8,18 +8,18 @@
               <th scope="col">#</th>
               <th
                 scope="col"
-                v-for="(item, index) in tableData.fields"
+                v-for="(item, index) in tableMeta.fields"
                 :key="'head' + index"
               >{{ item.name }}</th>
             </slot>
           </tr>
         </thead>
         <tbody>
-          <slot name="body" :docs="docs" :page="page" :limit="limit">
-            <tr v-for="(columnData, index) in docs" :key="'docs' + index">
-              <td>{{ ((page-1) * limit) + index+1 }}</td>
+          <slot name="body" :docs="tableData.docs" :page="tableData.page" :limit="tableData.limit">
+            <tr v-for="(columnData, index) in tableData.docs" :key="'docs' + index">
+              <td>{{ ((tableData.page-1) * tableData.limit) + (index + 1) }}</td>
               <td
-                v-for="(item, index) in tableData.fields"
+                v-for="(item, index) in tableMeta.fields"
                 :key="'body' + index"
               >{{ columnData[item.field] }}</td>
             </tr>
@@ -28,18 +28,18 @@
       </table>
       <nav>
         <ul class="pagination justify-content-center">
-          <li class="page-item" :class="{ 'disabled': page === 1 }">
+          <li class="page-item" :class="{ 'disabled': tableData.page === 1 }">
             <button class="page-link" @click="prevPage">Previous</button>
           </li>
           <li
             class="page-item"
-            v-for="(item, index) in totalPages"
+            v-for="(item, index) in tableData.totalPages"
             :key="'pagination' + index"
-            :class="{'active': item === page}"
+            :class="{'active': item === tableData.page}"
           >
             <button class="page-link" @click="selectedPage(item)">{{item}}</button>
           </li>
-          <li class="page-item" :class="{ 'disabled': page === totalPages }">
+          <li class="page-item" :class="{ 'disabled': tableData.page === tableData.totalPages }">
             <button class="page-link" @click="nextPage">Next</button>
           </li>
         </ul>
@@ -50,51 +50,42 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   props: {
-    tableData: { type: Object },
+    tableMeta: { type: Object },
   },
   async created() {
-    await this.fetchData(1);
+    await this.$store.dispatch("ui/initTable", {
+      totalDocs: 0,
+      docs: [],
+      limit: 10,
+      totalPages: 1,
+      page: 1,
+      ...this.tableMeta,
+    });
   },
-  data: () => ({
-    totalDocs: 0,
-    docs: [],
-    limit: 10,
-    totalPages: 1,
-    page: 1,
-  }),
   methods: {
-    async fetchData(page) {
-      try {
-        const { data } = await this.tableData.ApiService.main({
-          id: "list",
-          filters: [],
-          options: {
-            select: [],
-            pagination: true,
-            page,
-            limit: this.limit,
-            search: "",
-          },
-        });
-        this.docs = data.docs;
-        this.totalDocs = data.meta.totalDocs;
-        this.totalPages = data.meta.totalPages;
-        this.page = data.meta.page;
-      } catch (err) {
-        console.log(err);
-        this.$swal("Oops", "Fetching data failed", "error");
-      }
-    },
     async nextPage() {
-      if (this.page !== this.totalPages) await this.fetchData(this.page + 1);
+      await this.$store.dispatch("ui/nextPage", { id: this.tableMeta.id });
     },
     async prevPage() {
-      if (this.page !== 1) await this.fetchData(this.page - 1);
+      await this.$store.dispatch("ui/nextPage", { id: this.tableMeta.id });
     },
-    async selectedPage(selection) {
-      if (this.page !== selection) await this.fetchData(selection);
+    async selectedPage(selectedPage) {
+      await this.$store.dispatch("ui/nextPage", {
+        id: this.tableMeta.id,
+        selectedPage,
+      });
+    },
+  },
+  computed: {
+    ...mapGetters({
+      tableById: "ui/tableById",
+    }),
+    tableData() {
+      return this.tableById(this.tableMeta.id);
     },
   },
 };

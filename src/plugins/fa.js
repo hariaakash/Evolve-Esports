@@ -5,7 +5,7 @@ import {
     faAngleDoubleLeft, faAngleDoubleRight,
     faArrowRight,
     faChevronRight,
-    faUsers, faHome,
+    faUsers, faHome, faEdit,
     faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -17,7 +17,7 @@ const list = [
     faAngleDoubleLeft, faAngleDoubleRight,
     faArrowRight,
     faChevronRight,
-    faUsers, faHome,
+    faUsers, faHome, faEdit,
     faTimes,
 
     faDiscord, faWhatsapp, faFacebookF, faInstagram,

@@ -122,6 +122,7 @@ export default {
         const data = cloneDeep(this.data);
         await TournamentService.create(data);
         this.$swal("Success", "Successfully created", "info");
+        this.$store.dispatch("ui/refetchPage", { id: "admin/tournaments" });
         this.$store.commit("ui/TOGGLE_MODAL", this.modals.createTournament);
         this.data = {
           name: "",

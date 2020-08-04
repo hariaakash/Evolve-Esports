@@ -1,6 +1,5 @@
 import httpClient from './httpClient';
 
-
 class MainService {
     constructor(entity) {
         this.entity = entity;
