@@ -17,5 +17,14 @@ export default {
                 requiresAuth: true,
             },
         },
+        {
+            path: 'users',
+            name: 'admin/users',
+            component: () => import(/* webpackChunkName: "admin-users" */ '@/components/admin/Users.vue'),
+            meta: {
+                title: 'Users',
+                requiresAuth: true,
+            },
+        },
     ],
 };

@@ -4,22 +4,26 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th
-              scope="col"
-              v-for="(item, index) in tableData.fields"
-              :key="'head' + index"
-            >{{ item.name }}</th>
+            <slot name="header">
+              <th scope="col">#</th>
+              <th
+                scope="col"
+                v-for="(item, index) in tableData.fields"
+                :key="'head' + index"
+              >{{ item.name }}</th>
+            </slot>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(tournament, index) in docs" :key="'docs' + index">
-            <td>{{ ((page-1) * limit) + index+1 }}</td>
-            <td
-              v-for="(item, index) in tableData.fields"
-              :key="'body' + index"
-            >{{ tournament[item.field] }}</td>
-          </tr>
+          <slot name="body" :docs="docs" :page="page" :limit="limit">
+            <tr v-for="(columnData, index) in docs" :key="'docs' + index">
+              <td>{{ ((page-1) * limit) + index+1 }}</td>
+              <td
+                v-for="(item, index) in tableData.fields"
+                :key="'body' + index"
+              >{{ columnData[item.field] }}</td>
+            </tr>
+          </slot>
         </tbody>
       </table>
       <nav>
