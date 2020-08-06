@@ -1,5 +1,5 @@
 <template>
-  <section class="tournaments">
+  <section class="users">
     <div class="card bg-main">
       <div class="card-body">
         <Table :tableMeta="tableMeta">
@@ -13,14 +13,18 @@
             <th scope="col">View</th>
           </template>
           <template #body="{docs, page, limit}">
-            <tr v-for="(tournament, index) in docs" :key="'docs' + index">
+            <tr v-for="(user, index) in docs" :key="'docs' + index">
               <td>{{ ((page-1) * limit) + index+1 }}</td>
               <td
                 v-for="(item, index) in tableMeta.fields"
                 :key="'body' + index"
-              >{{ parseField(tournament, item.field) }}</td>
+              >{{ parseField(user, item.field) }}</td>
               <td>
-                <button type="button" class="btn btn-primary btn-sm">
+                <button
+                  @click="editUserDispatcher(user)"
+                  type="button"
+                  class="btn btn-primary btn-sm"
+                >
                   <font-awesome-icon :icon="['fa', 'edit']" />
                 </button>
               </td>
@@ -29,16 +33,17 @@
         </Table>
       </div>
     </div>
+    <EditUser :editUser="editUser" />
   </section>
 </template>
 
 <script>
+import EditUser from "./EditUser.vue";
 import Table from "@/components/global/Table.vue";
-
 import { helpersMixin } from "@/mixins";
 
 export default {
-  components: { Table },
+  components: { Table, EditUser },
   mixins: [helpersMixin],
   data: () => ({
     modals: {
@@ -57,12 +62,19 @@ export default {
         { name: "Status", field: "status" },
       ],
     },
+    editUser: null,
   }),
+  methods: {
+    editUserDispatcher(user) {
+      this.editUser = user;
+      this.toggleModal(this.modals.editUser);
+    },
+  },
 };
 </script>
 
 <style scoped>
-.tournaments {
+.users {
   padding: 50px 0px;
 }
 .bg-main {

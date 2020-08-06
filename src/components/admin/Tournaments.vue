@@ -46,7 +46,7 @@ import Table from "@/components/global/Table.vue";
 import { helpersMixin } from "@/mixins";
 
 export default {
-  components: { CreateTournament, Table },
+  components: { Table, CreateTournament },
   mixins: [helpersMixin],
   data: () => ({
     modals: {
