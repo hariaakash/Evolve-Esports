@@ -58,7 +58,6 @@ export default {
                     table.page = data.meta.page;
                 }
             } catch (err) {
-                console.log(err);
                 Vue.prototype.$swal("Oops", "Fetching data failed", "error");
             }
         },

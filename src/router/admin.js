@@ -9,7 +9,7 @@ export default {
     component: () => import(/* webpackChunkName: "admin" */ '@/views/Admin.vue'),
     children: [
         {
-            path: 'tournaments',
+            path: 'tournaments/list',
             name: 'admin/tournaments',
             component: () => import(/* webpackChunkName: "admin-tournaments" */ '@/components/admin/Tournaments.vue'),
             meta: {

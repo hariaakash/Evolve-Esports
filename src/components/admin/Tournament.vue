@@ -1,63 +1,83 @@
 <template>
   <section class="tournament">
-    <div class="card bg-main">
-      <div class="card-header">
-        <button class="btn btn-primary float-right" @click="toggleModal(modals.createMatch)">Create</button>
-      </div>
-      <div class="card-body">
-        <Table :tableMeta="tableMeta">
-          <template #header>
-            <th scope="col">#</th>
-            <th
-              scope="col"
-              v-for="(item, index) in tableMeta.fields"
-              :key="'head' + index"
-            >{{ item.name }}</th>
-            <th scope="col">View</th>
-          </template>
-          <template #body="{docs, page, limit}">
-            <tr v-for="(match, index) in docs" :key="'docs' + index">
-              <td>{{ ((page-1) * limit) + index+1 }}</td>
-              <td>{{ match.date | formatDate }}</td>
-              <td>{{ match.ended }}</td>
-              <td>{{ match.groups.length }}</td>
-              <td>
-                <button type="button" class="btn btn-primary">
-                  <font-awesome-icon :icon="['fa', 'arrow-right']" />
-                </button>
-              </td>
-            </tr>
-          </template>
-        </Table>
+    <div class="row">
+      <div class="col-12"></div>
+      <div class="col-12">
+        <div class="card bg-main">
+          <div class="card-header">
+            <h3 class="text-center font-weight-light">Matches List</h3>
+            <button
+              class="btn btn-primary float-right"
+              @click="toggleModal(modals.createMatch)"
+            >Create</button>
+          </div>
+          <div class="card-body">
+            <Table :tableMeta="tableMeta">
+              <template #header>
+                <th scope="col">#</th>
+                <th
+                  scope="col"
+                  v-for="(item, index) in tableMeta.fields"
+                  :key="'head' + index"
+                >{{ item.name }}</th>
+                <th scope="col">View</th>
+              </template>
+              <template #body="{docs, page, limit}">
+                <tr v-for="(match, index) in docs" :key="'docs' + index">
+                  <td>{{ ((page-1) * limit) + index+1 }}</td>
+                  <td>{{ match.date | formatDate }}</td>
+                  <td>{{ match.ended }}</td>
+                  <td>{{ match.groups.length }}</td>
+                  <td>
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      @click="editMatchDispatcher(match)"
+                    >
+                      <font-awesome-icon :icon="['fa', 'edit']" />
+                    </button>
+                  </td>
+                </tr>
+              </template>
+            </Table>
+          </div>
+        </div>
       </div>
     </div>
     <CreateMatch />
+    <EditMatch :editMatch="editMatch" />
   </section>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 import CreateMatch from "./CreateMatch.vue";
+import EditMatch from "./EditMatch.vue";
 import Table from "@/components/global/Table.vue";
 
 import { helpersMixin } from "@/mixins";
 
 export default {
   async created() {
-    await this.$store.dispatch("admin/fetchTournament", {
-      id: this.$route.params.id,
-    });
-    if (!this.getTournament) {
+    try {
+      await this.$store.dispatch("admin/fetchTournament", {
+        id: this.$route.params.id,
+      });
+      if (!this.getTournament) {
+        this.$router.push({ name: "admin/tournaments" });
+        this.$swal("Oops", "Tournament not found", "error");
+      }
+    } catch (err) {
       this.$router.push({ name: "admin/tournaments" });
-      this.$swal("Oops", "Tournament not found", "error");
     }
   },
-  components: { Table, CreateMatch },
+  components: { Table, CreateMatch, EditMatch },
   mixins: [helpersMixin],
   data() {
     return {
       modals: {
         createMatch: "admin/createMatch",
+        editMatch: "admin/editMatch",
       },
       tableMeta: {
         id: "admin/tournament/matches",
@@ -72,12 +92,19 @@ export default {
           { name: "Groups", field: "groups" },
         ],
       },
+      editMatch: null,
     };
   },
   computed: {
     ...mapGetters({
       getTournament: "admin/getTournament",
     }),
+  },
+  methods: {
+    editMatchDispatcher(match) {
+      this.editMatch = match;
+      this.toggleModal(this.modals.editMatch);
+    },
   },
 };
 </script>

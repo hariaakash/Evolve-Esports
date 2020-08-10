@@ -157,7 +157,6 @@ export default {
         if (typeof x === "string") this.data[x] = this.parseField(newvalue, x);
         else this.data[x.to] = this.parseField(newvalue, x.from);
       });
-      console.log(this.data);
     },
   },
 };

@@ -13,12 +13,8 @@ export default {
     },
     actions: {
         async fetchTournament(ctx, { id }) {
-            try {
-                const { data } = await GlobalService.tournament.main({ id });
-                ctx.commit('SET_TOURNAMENT', data);
-            } catch (err) {
-                console.log(err);
-            }
+            const { data } = await GlobalService.tournament.main({ id });
+            ctx.commit('SET_TOURNAMENT', data);
         }
     },
     getters: {
