@@ -106,7 +106,9 @@ export default {
     editMatch: function (newvalue) {
       this.data.id = this.parseField(newvalue, "_id");
       this.data.date = this.parseField(newvalue, "date");
-      this.data.date = moment(this.data.date).format("YYYY-MM-DDTHH:mm");
+      this.data.date = moment(this.data.date)
+        .utcOffset(0)
+        .format("YYYY-MM-DDTHH:mm");
       this.data.ended = this.parseField(newvalue, "ended");
     },
   },
