@@ -18,6 +18,15 @@ export default {
             },
         },
         {
+            path: 'tournament/:id',
+            name: 'admin/tournament',
+            component: () => import(/* webpackChunkName: "admin-tournament" */ '@/components/admin/Tournament.vue'),
+            meta: {
+                title: 'Tournament',
+                requiresAuth: true,
+            },
+        },
+        {
             path: 'users',
             name: 'admin/users',
             component: () => import(/* webpackChunkName: "admin-users" */ '@/components/admin/Users.vue'),

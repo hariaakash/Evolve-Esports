@@ -31,7 +31,7 @@
             </button>
           </div>
         </div>
-        <div class="card mt-4">
+        <div class="card mt-4 pt-2">
           <div class="card-body text-center">
             <h5 class="card-title text-dark">Game Stats</h5>
             <p class="card-text text-dark">Coming Soon...</p>
@@ -39,13 +39,20 @@
         </div>
       </div>
     </div>
+    <div class="row pt-4">
+      <div class="col-12">
+        <Tournaments />
+      </div>
+    </div>
   </section>
 </template>
 
 <script>
+import Tournaments from "./Tournaments.vue";
 import { mapGetters } from "vuex";
 
 export default {
+  components: { Tournaments },
   data: () => ({
     socialAuth: [
       { name: "google", icon: "google", class: "google" },

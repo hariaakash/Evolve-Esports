@@ -1,0 +1,59 @@
+<template>
+  <div class="card bg-tournaments">
+    <div class="card-body">
+      <h3 class="card-title font-weight-light text-center text-uppercase">Tournaments</h3>
+      <Table :tableMeta="tableMeta" class="pt-4">
+        <template #header>
+          <th scope="col">#</th>
+          <th
+            scope="col"
+            v-for="(item, index) in tableMeta.fields"
+            :key="'head' + index"
+          >{{ item.name }}</th>
+          <th scope="col">View</th>
+        </template>
+        <template #body="{docs, page, limit}">
+          <tr v-for="(tournament, index) in docs" :key="'docs' + index">
+            <td>{{ ((page-1) * limit) + index+1 }}</td>
+            <td
+              v-for="(item, index) in tableMeta.fields"
+              :key="'body' + index"
+            >{{ tournament[item.field] }}</td>
+            <td>
+              <router-link type="button" :to="{ name: 'tournaments' }" class="btn btn-primary">
+                <font-awesome-icon :icon="['fa', 'arrow-right']" />
+              </router-link>
+            </td>
+          </tr>
+        </template>
+      </Table>
+    </div>
+  </div>
+</template>
+
+<script>
+import Table from "@/components/global/Table.vue";
+
+export default {
+  components: { Table },
+  data: () => ({
+    tableMeta: {
+      id: "account/tournaments",
+      entity: "tournament",
+      method: "main",
+      filters: [],
+      fields: [
+        { name: "Name", field: "name" },
+        { name: "Game", field: "game" },
+      ],
+    },
+  }),
+};
+</script>
+
+<style scoped>
+.bg-tournaments {
+  background: #252f5a;
+  border: 0px;
+}
+</style>

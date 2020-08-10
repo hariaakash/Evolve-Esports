@@ -4,7 +4,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <Nav />
+            <Nav v-if="hideWhen" />
             <router-view></router-view>
           </div>
         </div>
@@ -28,12 +28,18 @@ export default {
   components: {
     Nav,
   },
+  data: () => ({
+    navHideRoutes: ["admin/tournament"],
+  }),
   computed: {
     ...mapGetters({
       getUser: "user/getUser",
     }),
     adminSet() {
       return this.getUser.role === "admin";
+    },
+    hideWhen() {
+      return !this.navHideRoutes.includes(this.$route.name);
     },
   },
 };

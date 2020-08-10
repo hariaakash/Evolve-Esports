@@ -6,6 +6,7 @@ import './plugins/progress';
 import './plugins/fa';
 import './plugins/swal';
 import './plugins/veeValidate';
+import './plugins/filters';
 import { store } from './store';
 
 Vue.use(VueCookies);

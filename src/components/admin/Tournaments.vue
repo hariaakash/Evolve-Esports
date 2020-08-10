@@ -26,9 +26,13 @@
                 :key="'body' + index"
               >{{ tournament[item.field] }}</td>
               <td>
-                <button type="button" class="btn btn-primary">
+                <router-link
+                  :to="{ name: 'admin/tournament', params: { id: tournament._id }  }"
+                  type="button"
+                  class="btn btn-primary"
+                >
                   <font-awesome-icon :icon="['fa', 'arrow-right']" />
-                </button>
+                </router-link>
               </td>
             </tr>
           </template>

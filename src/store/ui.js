@@ -43,7 +43,7 @@ export default {
                     const ApiService = GlobalService[table.entity];
                     const { data } = await ApiService[table.method]({
                         id: "list",
-                        filters: [],
+                        filters: table.filters,
                         options: {
                             select: [],
                             pagination: true,

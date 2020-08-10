@@ -20,7 +20,6 @@ export default {
     items: [
       { name: "Profile", route: "account/profile" },
       { name: "Edit", route: "account/edit" },
-      // { name: "Tournaments", route: "account/tournaments" },
     ],
   }),
   methods: {
