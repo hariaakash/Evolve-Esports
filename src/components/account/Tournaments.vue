@@ -36,18 +36,26 @@ import Table from "@/components/global/Table.vue";
 
 export default {
   components: { Table },
-  data: () => ({
-    tableMeta: {
-      id: "account/tournaments",
-      entity: "tournament",
-      method: "main",
-      filters: [],
-      fields: [
-        { name: "Name", field: "name" },
-        { name: "Game", field: "game" },
-      ],
-    },
-  }),
+  data() {
+    return {
+      tableMeta: {
+        id: "account/tournaments",
+        entity: "tournament",
+        method: "main",
+        filters: [
+          {
+            key: "groups.user",
+            data: this.$store.state.user.id,
+            type: "match",
+          },
+        ],
+        fields: [
+          { name: "Name", field: "name" },
+          { name: "Game", field: "game" },
+        ],
+      },
+    };
+  },
 };
 </script>
 

@@ -5,7 +5,7 @@ import UserService from '@/api/user.api';
 export default {
     namespaced: true,
     state: {
-        _id: null,
+        id: null,
         email: null,
         info: {
             name: null,
@@ -27,7 +27,7 @@ export default {
             state.auth = true;
         },
         DEL_USER(state) {
-            state._id = null;
+            state.id = null;
             state.email = null;
             state.info = {
                 name: null,
