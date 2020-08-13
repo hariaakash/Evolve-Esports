@@ -49,6 +49,7 @@
 </template>
 
 <script>
+import moment from "moment";
 import { mapGetters } from "vuex";
 import Modal from "@/components/global/Modal.vue";
 import cloneDeep from "lodash/cloneDeep";
@@ -81,6 +82,7 @@ export default {
       try {
         const data = cloneDeep(this.data);
         data.tournament = this.getTournament._id;
+        data.date = moment(data.date).utcOffset(-330).format();
         await MatchService.create(data);
         this.$swal("Success", "Successfully created", "info");
         this.$store.dispatch("ui/refetchPage", {

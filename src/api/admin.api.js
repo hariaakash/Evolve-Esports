@@ -5,7 +5,7 @@ class AdminService extends MainService {
         super('admin');
     }
     editUser(data) {
-        return this.http.post(`${this.entity}/editUser`, data);
+        return this.http.post(`${this.entity}/user/edit`, data);
     }
 }
 

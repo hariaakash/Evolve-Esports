@@ -39,6 +39,14 @@ const routes = [
 				},
 			},
 			{
+				path: '/tournament/:id',
+				name: 'tournament',
+				component: () => import(/* webpackChunkName: "tournament" */ '@/views/Tournament.vue'),
+				meta: {
+					title: 'Tournament',
+				},
+			},
+			{
 				path: '/oauth',
 				name: 'oauth',
 				component: () => import(/* webpackChunkName: "oauth" */ '@/components/global/oauth.vue'),

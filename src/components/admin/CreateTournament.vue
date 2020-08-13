@@ -38,6 +38,10 @@
                 <input class="form-check-input" type="checkbox" v-model="data.status" />
                 <label class="form-check-label">Status</label>
               </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" v-model="data.registration" />
+                <label class="form-check-label">Registration</label>
+              </div>
             </div>
           </div>
         </form>
@@ -77,18 +81,32 @@ export default {
         },
         {
           label: "Game",
-          rules: { required: true, oneOf: ["pubgm"] },
+          rules: { required: true, oneOf: ["pubgm", "valorant"] },
           type: "select",
-          data: ["pubgm"],
+          data: ["pubgm", "valorant"],
           model: "game",
           errorText: "Game is required",
         },
         {
-          label: "Team Type",
+          label: "Game Mode",
+          rules: { required: true },
+          type: "text",
+          model: "gameMode",
+          errorText: "Game Mode is required",
+        },
+        {
+          label: "Team Size",
           rules: { required: true, min_value: 1 },
           type: "number",
-          model: "teamType",
-          errorText: "Team type is required",
+          model: "teamSize",
+          errorText: "Team Size is required",
+        },
+        {
+          label: "Teams",
+          rules: { required: true, min_value: 2 },
+          type: "number",
+          model: "teams",
+          errorText: "Teams is required",
         },
         {
           label: "Frequency",
@@ -96,7 +114,7 @@ export default {
           type: "select",
           data: ["once", "manual"],
           model: "frequency",
-          errorText: "Team type is required",
+          errorText: "Frequency of match occurrence is required",
         },
         {
           label: "Payment",
@@ -110,9 +128,12 @@ export default {
     data: {
       name: "",
       game: "pubgm",
-      teamType: 4,
+      gameMode: "SQUAD",
+      teamSize: 4,
+      teams: 25,
       frequency: "",
       payment: 0,
+      registration: false,
       status: true,
     },
   }),
@@ -127,7 +148,7 @@ export default {
         this.data = {
           name: "",
           game: "pubgm",
-          teamType: 4,
+          teamSize: 4,
           frequency: "",
           payment: 0,
           status: true,

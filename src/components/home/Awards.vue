@@ -18,7 +18,7 @@
               <p>
                 <i class="fas fa-users"></i>0
               </p>
-              <a href="#" class="mybtn2">Read More</a>
+              <!-- <a class="mybtn2">Read More</a> -->
             </div>
           </div>
         </div>

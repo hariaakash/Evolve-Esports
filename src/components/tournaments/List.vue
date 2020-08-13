@@ -1,416 +1,39 @@
 <template>
-  <section class="tournaments">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-8 col-md-10">
-          <div class="section-heading">
-            <h5 class="subtitle">Check out our</h5>
-            <h2 class="title">Tournaments!</h2>
-            <p class="text">
-              Dooplo Tournaments are exciting slot competitions. The goal is to win as many points within
-              a
-              certain amount of time. Player with the most points at the end wins.
-            </p>
+  <section class="tournaments py-5">
+    <h1 v-if="getTournaments.length === 0" class="display-4">Come back tomorrow for new tournaments.</h1>
+    <div class="row" v-else>
+      <div class="col-md-6 pt-4" v-for="tournament in getTournaments" :key="tournament._id">
+        <div class="card bg-tournaments hvr-float">
+          <div class="card-header">
+            <img class="game-icon float-left" src="@/assets/img/games/pubgm/icon.png" />
+            <h6 class="card-title text-center">PUBG MOBILE</h6>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="info-table">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="main-box">
-              <div class="main-header-area">
-                <ul class="nav" role="tablist">
-                  <li class="nav-item">
-                    <a
-                      class="nav-link active"
-                      id="pills-all-player-tab"
-                      data-toggle="pill"
-                      href="#pills-all-player"
-                      role="tab"
-                      aria-controls="pills-all-player"
-                      aria-selected="true"
-                    >All Player</a>
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      id="pills-vip-only-tab"
-                      data-toggle="pill"
-                      href="#pills-vip-only"
-                      role="tab"
-                      aria-controls="pills-vip-only"
-                      aria-selected="false"
-                    >Vip Only</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="tab-content">
-                <div
-                  class="tab-pane fade show active"
-                  id="pills-all-player"
-                  role="tabpanel"
-                  aria-labelledby="pills-all-player-tab"
-                >
-                  <div class="inner-table-content">
-                    <div class="header-area">
-                      <ul class="nav" role="tablist">
-                        <li class="nav-item">
-                          <a
-                            class="nav-link active"
-                            id="pills-leaderboardr-tab"
-                            data-toggle="pill"
-                            href="#pills-leaderboardr"
-                            role="tab"
-                            aria-controls="pills-leaderboardr"
-                            aria-selected="true"
-                          >Leaderboard</a>
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="nav-link"
-                            id="pills-more-info-tab"
-                            data-toggle="pill"
-                            href="#pills-more-info"
-                            role="tab"
-                            aria-controls="pills-more-info"
-                            aria-selected="false"
-                          >
-                            More
-                            Info
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="tab-content">
-                      <div
-                        class="tab-pane fade show active"
-                        id="pills-leaderboardr"
-                        role="tabpanel"
-                        aria-labelledby="pills-leaderboardr-tab"
-                      >
-                        <div class="inner-table">
-                          <div class="responsive-table">
-                            <table class="table">
-                              <thead>
-                                <tr>
-                                  <th scope="col">USER</th>
-                                  <th scope="col">Place</th>
-                                  <th scope="col">Points</th>
-                                  <th scope="col">Prize</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>
-                                    <img src="@/assets/images/people/p1.png" alt />
-                                    Tom Bass
-                                  </td>
-                                  <td>01</td>
-                                  <td>33528.36</td>
-                                  <td>40 EUR X 30WR</td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <img src="@/assets/images/people/p1.png" alt />
-                                    Tom Bass
-                                  </td>
-                                  <td>01</td>
-                                  <td>33528.36</td>
-                                  <td>40 EUR X 30WR</td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <img src="@/assets/images/people/p1.png" alt />
-                                    Tom Bass
-                                  </td>
-                                  <td>01</td>
-                                  <td>33528.36</td>
-                                  <td>40 EUR X 30WR</td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <img src="@/assets/images/people/p1.png" alt />
-                                    Tom Bass
-                                  </td>
-                                  <td>01</td>
-                                  <td>33528.36</td>
-                                  <td>40 EUR X 30WR</td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <img src="@/assets/images/people/p1.png" alt />
-                                    Tom Bass
-                                  </td>
-                                  <td>01</td>
-                                  <td>33528.36</td>
-                                  <td>40 EUR X 30WR</td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <img src="@/assets/images/people/p1.png" alt />
-                                    Tom Bass
-                                  </td>
-                                  <td>01</td>
-                                  <td>33528.36</td>
-                                  <td>40 EUR X 30WR</td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <img src="@/assets/images/people/p1.png" alt />
-                                    Tom Bass
-                                  </td>
-                                  <td>01</td>
-                                  <td>33528.36</td>
-                                  <td>40 EUR X 30WR</td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <img src="@/assets/images/people/p1.png" alt />
-                                    Tom Bass
-                                  </td>
-                                  <td>01</td>
-                                  <td>33528.36</td>
-                                  <td>40 EUR X 30WR</td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <img src="@/assets/images/people/p1.png" alt />
-                                    Tom Bass
-                                  </td>
-                                  <td>01</td>
-                                  <td>33528.36</td>
-                                  <td>40 EUR X 30WR</td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <img src="@/assets/images/people/p1.png" alt />
-                                    Tom Bass
-                                  </td>
-                                  <td>01</td>
-                                  <td>33528.36</td>
-                                  <td>40 EUR X 30WR</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="tab-pane fade"
-                        id="pills-more-info"
-                        role="tabpanel"
-                        aria-labelledby="pills-more-info-tab"
-                      >
-                        <div class="info-content">
-                          <div class="info-box">
-                            <h4 class="title">Tournament Duration</h4>
-                            <p class="text">7 Days (Monday 00:01 UTC - Sunday 23:59 UTC)</p>
-                          </div>
-                          <div class="info-box two">
-                            <h4 class="title">Applicable Games</h4>
-                            <p class="text">All Games Under 'Slots' Category</p>
-                          </div>
-                          <div class="info-box three">
-                            <h4 class="title">Free Spin Reward Games</h4>
-                            <p class="text">
-                              Book Of Pyramids, Brave Viking, Desert Treasure, Hawaii
-                              Cocktails, Lucky Blue, Lucky Lady Clover, Lucky Sweets,
-                              Princess Of Sky, Princess Royal, Scroll Of Adventure,
-                              Slotomon Go, West Town Any Softswiss Slots Game | Wager x 40
-                              times
-                            </p>
-                          </div>
-                          <a href="#" class="mybtn1">Terms and Conditions</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="tab-pane fade"
-                  id="pills-vip-only"
-                  role="tabpanel"
-                  aria-labelledby="pills-vip-only-tab"
-                >
-                  <div class="inner-table-content">
-                    <div class="header-area">
-                      <ul class="nav" role="tablist">
-                        <li class="nav-item">
-                          <a
-                            class="nav-link active"
-                            id="pills-leaderboardr-vip-tab"
-                            data-toggle="pill"
-                            href="#pills-leaderboardr-vip"
-                            role="tab"
-                            aria-controls="pills-leaderboardr-vip"
-                            aria-selected="true"
-                          >Leaderboard</a>
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            class="nav-link"
-                            id="pills-more-info-vip-tab"
-                            data-toggle="pill"
-                            href="#pills-more-info-vip"
-                            role="tab"
-                            aria-controls="pills-more-info-vip"
-                            aria-selected="false"
-                          >
-                            More
-                            Info
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="tab-content" id="pills-tabContent">
-                      <div
-                        class="tab-pane fade show active"
-                        id="pills-leaderboardr-vip"
-                        role="tabpanel"
-                        aria-labelledby="pills-leaderboardr-vip-tab"
-                      >
-                        <div class="inner-table">
-                          <div class="responsive-table">
-                            <table class="table">
-                              <thead>
-                                <tr>
-                                  <th scope="col">USER</th>
-                                  <th scope="col">Place</th>
-                                  <th scope="col">Points</th>
-                                  <th scope="col">Prize</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>
-                                    <img src="@/assets/images/people/p1.png" alt />
-                                    Tom Bass
-                                  </td>
-                                  <td>01</td>
-                                  <td>33528.36</td>
-                                  <td>40 EUR X 30WR</td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <img src="@/assets/images/people/p1.png" alt />
-                                    Tom Bass
-                                  </td>
-                                  <td>01</td>
-                                  <td>33528.36</td>
-                                  <td>40 EUR X 30WR</td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <img src="@/assets/images/people/p1.png" alt />
-                                    Tom Bass
-                                  </td>
-                                  <td>01</td>
-                                  <td>33528.36</td>
-                                  <td>40 EUR X 30WR</td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <img src="@/assets/images/people/p1.png" alt />
-                                    Tom Bass
-                                  </td>
-                                  <td>01</td>
-                                  <td>33528.36</td>
-                                  <td>40 EUR X 30WR</td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <img src="@/assets/images/people/p1.png" alt />
-                                    Tom Bass
-                                  </td>
-                                  <td>01</td>
-                                  <td>33528.36</td>
-                                  <td>40 EUR X 30WR</td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <img src="@/assets/images/people/p1.png" alt />
-                                    Tom Bass
-                                  </td>
-                                  <td>01</td>
-                                  <td>33528.36</td>
-                                  <td>40 EUR X 30WR</td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <img src="@/assets/images/people/p1.png" alt />
-                                    Tom Bass
-                                  </td>
-                                  <td>01</td>
-                                  <td>33528.36</td>
-                                  <td>40 EUR X 30WR</td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <img src="@/assets/images/people/p1.png" alt />
-                                    Tom Bass
-                                  </td>
-                                  <td>01</td>
-                                  <td>33528.36</td>
-                                  <td>40 EUR X 30WR</td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <img src="@/assets/images/people/p1.png" alt />
-                                    Tom Bass
-                                  </td>
-                                  <td>01</td>
-                                  <td>33528.36</td>
-                                  <td>40 EUR X 30WR</td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <img src="@/assets/images/people/p1.png" alt />
-                                    Tom Bass
-                                  </td>
-                                  <td>01</td>
-                                  <td>33528.36</td>
-                                  <td>40 EUR X 30WR</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="tab-pane fade"
-                        id="pills-more-info-vip"
-                        role="tabpanel"
-                        aria-labelledby="pills-more-info-vip-tab"
-                      >
-                        <div class="info-content">
-                          <div class="info-box">
-                            <h4 class="title">Tournament Duration</h4>
-                            <p class="text">7 Days (Monday 00:01 UTC - Sunday 23:59 UTC)</p>
-                          </div>
-                          <div class="info-box two">
-                            <h4 class="title">Applicable Games</h4>
-                            <p class="text">All Games Under 'Slots' Category</p>
-                          </div>
-                          <div class="info-box three">
-                            <h4 class="title">Free Spin Reward Games</h4>
-                            <p class="text">
-                              Book Of Pyramids, Brave Viking, Desert Treasure, Hawaii
-                              Cocktails, Lucky Blue, Lucky Lady Clover, Lucky Sweets,
-                              Princess Of Sky, Princess Royal, Scroll Of Adventure,
-                              Slotomon Go, West Town Any Softswiss Slots Game | Wager x 40
-                              times
-                            </p>
-                          </div>
-                          <a href="#" class="mybtn1">Terms and Conditions</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="game-images">
+            <img class="game-banner" src="@/assets/img/games/pubgm/banner.jpg" />
+            <img src="@/assets/img/games/pubgm/icon-text.png" class="game-icon-text" />
+            <div class="bg-gradient"></div>
+          </div>
+          <div class="card-body pb-1">
+            <h3 class="card-title display-4 text-center">{{ tournament.name }}</h3>
+          </div>
+          <div class="card-footer">
+            <span class="badge font-weight-normal">
+              <font-awesome-icon :icon="['fa', 'calendar-day']" />
+              {{ tournament.dates.created_at | formatDay }}
+            </span>
+            <span class="badge font-weight-normal ml-1">
+              <font-awesome-icon :icon="['fa', 'clock']" />
+              {{ tournament.dates.created_at | formatTime }} {{ ' IST'}}
+            </span>
+            <span
+              class="badge badge-primary font-weight-normal ml-1"
+            >{{ tournament.dates.created_at | fromNow }}</span>
+            <router-link
+              :to="{ name: 'tournament', params: { id: tournament._id } }"
+              class="btn btn-main float-right"
+            >
+              <font-awesome-icon :icon="['fa', 'gamepad']" class="mr-2" />Join
+            </router-link>
           </div>
         </div>
       </div>
@@ -418,4 +41,20 @@
   </section>
 </template>
 
-<style src="@/assets/css/tournaments.css" scoped />
+<script>
+import { mapGetters } from "vuex";
+import { helpersMixin } from "@/mixins";
+export default {
+  mixins: [helpersMixin],
+  async created() {
+    await this.$store.dispatch("ui/fetchTournaments");
+  },
+  computed: {
+    ...mapGetters({
+      getTournaments: "ui/getTournaments",
+    }),
+  },
+};
+</script>
+
+<style src="@/assets/css/tournaments/list.css" scoped />

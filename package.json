@@ -50,7 +50,8 @@
 			"parser": "babel-eslint"
 		},
 		"rules": {
-			"no-unused-vars": 0
+			"no-unused-vars": 0,
+			"vue/no-unused-components": 0
 		}
 	},
 	"browserslist": [

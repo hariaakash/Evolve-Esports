@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div v-if="tableData.docs.length" class="table-responsive">
+    <h5 v-if="tableData.docs.length == 0" class="text-center">Empty data</h5>
+    <div v-else class="table-responsive">
       <table class="table table-hover">
         <thead>
           <tr>
@@ -26,26 +27,25 @@
           </slot>
         </tbody>
       </table>
-      <nav>
-        <ul class="pagination justify-content-center">
-          <li class="page-item" :class="{ 'disabled': tableData.page === 1 }">
-            <button class="page-link" @click="prevPage">Previous</button>
-          </li>
-          <li
-            class="page-item"
-            v-for="(item, index) in tableData.totalPages"
-            :key="'pagination' + index"
-            :class="{'active': item === tableData.page}"
-          >
-            <button class="page-link" @click="selectedPage(item)">{{item}}</button>
-          </li>
-          <li class="page-item" :class="{ 'disabled': tableData.page === tableData.totalPages }">
-            <button class="page-link" @click="nextPage">Next</button>
-          </li>
-        </ul>
-      </nav>
     </div>
-    <h5 v-else class="text-center">Empty data</h5>
+    <nav v-if="tableData.docs.length" class="pt-4">
+      <ul class="pagination justify-content-center">
+        <li class="page-item" :class="{ 'disabled': tableData.page === 1 }">
+          <button class="page-link" @click="prevPage">Previous</button>
+        </li>
+        <li
+          class="page-item"
+          v-for="(item, index) in tableData.totalPages"
+          :key="'pagination' + index"
+          :class="{'active': item === tableData.page}"
+        >
+          <button class="page-link" @click="selectedPage(item)">{{item}}</button>
+        </li>
+        <li class="page-item" :class="{ 'disabled': tableData.page === tableData.totalPages }">
+          <button class="page-link" @click="nextPage">Next</button>
+        </li>
+      </ul>
+    </nav>
   </div>
 </template>
 

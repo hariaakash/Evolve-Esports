@@ -11,7 +11,7 @@ class MainService {
     edit(data) {
         return this.http.post(`${this.entity}/edit`, data);
     }
-    del(data) {
+    remove(data) {
         return this.http.post(`${this.entity}/del`, data);
     }
     main(data) {

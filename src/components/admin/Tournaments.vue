@@ -63,9 +63,9 @@ export default {
       fields: [
         { name: "Name", field: "name" },
         { name: "Game", field: "game" },
-        { name: "Team Type", field: "teamType" },
-        { name: "Frequency", field: "frequency" },
-        { name: "Payment", field: "payment" },
+        { name: "Game Mode", field: "gameMode" },
+        { name: "Team Size", field: "teamSize" },
+        { name: "Teams", field: "teams" },
         { name: "Status", field: "status" },
       ],
     },

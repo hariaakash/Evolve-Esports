@@ -1,0 +1,64 @@
+.bg-tournaments {
+  background: #070b28;
+  border: 1px solid #273b71;
+}
+
+.hvr-float {
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-float:hover, .hvr-float:focus, .hvr-float:active {
+  -webkit-transform: translateY(-20px);
+  transform: translateY(-20px);
+  border: 1px solid #dc3545;
+}
+
+.game-images {
+  position: relative;
+  height: 100%;
+}
+
+.game-banner {
+  height: 200px;
+  object-fit: cover;
+}
+
+.game-icon {
+  position: absolute;
+  overflow: hidden;
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.game-icon-text {
+  max-height: 40px;
+  position: absolute;
+  left: 0px;
+  z-index: 1;
+  bottom: 5px;
+}
+
+.bg-gradient {
+  position: absolute;
+  height: 190px;
+  width: 100%;
+  bottom: 0;
+  background: linear-gradient(180deg,transparent,rgba(34,45,53,.1) 30.02%,rgba(34,45,53,0) 80%,#222d35);
+}
+
+.btn-main {
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #fff;
+  background-image: linear-gradient(to left, #ff344d, #d2273c);
+}

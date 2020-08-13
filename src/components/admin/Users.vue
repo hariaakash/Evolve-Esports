@@ -33,7 +33,7 @@
         </Table>
       </div>
     </div>
-    <EditUser :editUser="editUser" />
+    <EditUser />
   </section>
 </template>
 
@@ -66,7 +66,7 @@ export default {
   }),
   methods: {
     editUserDispatcher(user) {
-      this.editUser = user;
+      this.$store.commit("admin/SET_USER", user);
       this.toggleModal(this.modals.editUser);
     },
   },

@@ -1,12 +1,10 @@
 <template>
   <section class="account">
-    <div class="info-table">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <Nav :profileSet="profileSet" />
-            <router-view></router-view>
-          </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <Nav :profileSet="profileSet" />
+          <router-view></router-view>
         </div>
       </div>
     </div>
@@ -38,4 +36,8 @@ export default {
 };
 </script>
 
-<style src="@/assets/css/account/account.css" scoped />
+<style scoped>
+.account {
+  background: #070b28;
+}
+</style>

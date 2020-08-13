@@ -20,7 +20,7 @@
                   v-for="(item, index) in tableMeta.fields"
                   :key="'head' + index"
                 >{{ item.name }}</th>
-                <th scope="col">View</th>
+                <th scope="col">Edit</th>
               </template>
               <template #body="{docs, page, limit}">
                 <tr v-for="(match, index) in docs" :key="'docs' + index">
@@ -45,7 +45,7 @@
       </div>
     </div>
     <CreateMatch />
-    <EditMatch :editMatch="editMatch" />
+    <EditMatch />
   </section>
 </template>
 
@@ -92,7 +92,6 @@ export default {
           { name: "Groups", field: "groups" },
         ],
       },
-      editMatch: null,
     };
   },
   computed: {
@@ -102,7 +101,7 @@ export default {
   },
   methods: {
     editMatchDispatcher(match) {
-      this.editMatch = match;
+      this.$store.commit("admin/SET_MATCH", match);
       this.toggleModal(this.modals.editMatch);
     },
   },

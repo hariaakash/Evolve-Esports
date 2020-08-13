@@ -50,13 +50,13 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Modal from "@/components/global/Modal.vue";
 import cloneDeep from "lodash/cloneDeep";
 import { helpersMixin } from "@/mixins";
 import AdminService from "@/api/admin.api";
 
 export default {
-  props: ["editUser"],
   components: { Modal },
   mixins: [helpersMixin],
   data: () => ({
@@ -104,6 +104,7 @@ export default {
       ],
     },
     data: {
+      id: "",
       name: "",
       gamerTag: "",
       desc: "",
@@ -117,6 +118,7 @@ export default {
       try {
         const data = cloneDeep(this.data);
         const reqData = {
+          id: data.id,
           info: {
             name: data.name,
             gamerTag: data.gamerTag,
@@ -131,6 +133,7 @@ export default {
         this.$store.dispatch("ui/refetchPage", { id: "admin/users" });
         this.$store.commit("ui/TOGGLE_MODAL", this.modals.editUser);
         this.data = {
+          id: "",
           name: "",
           gamerTag: "",
           desc: "",
@@ -142,10 +145,9 @@ export default {
         this.$swal("Oops", "Something wrong, try again", "error");
       }
     },
-  },
-  watch: {
-    editUser: function (newvalue) {
+    setEditData() {
       const fields = [
+        { from: "_id", to: "id" },
         { from: "info.name", to: "name" },
         { from: "info.gamerTag", to: "gamerTag" },
         { from: "info.desc", to: "desc" },
@@ -154,9 +156,20 @@ export default {
         "status",
       ];
       fields.forEach((x) => {
-        if (typeof x === "string") this.data[x] = this.parseField(newvalue, x);
-        else this.data[x.to] = this.parseField(newvalue, x.from);
+        if (typeof x === "string")
+          this.data[x] = this.parseField(this.getUser, x);
+        else this.data[x.to] = this.parseField(this.getUser, x.from);
       });
+    },
+  },
+  computed: {
+    ...mapGetters({
+      getUser: "admin/getUser",
+    }),
+  },
+  watch: {
+    getUser() {
+      this.setEditData();
     },
   },
 };

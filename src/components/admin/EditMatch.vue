@@ -43,6 +43,7 @@
         </form>
       </template>
       <template v-slot:footer>
+        <button class="btn btn-danger mr-auto" @click="removeMatch">Delete</button>
         <button
           type="submit"
           class="btn btn-primary"
@@ -56,6 +57,7 @@
 
 <script>
 import moment from "moment";
+import { mapGetters } from "vuex";
 import Modal from "@/components/global/Modal.vue";
 import { helpersMixin } from "@/mixins";
 import cloneDeep from "lodash/cloneDeep";
@@ -63,7 +65,6 @@ import cloneDeep from "lodash/cloneDeep";
 import MatchService from "@/api/match.api";
 
 export default {
-  props: ["editMatch"],
   components: { Modal },
   mixins: [helpersMixin],
   data: () => ({
@@ -82,6 +83,7 @@ export default {
       ],
     },
     data: {
+      id: "",
       date: "",
       ended: "",
     },
@@ -96,20 +98,38 @@ export default {
           id: "admin/tournament/matches",
         });
         this.$store.commit("ui/TOGGLE_MODAL", this.modals.editMatch);
-        this.data = { date: "", ended: "" };
+        this.data = { id: "", date: "", ended: "" };
       } catch (err) {
         this.$swal("Oops", "Something wrong, try again", "error");
       }
     },
+    async removeMatch() {
+      try {
+        await MatchService.remove({ id: this.data.id });
+        this.$swal("Success", "Successfully removed", "info");
+        this.$store.dispatch("ui/refetchPage", {
+          id: "admin/tournament/matches",
+        });
+        this.$store.commit("ui/TOGGLE_MODAL", this.modals.editMatch);
+      } catch ({ response: { data } }) {
+        this.$swal("Oops", data.message, "error");
+      }
+    },
+    setEditData() {
+      this.data.id = this.parseField(this.getMatch, "_id");
+      this.data.date = this.parseField(this.getMatch, "date");
+      this.data.date = moment(this.data.date).format("YYYY-MM-DDTHH:mm");
+      this.data.ended = this.parseField(this.getMatch, "ended");
+    },
+  },
+  computed: {
+    ...mapGetters({
+      getMatch: "admin/getMatch",
+    }),
   },
   watch: {
-    editMatch: function (newvalue) {
-      this.data.id = this.parseField(newvalue, "_id");
-      this.data.date = this.parseField(newvalue, "date");
-      this.data.date = moment(this.data.date)
-        .utcOffset(0)
-        .format("YYYY-MM-DDTHH:mm");
-      this.data.ended = this.parseField(newvalue, "ended");
+    getMatch() {
+      this.setEditData();
     },
   },
 };

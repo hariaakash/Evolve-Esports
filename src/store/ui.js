@@ -8,6 +8,7 @@ export default {
         authModal: false,
         modals: [],
         tables: [],
+        tournaments: [],
     },
     mutations: {
         SET_INIT(state) {
@@ -27,6 +28,10 @@ export default {
         // Tables
         SET_TABLE(state, data) {
             state.tables.push(data);
+        },
+        // Custom
+        SET_TOURNAMENTS(state, data) {
+            state.tournaments = data;
         }
     },
     actions: {
@@ -81,6 +86,14 @@ export default {
         },
         async refetchPage(ctx, { id }) {
             await ctx.dispatch('fetchPage', { id });
+        },
+        // Custom
+        async fetchTournaments(ctx) {
+            const { data } = await GlobalService.tournament.main({
+                id: 'list',
+                filters: [{ key: "status", data: "true", type: "match" }]
+            });
+            ctx.commit('SET_TOURNAMENTS', data);
         }
     },
     getters: {
@@ -90,5 +103,6 @@ export default {
         tableById: (state) => (id) => {
             return state.tables.find((x) => x.id === id);
         },
+        getTournaments: (state) => state.tournaments,
     },
 }

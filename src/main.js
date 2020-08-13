@@ -10,6 +10,7 @@ import './plugins/filters';
 import { store } from './store';
 
 Vue.use(VueCookies);
+Vue.$cookies.config('30d');
 
 Vue.config.productionTip = false;
 

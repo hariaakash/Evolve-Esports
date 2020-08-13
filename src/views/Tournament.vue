@@ -1,9 +1,9 @@
 <template>
-  <section class="tournaments">
+  <section class="tournament">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <!-- <Nav /> -->
+          <Nav />
           <List />
         </div>
       </div>
@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style scoped>
-.tournaments {
+.tournament {
   background: #070b28;
 }
 </style>

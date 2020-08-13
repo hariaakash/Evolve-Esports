@@ -12,7 +12,7 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: 18px;
   margin: 0;
-  color: #a1aed4;
+  color: #fff;
   overflow-x: hidden; }
 
 body.modal-open {
