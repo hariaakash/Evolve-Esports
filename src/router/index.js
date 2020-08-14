@@ -3,8 +3,10 @@ import VueRouter from 'vue-router';
 
 import accountRoute from './account';
 import adminRoute from './admin';
+import tournamentRoute from './tournament';
 
 import guard from './guard';
+import tournament from './tournament';
 
 Vue.use(VueRouter);
 
@@ -31,22 +33,6 @@ const routes = [
 				},
 			},
 			{
-				path: '/tournaments',
-				name: 'tournaments',
-				component: () => import(/* webpackChunkName: "tournaments" */ '@/views/Tournaments.vue'),
-				meta: {
-					title: 'Tournaments',
-				},
-			},
-			{
-				path: '/tournament/:id',
-				name: 'tournament',
-				component: () => import(/* webpackChunkName: "tournament" */ '@/views/Tournament.vue'),
-				meta: {
-					title: 'Tournament',
-				},
-			},
-			{
 				path: '/oauth',
 				name: 'oauth',
 				component: () => import(/* webpackChunkName: "oauth" */ '@/components/global/oauth.vue'),
@@ -62,6 +48,7 @@ const routes = [
 					title: '404',
 				},
 			},
+			tournamentRoute,
 			accountRoute,
 			adminRoute,
 		],

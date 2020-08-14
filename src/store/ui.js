@@ -89,7 +89,7 @@ export default {
         },
         // Custom
         async fetchTournaments(ctx) {
-            const { data } = await GlobalService.tournament.main({
+            const { data } = await GlobalService.public.tournamentMain({
                 id: 'list',
                 filters: [{ key: "status", data: "true", type: "match" }]
             });

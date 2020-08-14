@@ -22,19 +22,19 @@
               <div class="collapse navbar-collapse fixed-height" id="main_menu">
                 <ul class="navbar-nav ml-auto">
                   <li v-for="(item, index) in globalMenu" :key="index" class="nav-item">
-                    <router-link class="nav-link" :to="{ name: item.route }">
+                    <router-link class="nav-link" :to="item.route">
                       {{ item.title }}
                       <div class="mr-hover-effect"></div>
                     </router-link>
                   </li>
                   <li class="nav-item" v-if="userSet">
-                    <router-link class="nav-link" :to="{ name: 'account' }">
+                    <router-link class="nav-link" to="/account">
                       Account
                       <div class="mr-hover-effect"></div>
                     </router-link>
                   </li>
                   <li class="nav-item" v-if="userSet && adminSet">
-                    <router-link class="nav-link" :to="{ name: 'admin' }">
+                    <router-link class="nav-link" to="/admin">
                       Admin
                       <div class="mr-hover-effect"></div>
                     </router-link>
@@ -62,9 +62,9 @@ import { mapGetters } from "vuex";
 export default {
   data: () => ({
     globalMenu: [
-      { title: "Home", route: "home" },
-      { title: "Tournaments", route: "tournaments" },
-      { title: "Support", route: "support" },
+      { title: "Home", route: "/home" },
+      { title: "Tournaments", route: "/tournament" },
+      { title: "Support", route: "/support" },
     ],
   }),
   methods: {

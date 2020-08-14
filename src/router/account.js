@@ -1,10 +1,6 @@
 export default {
     path: '/account',
-    name: 'account',
-    meta: {
-        title: 'Account',
-        requiresAuth: true,
-    },
+    meta: { requiresAuth: true },
     redirect: { name: 'account/profile' },
     component: () => import(/* webpackChunkName: "account" */ '@/views/Account.vue'),
     children: [

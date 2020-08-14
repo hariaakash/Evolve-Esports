@@ -29,7 +29,7 @@
               class="badge badge-primary font-weight-normal ml-1"
             >{{ tournament.dates.created_at | fromNow }}</span>
             <router-link
-              :to="{ name: 'tournament', params: { id: tournament._id } }"
+              :to="{ name: 'tournament/id', params: { id: tournament._id } }"
               class="btn btn-main float-right"
             >
               <font-awesome-icon :icon="['fa', 'gamepad']" class="mr-2" />Join
@@ -57,4 +57,4 @@ export default {
 };
 </script>
 
-<style src="@/assets/css/tournaments/list.css" scoped />
+<style src="@/assets/css/tournament/list.css" scoped />
