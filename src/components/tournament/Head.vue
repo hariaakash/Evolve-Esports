@@ -51,11 +51,13 @@
           <div class="row no-gutters align-items-center">
             <div class="col mr-2 text-uppercase">
               <div class="font-weight-bold">Registration</div>
-              <div class="h4 pt-4">{{ getTournament.status ? 'Open' : 'Closed' }}</div>
+              <div class="h4 pt-4">{{ getTournament.registration ? 'Open' : 'Closed' }}</div>
             </div>
             <div class="col-auto">
-              <font-awesome-icon v-if="getTournament.status" :icon="['fa', 'plus']" size="3x" />
-              <font-awesome-icon v-else :icon="['fa', 'times']" size="3x" />
+              <font-awesome-icon
+                :icon="['fa', getTournament.registration ? 'plus':'times']"
+                size="3x"
+              />
             </div>
           </div>
         </div>
@@ -81,11 +83,15 @@ export default {
   },
   methods: {
     joinTournamentModalDispatcher() {
-      if (this.getUser.auth) {
-        if (this.getUser.tournaments.some((x) => x === this.$route.params.id)) {
-          this.$swal("Info", "Already registered", "info");
-        } else this.toggleModal("tournament/joinTournament");
-      } else this.$swal("Oops", "Login to join tournament", "warning");
+      if (this.getTournament.registration) {
+        if (this.getUser.auth) {
+          if (
+            this.getUser.tournaments.some((x) => x === this.$route.params.id)
+          ) {
+            this.$swal("Info", "Already registered", "info");
+          } else this.toggleModal("tournament/joinTournament");
+        } else this.$swal("Oops", "Login to join tournament", "warning");
+      } else this.$swal("Oops", "Registration closed", "info");
     },
   },
 };

@@ -66,6 +66,9 @@ const router = new VueRouter({
 	linkActiveClass: 'active',
 	linkExactActiveClass: 'active',
 	scrollBehavior(to, from, savedPosition) {
+		const exceptions = ["tournaments/info", "tournaments/rules", "tournaments/leaderboard"];
+		if (exceptions.includes(from.name) && exceptions.includes(to.name)) return {};
+
 		return savedPosition ? savedPosition : { x: 0, y: 0 };
 	},
 });

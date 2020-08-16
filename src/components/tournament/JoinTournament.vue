@@ -60,7 +60,7 @@ export default {
   async created() {
     for (let i = 0; i < this.getTournament.teamSize; i++) {
       this.form.fields.push({
-        label: `Member ${i + 1} Name`,
+        label: `Member ${i + 1} IGN (In Game Name)`,
         rules: { required: true },
         type: "text",
         model: `members${i}`,
@@ -105,6 +105,9 @@ export default {
         await TournamentService.join(reqData);
         this.$swal("Success", "Successfully joined", "info");
         this.$store.commit("ui/TOGGLE_MODAL", this.modals.joinTournament);
+        await this.$store.dispatch("ui/fetchTournament", {
+          id: this.$route.params.id,
+        });
         this.data = { teamName: "" };
         for (let i = 0; i < this.getTournament.teamSize; i++) {
           this.data[`members${i}`] = "";

@@ -33,12 +33,6 @@
                 <div v-if="errors[0]" class="invalid-feedback">{{ field.errorText }}</div>
               </ValidationProvider>
             </div>
-            <div class="form-group">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" v-model="data.ended" />
-                <label class="form-check-label">Ended</label>
-              </div>
-            </div>
           </div>
         </form>
       </template>
@@ -85,22 +79,28 @@ export default {
     data: {
       id: "",
       date: "",
-      ended: "",
     },
   }),
   methods: {
     async editData() {
       try {
         const data = cloneDeep(this.data);
+        data.date = moment(data.date).utcOffset(-330).format();
         await MatchService.edit(data);
-        this.$swal("Success", "Successfully edited", "info");
+        this.$swal("Success", "Successfully updated", "info");
         this.$store.dispatch("ui/refetchPage", {
           id: "admin/tournament/matches",
         });
         this.$store.commit("ui/TOGGLE_MODAL", this.modals.editMatch);
-        this.data = { id: "", date: "", ended: "" };
+        this.data = { id: "", date: "" };
       } catch (err) {
-        this.$swal("Oops", "Something wrong, try again", "error");
+        this.$swal(
+          "Oops",
+          err.response
+            ? err.response.data.message
+            : "Something wrong, try again",
+          "error"
+        );
       }
     },
     async removeMatch() {
@@ -111,15 +111,20 @@ export default {
           id: "admin/tournament/matches",
         });
         this.$store.commit("ui/TOGGLE_MODAL", this.modals.editMatch);
-      } catch ({ response: { data } }) {
-        this.$swal("Oops", data.message, "error");
+      } catch (err) {
+        this.$swal(
+          "Oops",
+          err.response
+            ? err.response.data.message
+            : "Something wrong, try again",
+          "error"
+        );
       }
     },
     setEditData() {
       this.data.id = this.parseField(this.getMatch, "_id");
       this.data.date = this.parseField(this.getMatch, "date");
       this.data.date = moment(this.data.date).format("YYYY-MM-DDTHH:mm");
-      this.data.ended = this.parseField(this.getMatch, "ended");
     },
   },
   computed: {

@@ -25,10 +25,10 @@ export default {
 
 <style scoped>
 .red-border {
-  border: 1px solid #dc3545;
+  border: 2px solid #dc3545;
 }
 .bg-main {
-  background: #0c1330;
+  background: #070b28;
 }
 .text {
   color: #a1aed4;

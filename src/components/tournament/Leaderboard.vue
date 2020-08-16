@@ -1,10 +1,24 @@
 <template>
-  <div class="card red-border">
-    <div class="card-body bg-main">
-      <div class="h1 font-weight-light text-center yellow">{{ getTournament.name }}</div>
-      <p class="p text-justify pt-2">{{ getTournament.desc }}</p>
-    </div>
-  </div>
+  <table class="table table-borderless text-white px-4">
+    <thead class="py-1 head">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">COMPETITOR</th>
+        <th scope="col">MATCHES</th>
+        <th scope="col">KILLS</th>
+        <th scope="col">POINTS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="(group, index) in getTournament.groups" :key="index">
+        <th scope="row">{{ index+1 }}</th>
+        <td>{{ group.teamName }}</td>
+        <td>{{ 0 }}</td>
+        <td>{{ 0 }}</td>
+        <td>{{ 0 }}</td>
+      </tr>
+    </tbody>
+  </table>
 </template>
 
 <script>
@@ -20,13 +34,12 @@ export default {
 </script>
 
 <style scoped>
-.red-border {
-  border: 1px solid #dc3545;
+table {
+  border-collapse: separate;
+  border-spacing: 0 15px;
 }
-.bg-main {
-  background: #0c1330;
-}
-.yellow {
-  color: #f0ad4e;
+.head {
+  background: linear-gradient(to left, #3b1f75, #4f64de);
+  border-radius: 40px;
 }
 </style>

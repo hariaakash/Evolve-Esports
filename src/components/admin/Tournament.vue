@@ -7,9 +7,13 @@
           <div class="card-header">
             <h3 class="text-center font-weight-light">Matches List</h3>
             <button
+              class="btn btn-primary float-left"
+              @click="toggleModal(modals.editTournament)"
+            >Edit Tournament</button>
+            <button
               class="btn btn-primary float-right"
               @click="toggleModal(modals.createMatch)"
-            >Create</button>
+            >Create Match</button>
           </div>
           <div class="card-body">
             <Table :tableMeta="tableMeta">
@@ -46,6 +50,7 @@
     </div>
     <CreateMatch />
     <EditMatch />
+    <EditTournament />
   </section>
 </template>
 
@@ -53,6 +58,7 @@
 import { mapGetters } from "vuex";
 import CreateMatch from "./CreateMatch.vue";
 import EditMatch from "./EditMatch.vue";
+import EditTournament from "./EditTournament.vue";
 import Table from "@/components/global/Table.vue";
 
 import { helpersMixin } from "@/mixins";
@@ -71,13 +77,14 @@ export default {
       this.$router.push({ name: "admin/tournaments" });
     }
   },
-  components: { Table, CreateMatch, EditMatch },
+  components: { Table, CreateMatch, EditMatch, EditTournament },
   mixins: [helpersMixin],
   data() {
     return {
       modals: {
         createMatch: "admin/createMatch",
         editMatch: "admin/editMatch",
+        editTournament: "admin/editTournament",
       },
       tableMeta: {
         id: "admin/tournament/matches",

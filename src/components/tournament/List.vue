@@ -14,20 +14,21 @@
             <div class="bg-gradient"></div>
           </div>
           <div class="card-body pb-1">
-            <h3 class="card-title display-4 text-center">{{ tournament.name }}</h3>
+            <div class="card-title h4 font-weight-light text-center">{{ tournament.name }}</div>
           </div>
           <div class="card-footer">
-            <span class="badge font-weight-normal">
+            <span class="badge font-weight-normal" v-if="tournament.dates.next">
               <font-awesome-icon :icon="['fa', 'calendar-day']" />
-              {{ tournament.dates.created_at | formatDay }}
+              {{ tournament.dates.next | formatDay }}
             </span>
-            <span class="badge font-weight-normal ml-1">
+            <span class="badge font-weight-normal ml-1" v-if="tournament.dates.next">
               <font-awesome-icon :icon="['fa', 'clock']" />
-              {{ tournament.dates.created_at | formatTime }} {{ ' IST'}}
+              {{ tournament.dates.next | formatTime }} {{ ' IST'}}
             </span>
             <span
               class="badge badge-primary font-weight-normal ml-1"
-            >{{ tournament.dates.created_at | fromNow }}</span>
+              v-if="tournament.dates.next"
+            >{{ tournament.dates.next | fromNow }}</span>
             <router-link
               :to="{ name: 'tournaments/info', params: { id: tournament._id } }"
               class="btn btn-main float-right"
