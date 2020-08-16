@@ -9,6 +9,7 @@ export default {
         modals: [],
         tables: [],
         tournaments: [],
+        tournament: null,
     },
     mutations: {
         SET_INIT(state) {
@@ -32,6 +33,9 @@ export default {
         // Custom
         SET_TOURNAMENTS(state, data) {
             state.tournaments = data;
+        },
+        SET_TOURNAMENT(state, data) {
+            state.tournament = data;
         }
     },
     actions: {
@@ -94,7 +98,11 @@ export default {
                 filters: [{ key: "status", data: "true", type: "match" }]
             });
             ctx.commit('SET_TOURNAMENTS', data);
-        }
+        },
+        async fetchTournament(ctx, { id }) {
+            const { data } = await GlobalService.public.tournamentMain({ id });
+            ctx.commit('SET_TOURNAMENT', data);
+        },
     },
     getters: {
         modalById: (state) => (id) => {
@@ -104,5 +112,6 @@ export default {
             return state.tables.find((x) => x.id === id);
         },
         getTournaments: (state) => state.tournaments,
+        getTournament: (state) => state.tournament,
     },
 }

@@ -27,8 +27,8 @@ export default {
   },
   methods: {
     showBreadcrumb() {
-      const exceptions = ["/home", "/404"];
-      return !exceptions.includes(this.$route.path);
+      const exceptions = ["home", "404"];
+      return !exceptions.includes(this.$route.name);
     },
   },
 };

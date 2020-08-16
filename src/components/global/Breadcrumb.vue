@@ -4,20 +4,24 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <h4 class="title">{{ this.$route.meta.title }}</h4>
+          <h4 class="title">{{ $route.meta.title }}</h4>
           <ul class="breadcrumb-list">
             <li>
               <router-link :to="{ name:'home' }">
                 <font-awesome-icon :icon="['fas', 'home']" class="mr-2" />Home
               </router-link>
             </li>
-            <li>
+            <li v-if="!($route.meta.breadcrumbs && $route.meta.breadcrumbs.length)">
               <span>
                 <font-awesome-icon :icon="['fas', 'chevron-right']" />
               </span>
+              <router-link :to="$route">{{ $route.meta.title }}</router-link>
             </li>
-            <li>
-              <router-link :to="this.$route">{{ this.$route.meta.title }}</router-link>
+            <li v-else v-for="(crumb, index) in $route.meta.breadcrumbs" :key="index">
+              <span>
+                <font-awesome-icon :icon="['fas', 'chevron-right']" />
+              </span>
+              <router-link :to="crumb.route($route)">{{ crumb.title }}</router-link>
             </li>
           </ul>
         </div>
@@ -43,6 +47,10 @@ export default {
         routes: ["support"],
         imgSrc: require("@/assets/img/breadcrumb/contact.png"),
       },
+      {
+        routes: ["tournament/info", "tournament/rules"],
+        imgSrc: require("@/assets/img/breadcrumb/lottery.png"),
+      },
     ],
   }),
   methods: {
@@ -56,4 +64,4 @@ export default {
 };
 </script>
 
-<style src="@/assets/css/breadcrumb.css" scoped />
+<style src="@/assets/css/global/breadcrumb.css" scoped />

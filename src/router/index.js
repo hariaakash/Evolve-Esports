@@ -48,7 +48,7 @@ const routes = [
 					title: '404',
 				},
 			},
-			tournamentRoute,
+			...tournamentRoute,
 			accountRoute,
 			adminRoute,
 		],

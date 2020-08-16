@@ -2,7 +2,7 @@
   <div v-if="showModal">
     <div class="modal-backdrop fade show"></div>
     <div class="modal show" tabindex="-1" role="dialog" style="display: block;padding-right: 15px;">
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <slot name="header">

@@ -3,7 +3,7 @@
     overflow: hidden;
     position: relative;
     background-color: #070b28;
-    background-image: url(../img/extras/footerbg.jpg);
+    background-image: url(../../img/extras/footerbg.jpg);
     background-repeat: no-repeat;
     background-position: center 140px;
     background-size: cover; }
@@ -75,7 +75,7 @@
   .footer .subscribe-box {
     margin-bottom: 110px;
     z-index: 99;
-    background: url(../img/footer/newsletter.jpg);
+    background: url(../../img/footer/newsletter.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

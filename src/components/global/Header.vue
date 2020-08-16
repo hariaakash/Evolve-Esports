@@ -63,7 +63,7 @@ export default {
   data: () => ({
     globalMenu: [
       { title: "Home", route: "/home" },
-      { title: "Tournaments", route: "/tournament" },
+      { title: "Tournaments", route: "/tournaments" },
       { title: "Support", route: "/support" },
     ],
   }),
@@ -95,4 +95,4 @@ export default {
 };
 </script>
 
-<style src="@/assets/css/header.css" scoped />
+<style src="@/assets/css/global/header.css" scoped />

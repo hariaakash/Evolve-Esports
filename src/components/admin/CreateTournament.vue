@@ -22,6 +22,12 @@
                     :value="data"
                   >{{ data.toUpperCase() }}</option>
                 </select>
+                <textarea
+                  v-else-if="field.type === 'textarea'"
+                  v-model="data[field.model]"
+                  class="form-control"
+                  :class="classes"
+                />
                 <input
                   v-else
                   :type="field.type"
@@ -33,7 +39,7 @@
                 <div v-if="errors[0]" class="invalid-feedback">{{ field.errorText }}</div>
               </ValidationProvider>
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-12">
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" v-model="data.status" />
                 <label class="form-check-label">Status</label>
@@ -78,6 +84,13 @@ export default {
           type: "text",
           model: "name",
           errorText: "Tournament name is required",
+        },
+        {
+          label: "Description",
+          rules: { required: true },
+          type: "textarea",
+          model: "desc",
+          errorText: "Description is required",
         },
         {
           label: "Game",
@@ -127,6 +140,7 @@ export default {
     },
     data: {
       name: "",
+      desc: "",
       game: "pubgm",
       gameMode: "SQUAD",
       teamSize: 4,
@@ -147,10 +161,14 @@ export default {
         this.$store.commit("ui/TOGGLE_MODAL", this.modals.createTournament);
         this.data = {
           name: "",
+          desc: "",
           game: "pubgm",
+          gameMode: "SQUAD",
           teamSize: 4,
+          teams: 25,
           frequency: "",
           payment: 0,
+          registration: false,
           status: true,
         };
       } catch (err) {

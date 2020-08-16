@@ -1,5 +1,5 @@
 <template>
-  <section class="tournaments py-5">
+  <div class="col-lg-12">
     <h1 v-if="getTournaments.length === 0" class="display-4">Come back tomorrow for new tournaments.</h1>
     <div class="row" v-else>
       <div class="col-md-6 pt-4" v-for="tournament in getTournaments" :key="tournament._id">
@@ -29,7 +29,7 @@
               class="badge badge-primary font-weight-normal ml-1"
             >{{ tournament.dates.created_at | fromNow }}</span>
             <router-link
-              :to="{ name: 'tournament/id', params: { id: tournament._id } }"
+              :to="{ name: 'tournaments/info', params: { id: tournament._id } }"
               class="btn btn-main float-right"
             >
               <font-awesome-icon :icon="['fa', 'gamepad']" class="mr-2" />Join
@@ -38,12 +38,13 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 import { helpersMixin } from "@/mixins";
+
 export default {
   mixins: [helpersMixin],
   async created() {

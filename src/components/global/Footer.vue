@@ -68,4 +68,4 @@ export default {
 };
 </script>
 
-<style src="@/assets/css/footer.css" scoped />
+<style src="@/assets/css/global/footer.css" scoped />

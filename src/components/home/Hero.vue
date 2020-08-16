@@ -39,4 +39,4 @@
   </div>
 </template>
 
-<style src="@/assets/css/hero.css" scoped />
+<style src="@/assets/css/home/hero.css" scoped />

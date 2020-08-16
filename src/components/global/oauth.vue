@@ -18,7 +18,7 @@ export default {
       try {
         const { data: res } = await UserService.oauth(req);
         this.$cookies.set("authkey", res.authKey);
-        this.$router.push({ name: "account" });
+        this.$router.push({ name: "account/profile" });
       } catch ({ response: { status, data } }) {
         this.$swal("Oops", data.message, "error");
         this.$router.push({ name: "home" });
