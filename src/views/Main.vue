@@ -17,7 +17,6 @@ import Auth from "@/components/global/Auth.vue";
 import Preloader from "@/components/global/Preloader.vue";
 
 export default {
-  name: "Main",
   components: {
     Header,
     Breadcrumb,

@@ -16,7 +16,6 @@ import Join from "@/components/home/Join.vue";
 import Awards from "@/components/home/Awards.vue";
 
 export default {
-  name: "Home",
   components: {
     Hero,
     NextMatch,

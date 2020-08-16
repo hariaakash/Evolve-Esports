@@ -1,7 +1,7 @@
 <template>
-  <div class="card bg-tournaments">
-    <div class="card-body">
-      <h3 class="card-title font-weight-light text-center text-uppercase">Tournaments</h3>
+  <div class="card red-border">
+    <div class="card-body bg-main">
+      <h3 class="font-weight-light text-center text-uppercase">Tournaments</h3>
       <Table :tableMeta="tableMeta" class="pt-4">
         <template #header>
           <th scope="col">#</th>
@@ -20,7 +20,11 @@
               :key="'body' + index"
             >{{ tournament[item.field] }}</td>
             <td>
-              <router-link type="button" :to="{ name: 'tournaments' }" class="btn btn-primary">
+              <router-link
+                type="button"
+                :to="{ name: 'tournaments/info', params: { id: tournament._id } }"
+                class="btn btn-primary"
+              >
                 <font-awesome-icon :icon="['fa', 'arrow-right']" />
               </router-link>
             </td>
@@ -60,8 +64,10 @@ export default {
 </script>
 
 <style scoped>
-.bg-tournaments {
-  background: #252f5a;
-  border: 0px;
+.bg-main {
+  background: #0c1330;
+}
+.red-border {
+  border: 1px solid #dc3545;
 }
 </style>

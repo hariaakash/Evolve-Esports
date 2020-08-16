@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <h4 class="title">{{ $route.meta.title }}</h4>
+          <div class="display-4 text-weight-bold pb-2">{{ $route.meta.title }}</div>
           <ul class="breadcrumb-list">
             <li>
               <router-link :to="{ name:'home' }">

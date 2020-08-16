@@ -10,7 +10,6 @@
 import Preloader from "@/components/global/Preloader.vue";
 
 export default {
-  name: "App",
   components: { Preloader },
   mounted() {
     this.$Progress.finish();

@@ -1,18 +1,24 @@
 <template>
   <ul class="nav nav-pills nav-fill">
-    <li class="nav-item">
+    <li class="nav-item" v-for="(item, index) in items" :key="index">
       <router-link
         class="nav-link"
-        :to="{ name: 'tournaments/info', params: { id: $route.params.id } }"
-      >Info</router-link>
-    </li>
-    <li class="nav-item">
-      <router-link
-        class="nav-link"
-        :to="{ name: 'tournaments/rules', params: { id: $route.params.id } }"
-      >Rules</router-link>
+        :to="{ name: item.route, params: { id: $route.params.id } }"
+      >{{ item.title }}</router-link>
     </li>
   </ul>
 </template>
+
+<script>
+export default {
+  data: () => ({
+    items: [
+      { title: "Info", route: "tournaments/info" },
+      { title: "Rules", route: "tournaments/rules" },
+      { title: "Leaderboard", route: "tournaments/leaderboard" },
+    ],
+  }),
+};
+</script>
 
 <style src="@/assets/css/global/nav.css" scoped />
