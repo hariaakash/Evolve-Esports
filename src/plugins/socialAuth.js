@@ -1,10 +1,12 @@
+const redirect_uri = process.env.NODE_ENV === 'production' ? 'https://evolveesports.xyz' : 'http://localhost:8080';
+
 const config = {
     google: {
         url: 'https://accounts.google.com/o/oauth2/v2/auth',
         client_id: '101774514833-1n2r92omu7lms1isgetcmfp51a68euhs.apps.googleusercontent.com',
         response_type: 'code',
         scope: 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile',
-        redirect_uri: 'http://localhost:8080/oauth',
+        redirect_uri: `${redirect_uri}/oauth`,
         access_type: 'offline',
         state: 'google',
         params: () => {
