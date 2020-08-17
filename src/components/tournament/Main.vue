@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-3">
-      <img :src="image" class="img-fluid poster round" alt="Game Poster" />
+      <img :src="getPoster()" class="img-fluid poster round" alt="Game Poster" />
     </div>
     <div class="col-9">
       <Nav />
@@ -11,13 +11,21 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Nav from "@/components/tournament/Nav.vue";
 
 export default {
   components: { Nav },
-  data: () => ({
-    image: require("@/assets/img/games/pubgm/poster.jpg"),
-  }),
+  methods: {
+    getPoster(game) {
+      return `./assets/img/games/${this.getTournaments.game}/poster.jpg`;
+    },
+  },
+  computed: {
+    ...mapGetters({
+      getTournaments: "ui/getTournaments",
+    }),
+  },
 };
 </script>
 

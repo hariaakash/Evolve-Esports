@@ -5,12 +5,12 @@
       <div class="col-md-6 pt-4" v-for="tournament in getTournaments" :key="tournament._id">
         <div class="card bg-tournaments hvr-float">
           <div class="card-header">
-            <img class="game-icon float-left" src="@/assets/img/games/pubgm/icon.png" />
-            <h6 class="card-title text-center">PUBG MOBILE</h6>
+            <img class="game-icon float-left" :src="getImage('icon', tournament.game)" />
+            <h6 class="card-title text-center text-uppercase">{{ tournament.game }}</h6>
           </div>
           <div class="game-images">
-            <img class="game-banner" src="@/assets/img/games/pubgm/banner.jpg" />
-            <img src="@/assets/img/games/pubgm/icon-text.png" class="game-icon-text" />
+            <img class="game-banner" :src="getImage('banner', tournament.game)" />
+            <img :src="getImage('text', tournament.game)" class="game-icon-text" />
             <div class="bg-gradient"></div>
           </div>
           <div class="card-body pb-1">
@@ -50,6 +50,30 @@ export default {
   mixins: [helpersMixin],
   async created() {
     await this.$store.dispatch("ui/fetchTournaments");
+  },
+  data: () => ({
+    assetDir: "./assets/img/games",
+    games: [
+      {
+        name: "pubgm",
+        icon: "icon.png",
+      },
+      {
+        name: "valorant",
+        icon: "icon.jpg",
+      },
+    ],
+  }),
+  methods: {
+    getImage(type, game) {
+      const gameAssets = this.games.find((x) => x.name === game);
+      let asset;
+      if (type === "icon")
+        asset = gameAssets[type] ? gameAssets[type] : "icon.jpg";
+      else if (type === "banner") asset = "banner.jpg";
+      else if (type === "text") asset = "text.png";
+      return `${this.assetDir}/${game}/${asset}`;
+    },
   },
   computed: {
     ...mapGetters({
