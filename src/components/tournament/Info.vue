@@ -17,9 +17,15 @@
 import { mapGetters } from "vuex";
 
 export default {
+  data: () => ({
+    common:
+      "Join the tournament by registering with your team name and in-game names of the team members. Match date and time will be updated in the schedules.",
+  }),
   methods: {
     getDescription() {
-      return this.getTournament.desc.split("\n");
+      const lines = this.getTournament.desc.split("\n");
+      lines.push(this.common);
+      return lines;
     },
   },
   computed: {
