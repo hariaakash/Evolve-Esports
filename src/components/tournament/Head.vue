@@ -75,12 +75,6 @@ import JoinTournament from "@/components/tournament/JoinTournament.vue";
 export default {
   components: { JoinTournament },
   mixins: [helpersMixin],
-  computed: {
-    ...mapGetters({
-      getTournament: "ui/getTournament",
-      getUser: "user/getUser",
-    }),
-  },
   methods: {
     joinTournamentModalDispatcher() {
       if (this.getTournament.registration) {
@@ -93,6 +87,12 @@ export default {
         } else this.$swal("Oops", "Login to join tournament", "warning");
       } else this.$swal("Oops", "Registration closed", "info");
     },
+  },
+  computed: {
+    ...mapGetters({
+      getTournament: "ui/getTournament",
+      getUser: "user/getUser",
+    }),
   },
 };
 </script>

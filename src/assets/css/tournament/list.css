@@ -41,12 +41,13 @@
   z-index: 1;
 }
 
-.game-icon-text {
+.game-text {
   max-height: 40px;
+  max-width: 100px;
   position: absolute;
-  left: 0px;
+  left: 10px;
   z-index: 1;
-  bottom: 5px;
+  bottom: 10px;
 }
 
 .bg-gradient {

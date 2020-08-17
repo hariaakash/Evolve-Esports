@@ -18,12 +18,12 @@ export default {
   components: { Nav },
   methods: {
     getPoster(game) {
-      return `./assets/img/games/${this.getTournaments.game}/poster.jpg`;
+      return `./assets/img/games/${this.getTournament.game}/poster.jpg`;
     },
   },
   computed: {
     ...mapGetters({
-      getTournaments: "ui/getTournaments",
+      getTournament: "ui/getTournament",
     }),
   },
 };

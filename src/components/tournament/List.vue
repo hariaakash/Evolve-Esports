@@ -10,7 +10,7 @@
           </div>
           <div class="game-images">
             <img class="game-banner" :src="getImage('banner', tournament.game)" />
-            <img :src="getImage('text', tournament.game)" class="game-icon-text" />
+            <img :src="getImage('text', tournament.game)" class="game-text" />
             <div class="bg-gradient"></div>
           </div>
           <div class="card-body pb-1">
@@ -53,23 +53,11 @@ export default {
   },
   data: () => ({
     assetDir: "./assets/img/games",
-    games: [
-      {
-        name: "pubgm",
-        icon: "icon.png",
-      },
-      {
-        name: "valorant",
-        icon: "icon.jpg",
-      },
-    ],
   }),
   methods: {
     getImage(type, game) {
-      const gameAssets = this.games.find((x) => x.name === game);
       let asset;
-      if (type === "icon")
-        asset = gameAssets[type] ? gameAssets[type] : "icon.jpg";
+      if (type === "icon") asset = "icon.jpg";
       else if (type === "banner") asset = "banner.jpg";
       else if (type === "text") asset = "text.png";
       return `${this.assetDir}/${game}/${asset}`;
