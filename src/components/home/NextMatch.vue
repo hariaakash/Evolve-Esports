@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="timer-box">
-            <h1 class="text-center">Next match starting in</h1>
+            <h1 class="text-center">Next match starts in</h1>
             <hr />
             <Timer :endTime="time" />
           </div>

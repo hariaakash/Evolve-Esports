@@ -101,7 +101,6 @@ export default {
           teamName: data.teamName,
           members,
         };
-        console.log(reqData);
         await TournamentService.join(reqData);
         this.$swal("Success", "Successfully joined", "info");
         this.$store.commit("ui/TOGGLE_MODAL", this.modals.joinTournament);
@@ -113,7 +112,6 @@ export default {
           this.data[`members${i}`] = "";
         }
       } catch (err) {
-        console.log(err);
         this.$swal(
           "Oops",
           err.response
