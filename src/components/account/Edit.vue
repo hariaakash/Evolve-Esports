@@ -4,7 +4,7 @@
       <form @submit.prevent="handleSubmit(editProfileData)">
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label>Name</label>
+            <label>Full Name</label>
             <ValidationProvider rules="required|min:4" v-slot="{ errors, classes }">
               <input
                 type="text"
@@ -32,7 +32,7 @@
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label>Gamer Tag</label>
+            <label>IGN (In Game Name)</label>
             <ValidationProvider rules="required|min:4" v-slot="{ errors, classes }">
               <input
                 type="text"

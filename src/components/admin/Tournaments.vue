@@ -29,7 +29,7 @@
                 <router-link
                   :to="{ name: 'admin/tournament', params: { id: tournament._id }  }"
                   type="button"
-                  class="btn btn-primary"
+                  class="btn btn-primary btn-sm"
                 >
                   <font-awesome-icon :icon="['fa', 'arrow-right']" />
                 </router-link>

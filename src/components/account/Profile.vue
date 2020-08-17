@@ -6,7 +6,7 @@
           <div class="card-body text-center" v-if="getUser.info">
             <img :src="profile.imgSrc" />
             <h5 class="card-title text-white pt-4">Name: {{ getUser.info.name }}</h5>
-            <h6 class="card-subtitle text-white pt-2">Gamer Tag: {{ getUser.info.gamerTag }}</h6>
+            <h6 class="card-subtitle text-white pt-2">IGN: {{ getUser.info.gamerTag }}</h6>
             <p class="card-text text-white text-justify pt-3">{{ getUser.info.desc }}</p>
           </div>
         </div>

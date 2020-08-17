@@ -5,7 +5,7 @@ import {
     faAngleDoubleLeft, faAngleDoubleRight,
     faArrowRight,
     faChevronRight,
-    faUsers, faHome, faEdit, faTimes, faPlus,
+    faUsers, faHome, faEdit, faTimes, faPlus, faExclamation,
     faCalendarDay, faClock,
     faGamepad, faCog, faSignInAlt,
 } from '@fortawesome/free-solid-svg-icons';
@@ -18,7 +18,7 @@ const list = [
     faAngleDoubleLeft, faAngleDoubleRight,
     faArrowRight,
     faChevronRight,
-    faUsers, faHome, faEdit, faTimes, faPlus,
+    faUsers, faHome, faEdit, faTimes, faPlus, faExclamation,
     faCalendarDay, faClock,
     faGamepad, faCog, faSignInAlt,
 

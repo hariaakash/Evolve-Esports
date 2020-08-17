@@ -24,7 +24,7 @@
                   v-for="(item, index) in tableMeta.fields"
                   :key="'head' + index"
                 >{{ item.name }}</th>
-                <th scope="col">Edit</th>
+                <th scope="col">Options</th>
               </template>
               <template #body="{docs, page, limit}">
                 <tr v-for="(match, index) in docs" :key="'docs' + index">
@@ -35,10 +35,24 @@
                   <td>
                     <button
                       type="button"
-                      class="btn btn-primary"
-                      @click="editMatchDispatcher(match)"
+                      class="btn btn-primary btn-sm mr-2"
+                      @click="nextMatch(match._id)"
+                    >
+                      <font-awesome-icon :icon="['fa', 'exclamation']" />
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-sm mr-2"
+                      @click="matchDispatcher('edit', match)"
                     >
                       <font-awesome-icon :icon="['fa', 'edit']" />
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-sm"
+                      @click="matchDispatcher('end', match)"
+                    >
+                      <font-awesome-icon :icon="['fa', 'times']" />
                     </button>
                   </td>
                 </tr>
@@ -48,9 +62,10 @@
         </div>
       </div>
     </div>
+    <EditTournament />
     <CreateMatch />
     <EditMatch />
-    <EditTournament />
+    <EndMatch />
   </section>
 </template>
 
@@ -58,10 +73,11 @@
 import { mapGetters } from "vuex";
 import CreateMatch from "./CreateMatch.vue";
 import EditMatch from "./EditMatch.vue";
+import EndMatch from "./EndMatch.vue";
 import EditTournament from "./EditTournament.vue";
 import Table from "@/components/global/Table.vue";
-
 import { helpersMixin } from "@/mixins";
+import TournamentService from "@/api/tournament.api";
 
 export default {
   async created() {
@@ -77,13 +93,14 @@ export default {
       this.$router.push({ name: "admin/tournaments" });
     }
   },
-  components: { Table, CreateMatch, EditMatch, EditTournament },
+  components: { Table, CreateMatch, EditMatch, EditTournament, EndMatch },
   mixins: [helpersMixin],
   data() {
     return {
       modals: {
         createMatch: "admin/createMatch",
         editMatch: "admin/editMatch",
+        endMatch: "admin/endMatch",
         editTournament: "admin/editTournament",
       },
       tableMeta: {
@@ -107,9 +124,26 @@ export default {
     }),
   },
   methods: {
-    editMatchDispatcher(match) {
+    matchDispatcher(type, match) {
       this.$store.commit("admin/SET_MATCH", match);
-      this.toggleModal(this.modals.editMatch);
+      this.toggleModal(this.modals[`${type}Match`]);
+    },
+    async nextMatch(matchId) {
+      try {
+        await TournamentService.nextMatch({
+          id: this.getTournament._id,
+          matchId,
+        });
+        this.$swal("Success", "Successfully updated", "info");
+      } catch (err) {
+        this.$swal(
+          "Oops",
+          err.response
+            ? err.response.data.message
+            : "Something wrong, try again",
+          "error"
+        );
+      }
     },
   },
 };
