@@ -7,6 +7,9 @@ class MatchService extends MainService {
     tournamentMain(data) {
         return this.http.post(`${this.entity}/tournament/main`, data);
     }
+    tournamentScore(data) {
+        return this.http.post(`${this.entity}/tournament/score`, data);
+    }
     matchNext() {
         return this.http.post(`${this.entity}/match/next`);
     }

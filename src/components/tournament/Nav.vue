@@ -1,5 +1,5 @@
 <template>
-  <ul class="nav nav-pills nav-fill pt-0">
+  <ul class="nav nav-pills nav-justified pt-0">
     <li class="nav-item" v-for="(item, index) in items" :key="index">
       <router-link
         class="nav-link"
@@ -15,6 +15,7 @@ export default {
     items: [
       { title: "Info", route: "tournaments/info" },
       { title: "Leaderboard", route: "tournaments/leaderboard" },
+      { title: "Matches", route: "tournaments/matches" },
       { title: "Rules", route: "tournaments/rules" },
     ],
   }),

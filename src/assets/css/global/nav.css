@@ -1,8 +1,6 @@
 ul .nav-item .nav-link {
-  line-height: 50px;
-  padding: 0px 50px;
+  margin: 5px 10px;
   border-radius: 50px;
-  font-size: 18px;
   text-transform: uppercase;
   background: #252f5a;
 }
@@ -17,11 +15,7 @@ ul .nav-item .nav-link.active {
 }
 
 .nav li a {
-  margin-bottom: 0px;
-  font-size: 28px;
-  line-height: 38px;
   font-weight: 700;
-  margin: 0px 10px;
   text-transform: uppercase;
   color: #fff;
 }

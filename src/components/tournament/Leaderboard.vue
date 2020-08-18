@@ -11,12 +11,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(group, index) in getTournament.groups" :key="index">
+        <tr v-for="(group, index) in getScore" :key="index">
           <th scope="row">{{ index+1 }}</th>
           <td>{{ group.teamName }}</td>
-          <td>{{ 0 }}</td>
-          <td>{{ 0 }}</td>
-          <td>{{ 0 }}</td>
+          <td>{{ group.matches }}</td>
+          <td>{{ group.kills }}</td>
+          <td>{{ group.kills }}</td>
         </tr>
       </tbody>
     </table>
@@ -27,9 +27,16 @@
 import { mapGetters } from "vuex";
 
 export default {
+  async created() {
+    try {
+      await this.$store.dispatch("ui/fetchScore");
+    } catch (err) {
+      this.$swal("Oops", "Fetching score failed, try again", "error");
+    }
+  },
   computed: {
     ...mapGetters({
-      getTournament: "ui/getTournament",
+      getScore: "ui/getScore",
     }),
   },
 };

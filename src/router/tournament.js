@@ -24,19 +24,27 @@ export default [
                         },
                     },
                     {
-                        path: 'rules',
-                        name: 'tournaments/rules',
-                        component: () => import(/* webpackChunkName: "tournaments-main-rules" */ '@/components/tournament/Rules.vue'),
-                        meta: {
-                            title: 'Tournament Rules',
-                        },
-                    },
-                    {
                         path: 'leaderboard',
                         name: 'tournaments/leaderboard',
                         component: () => import(/* webpackChunkName: "tournaments-main-leaderboard" */ '@/components/tournament/Leaderboard.vue'),
                         meta: {
                             title: 'Tournament Leaderboard',
+                        },
+                    },
+                    {
+                        path: 'matches',
+                        name: 'tournaments/matches',
+                        component: () => import(/* webpackChunkName: "tournaments-main-matches" */ '@/components/tournament/Matches.vue'),
+                        meta: {
+                            title: 'Tournament Matches',
+                        },
+                    },
+                    {
+                        path: 'rules',
+                        name: 'tournaments/rules',
+                        component: () => import(/* webpackChunkName: "tournaments-main-rules" */ '@/components/tournament/Rules.vue'),
+                        meta: {
+                            title: 'Tournament Rules',
                         },
                     },
                 ],

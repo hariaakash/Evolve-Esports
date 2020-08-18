@@ -10,7 +10,9 @@ export default {
         tables: [],
         tournaments: [],
         tournament: null,
+        matches: null,
         nextMatch: null,
+        score: null,
     },
     mutations: {
         SET_INIT(state) {
@@ -38,9 +40,15 @@ export default {
         SET_TOURNAMENT(state, data) {
             state.tournament = data;
         },
+        SET_MATCHES(state, data) {
+            state.matches = data;
+        },
         SET_NEXT_MATCH(state, data) {
             state.nextMatch = data;
-        }
+        },
+        SET_SCORE(state, data) {
+            state.score = data;
+        },
     },
     actions: {
         // Tables
@@ -107,6 +115,17 @@ export default {
             const { data } = await GlobalService.public.tournamentMain({ id });
             ctx.commit('SET_TOURNAMENT', data);
         },
+        async fetchMatches(ctx) {
+            const { data } = await GlobalService.match.main({
+                id: 'list',
+                filters: [{ key: 'tournament', data: ctx.state.tournament._id, type: 'match' }]
+            });
+            ctx.commit('SET_MATCHES', data);
+        },
+        async fetchScore(ctx) {
+            const { data } = await GlobalService.public.tournamentScore({ id: ctx.state.tournament._id });
+            ctx.commit('SET_SCORE', data);
+        },
         async fetchNextMatch(ctx) {
             const { data } = await GlobalService.public.matchNext();
             ctx.commit('SET_NEXT_MATCH', data);
@@ -121,6 +140,8 @@ export default {
         },
         getTournaments: (state) => state.tournaments,
         getTournament: (state) => state.tournament,
+        getMatches: (state) => state.matches,
         getNextMatch: (state) => state.nextMatch,
+        getScore: (state) => state.score,
     },
 }

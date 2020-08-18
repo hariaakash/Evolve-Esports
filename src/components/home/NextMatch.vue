@@ -15,7 +15,7 @@
           </router-link>
           <router-link v-else to="tournaments">
             <div class="timer-box">
-              <h1 class="text-center">Check out Tournaments</h1>
+              <h1 class="text-center">Browse Tournaments</h1>
               <div class="row">
                 <div class="col pt-3 text-center" v-for="(game, index) in games" :key="index">
                   <img
