@@ -31,17 +31,10 @@
                 <router-link
                   :to="{ name: 'admin/tournament', params: { id: tournament._id }  }"
                   type="button"
-                  class="btn btn-primary btn-sm mr-2"
+                  class="btn btn-primary btn-sm"
                 >
                   <font-awesome-icon :icon="['fa', 'arrow-right']" />
                 </router-link>
-                <button
-                  type="button"
-                  class="btn btn-danger btn-sm"
-                  @click="deleteTournament(tournament._id)"
-                >
-                  <font-awesome-icon :icon="['fa', 'times']" />
-                </button>
               </td>
             </tr>
           </template>
@@ -79,25 +72,6 @@ export default {
       ],
     },
   }),
-  methods: {
-    async deleteTournament(id) {
-      try {
-        await TournamentService.remove({ id });
-        this.$swal("Success", "Successfully removed", "info");
-        this.$store.dispatch("ui/refetchPage", {
-          id: "admin/tournaments",
-        });
-      } catch (err) {
-        this.$swal(
-          "Oops",
-          err.response
-            ? err.response.data.message
-            : "Something wrong, try again",
-          "error"
-        );
-      }
-    },
-  },
 };
 </script>
 

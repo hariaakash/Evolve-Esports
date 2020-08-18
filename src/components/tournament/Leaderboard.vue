@@ -16,7 +16,7 @@
           <td>{{ group.teamName }}</td>
           <td>{{ group.matches }}</td>
           <td>{{ group.kills }}</td>
-          <td>{{ group.kills }}</td>
+          <td>{{ group.points }}</td>
         </tr>
       </tbody>
     </table>

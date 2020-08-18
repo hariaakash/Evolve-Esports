@@ -53,6 +53,7 @@
         </form>
       </template>
       <template v-slot:footer>
+        <button class="btn btn-danger mr-auto" @click="removeTournament">Delete</button>
         <button
           type="submit"
           class="btn btn-primary"
@@ -161,11 +162,27 @@ export default {
       try {
         const data = cloneDeep(this.data);
         await TournamentService.edit(data);
-        this.$swal("Success", "Successfully updated", "info");
         this.$store.commit("ui/TOGGLE_MODAL", this.modals.editTournament);
+        this.$swal("Success", "Successfully updated", "info");
         await this.$store.dispatch("admin/fetchTournament", {
           id: this.$route.params.id,
         });
+      } catch (err) {
+        this.$swal(
+          "Oops",
+          err.response
+            ? err.response.data.message
+            : "Something wrong, try again",
+          "error"
+        );
+      }
+    },
+    async removeTournament() {
+      try {
+        await TournamentService.remove({ id: this.getTournament._id });
+        this.$store.commit("ui/TOGGLE_MODAL", this.modals.editTournament);
+        this.$swal("Success", "Successfully removed", "info");
+        this.$router.push({ name: "admin/tournaments" });
       } catch (err) {
         this.$swal(
           "Oops",
