@@ -1,5 +1,5 @@
 <template>
-  <div class="table-responsive">
+  <div class="table-responsive" v-if="getScore.length">
     <table class="table table-borderless text-white px-4">
       <thead class="py-1 head">
         <tr>
@@ -21,6 +21,7 @@
       </tbody>
     </table>
   </div>
+  <div v-else class="h5 text-center">Come back later</div>
 </template>
 
 <script>
@@ -31,7 +32,7 @@ export default {
     try {
       await this.$store.dispatch("ui/fetchScore");
     } catch (err) {
-      this.$swal("Oops", "Fetching score failed, try again", "error");
+      // this.$swal("Oops", "Fetching score failed, try again", "error");
     }
   },
   computed: {
