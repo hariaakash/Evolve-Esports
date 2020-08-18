@@ -56,6 +56,7 @@ export default {
         fields: [
           { name: "Name", field: "name" },
           { name: "Game", field: "game" },
+          { name: "Mode", field: "gameMode" },
         ],
       },
     };

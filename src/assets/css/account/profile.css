@@ -1,13 +1,10 @@
 .bg-main {
   background: #f9314b;
 }
-.profile-info {
-  padding: 50px 100px;
-}
 .profile {
   margin: auto;
 }
-.profile-info img {
+.round {
   border-radius: 100%;
   width: 60%;
 }

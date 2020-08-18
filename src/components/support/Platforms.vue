@@ -2,7 +2,7 @@
   <div class="platforms-list">
     <div class="container">
       <div class="row">
-        <div class="col-md-4" v-for="(platform, index) in platforms" :key="index">
+        <div class="col-lg-4" v-for="(platform, index) in platforms" :key="index">
           <div class="single-box">
             <div class="img">
               <img :src="platform.imgSrc" alt />

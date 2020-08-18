@@ -2,11 +2,11 @@
   <section class="question">
     <div class="container">
       <div class="row">
-        <div class="col-lg-6">
-          <img src="@/assets/img/support/question-left.png" alt />
+        <div class="col-md-5 order-md-last text-md-right text-center">
+          <img class="img-fluid" src="@/assets/img/support/question-left.png" />
         </div>
-        <div class="col-lg-6">
-          <div class="section-heading">
+        <div class="col-md-7 order-md-first pt-5">
+          <div class="section-heading text-md-left text-sm-center">
             <h5 class="subtitle">If you have any</h5>
             <h2 class="title">questions</h2>
             <p
