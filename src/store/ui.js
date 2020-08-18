@@ -10,6 +10,7 @@ export default {
         tables: [],
         tournaments: [],
         tournament: null,
+        nextMatch: null,
     },
     mutations: {
         SET_INIT(state) {
@@ -36,6 +37,9 @@ export default {
         },
         SET_TOURNAMENT(state, data) {
             state.tournament = data;
+        },
+        SET_NEXT_MATCH(state, data) {
+            state.nextMatch = data;
         }
     },
     actions: {
@@ -103,6 +107,10 @@ export default {
             const { data } = await GlobalService.public.tournamentMain({ id });
             ctx.commit('SET_TOURNAMENT', data);
         },
+        async fetchNextMatch(ctx) {
+            const { data } = await GlobalService.public.matchNext();
+            ctx.commit('SET_NEXT_MATCH', data);
+        },
     },
     getters: {
         modalById: (state) => (id) => {
@@ -113,5 +121,6 @@ export default {
         },
         getTournaments: (state) => state.tournaments,
         getTournament: (state) => state.tournament,
+        getNextMatch: (state) => state.nextMatch,
     },
 }

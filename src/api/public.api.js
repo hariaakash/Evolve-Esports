@@ -7,6 +7,9 @@ class MatchService extends MainService {
     tournamentMain(data) {
         return this.http.post(`${this.entity}/tournament/main`, data);
     }
+    matchNext() {
+        return this.http.post(`${this.entity}/match/next`);
+    }
 }
 
 const matchService = new MatchService;

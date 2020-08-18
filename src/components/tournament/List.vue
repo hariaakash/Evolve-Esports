@@ -1,5 +1,5 @@
 <template>
-  <div class="col-lg-12">
+  <div>
     <h1 v-if="getTournaments.length === 0" class="display-4">Come back tomorrow for new tournaments.</h1>
     <div class="row" v-else>
       <div class="col-md-6 pt-4" v-for="tournament in getTournaments" :key="tournament._id">

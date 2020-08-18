@@ -1,9 +1,9 @@
 <template>
   <div class="row">
-    <div class="col-3">
-      <img :src="getPoster()" class="img-fluid poster round" alt="Game Poster" />
+    <div class="col-md-3 col-sm-12 pt-4">
+      <img :src="getPoster()" class="img-fluid round" alt="Game Poster" />
     </div>
-    <div class="col-9">
+    <div class="col-md-9 col-sm-12 pt-4">
       <Nav />
       <router-view />
     </div>
@@ -32,6 +32,7 @@ export default {
 <style scoped>
 .round {
   border-radius: 8px;
-  /* border: 1px solid #4f64de; */
+  /* border: 2px solid #4f64de; */
+  /* max-height: 400px; */
 }
 </style>

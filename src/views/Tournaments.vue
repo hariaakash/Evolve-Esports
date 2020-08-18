@@ -2,7 +2,9 @@
   <section class="tournaments pt-2 pb-5">
     <div class="container">
       <div class="row">
-        <router-view />
+        <div class="col-12">
+          <router-view />
+        </div>
       </div>
     </div>
   </section>

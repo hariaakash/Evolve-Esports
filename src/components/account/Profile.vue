@@ -1,17 +1,17 @@
 <template>
   <section class="profile-info">
     <div class="row">
-      <div class="col-4">
+      <div class="col-md-6 col-sm-12">
         <div class="card bg-main">
           <div class="card-body text-center" v-if="getUser.info">
             <img :src="profile.imgSrc" />
             <h5 class="card-title text-white pt-4">Name: {{ getUser.info.name }}</h5>
             <h6 class="card-subtitle text-white pt-2">IGN: {{ getUser.info.gamerTag }}</h6>
-            <p class="card-text text-white text-justify pt-3">{{ getUser.info.desc }}</p>
+            <p class="card-text text-white text-center pt-3">{{ getUser.info.desc }}</p>
           </div>
         </div>
       </div>
-      <div class="col-8">
+      <div class="col-md-6 col-sm-12 pt-4">
         <div class="card">
           <div class="card-body text-center">
             <h5 class="card-title text-dark">Social Accounts</h5>
