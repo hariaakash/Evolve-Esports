@@ -10,6 +10,9 @@ class TournamentService extends MainService {
     nextMatch(data) {
         return this.http.post(`tournament/nextMatch`, data);
     }
+    remove(data) {
+        return this.http.post(`admin/tournament/remove`, data);
+    }
 }
 
 const tournamentService = new TournamentService;

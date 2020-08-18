@@ -21,18 +21,27 @@
           <template #body="{docs, page, limit}">
             <tr v-for="(tournament, index) in docs" :key="'docs' + index">
               <td>{{ ((page-1) * limit) + index+1 }}</td>
-              <td
-                v-for="(item, index) in tableMeta.fields"
-                :key="'body' + index"
-              >{{ tournament[item.field] }}</td>
+              <td>{{ tournament.name }}</td>
+              <td>{{ tournament.game }}</td>
+              <td>{{ tournament.gameMode }}</td>
+              <td>{{ tournament.teamSize }}</td>
+              <td>{{ tournament.activeTeams + '/' + tournament.teams }}</td>
+              <td>{{ tournament.status }}</td>
               <td>
                 <router-link
                   :to="{ name: 'admin/tournament', params: { id: tournament._id }  }"
                   type="button"
-                  class="btn btn-primary btn-sm"
+                  class="btn btn-primary btn-sm mr-2"
                 >
                   <font-awesome-icon :icon="['fa', 'arrow-right']" />
                 </router-link>
+                <button
+                  type="button"
+                  class="btn btn-danger btn-sm"
+                  @click="deleteTournament(tournament._id)"
+                >
+                  <font-awesome-icon :icon="['fa', 'times']" />
+                </button>
               </td>
             </tr>
           </template>
@@ -46,8 +55,8 @@
 <script>
 import CreateTournament from "./CreateTournament.vue";
 import Table from "@/components/global/Table.vue";
-
 import { helpersMixin } from "@/mixins";
+import TournamentService from "@/api/tournament.api";
 
 export default {
   components: { Table, CreateTournament },
@@ -70,6 +79,25 @@ export default {
       ],
     },
   }),
+  methods: {
+    async deleteTournament(id) {
+      try {
+        await TournamentService.remove({ id });
+        this.$swal("Success", "Successfully removed", "info");
+        this.$store.dispatch("ui/refetchPage", {
+          id: "admin/tournaments",
+        });
+      } catch (err) {
+        this.$swal(
+          "Oops",
+          err.response
+            ? err.response.data.message
+            : "Something wrong, try again",
+          "error"
+        );
+      }
+    },
+  },
 };
 </script>
 

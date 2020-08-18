@@ -33,6 +33,10 @@ export default {
         SET_TABLE(state, data) {
             state.tables.push(data);
         },
+        DEL_TABLE(state, { id }) {
+            const index = state.tables.findIndex((x) => x.id === id);
+            state.tables.splice(index, 1);
+        },
         // Custom
         SET_TOURNAMENTS(state, data) {
             state.tournaments = data;

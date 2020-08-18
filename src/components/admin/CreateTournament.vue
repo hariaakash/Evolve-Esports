@@ -145,7 +145,7 @@ export default {
       gameMode: "SQUAD",
       teamSize: 4,
       teams: 25,
-      frequency: "",
+      frequency: "manual",
       payment: 0,
       registration: false,
       status: true,

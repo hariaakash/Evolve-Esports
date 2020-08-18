@@ -88,6 +88,9 @@ export default {
       return this.tableById(this.tableMeta.id);
     },
   },
+  beforeDestroy() {
+    this.$store.commit("ui/DEL_TABLE", { id: this.tableMeta.id });
+  },
 };
 </script>
 

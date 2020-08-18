@@ -58,11 +58,11 @@ export default {
     year: new Date().getFullYear(),
     socialList: [
       { icon: "discord" },
-      { icon: "whatsapp" },
+      // { icon: "whatsapp" },
       { icon: "instagram" },
-      { icon: "facebook-f" },
-      { icon: "youtube" },
-      { icon: "twitch" },
+      // { icon: "facebook-f" },
+      // { icon: "youtube" },
+      // { icon: "twitch" },
     ],
   }),
 };
