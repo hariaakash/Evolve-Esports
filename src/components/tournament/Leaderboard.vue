@@ -1,5 +1,5 @@
 <template>
-  <div class="table-responsive" v-if="getScore.length">
+  <div class="table-responsive" v-if="getScore && getScore.length">
     <table class="table table-borderless text-white px-4">
       <thead class="py-1 head">
         <tr>
