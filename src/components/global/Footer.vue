@@ -15,7 +15,9 @@
                 <div class="col-12 text-center">
                   <ul class="list-inline">
                     <li v-for="(item, index) in socialList" :key="index" class="list-inline-item">
-                      <font-awesome-icon :icon="['fab', item.icon]" size="2x" />
+                      <a :href="item.link" target="_blank">
+                        <font-awesome-icon :icon="['fab', item.icon]" size="2x" />
+                      </a>
                     </li>
                   </ul>
                 </div>
@@ -35,7 +37,7 @@
           </div>
           <div class="col-lg-7">
             <ul class="copright-area-links">
-              <li>
+              <!-- <li>
                 <a href="#">Terms Of Use</a>
               </li>
               <li>
@@ -43,7 +45,7 @@
               </li>
               <li>
                 <a href="#">Support</a>
-              </li>
+              </li>-->
             </ul>
           </div>
         </div>
@@ -57,12 +59,15 @@ export default {
   data: () => ({
     year: new Date().getFullYear(),
     socialList: [
-      { icon: "discord" },
-      // { icon: "whatsapp" },
-      { icon: "instagram" },
-      // { icon: "facebook-f" },
-      // { icon: "youtube" },
-      // { icon: "twitch" },
+      { icon: "discord", link: "https://discord.gg/VDC88dc" },
+      {
+        icon: "whatsapp",
+        link: "https://chat.whatsapp.com/CvVPOAfTk077tYJE6yUwUZ",
+      },
+      {
+        icon: "instagram",
+        link: "https://www.instagram.com/evolveesports.xyz/",
+      },
     ],
   }),
 };

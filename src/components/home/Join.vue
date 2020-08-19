@@ -10,7 +10,7 @@
             <h5 class="subtitle">Everyday lots of winners</h5>
             <h2 class="title">be one of them</h2>
             <p class="text">Get started in less than 5 min.</p>
-            <a href="#" class="mybtn1">Play Now!</a>
+            <router-link :to="{ name: 'tournaments' }" class="mybtn1">Play Now!</router-link>
           </div>
         </div>
       </div>

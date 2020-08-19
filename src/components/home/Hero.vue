@@ -8,7 +8,7 @@
               <h5 class="subtitle">EVOLVE ESPORTS</h5>
               <h1 class="title">PLAY To WIN</h1>
               <div class="links">
-                <a href="#" class="mybtn1">Get Started Now!</a>
+                <router-link :to="{ name: 'tournaments' }" class="mybtn1">Get Started Now!</router-link>
               </div>
             </div>
           </div>

@@ -64,7 +64,7 @@ export default {
     globalMenu: [
       { title: "Home", route: "/home" },
       { title: "Tournaments", route: "/tournaments" },
-      { title: "Support", route: "/support" },
+      // { title: "Support", route: "/support" },
     ],
   }),
   methods: {
