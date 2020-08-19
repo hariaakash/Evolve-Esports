@@ -10,7 +10,8 @@ import {
     faGamepad, faCog, faSignInAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import {
-    faDiscord, faWhatsapp, faInstagram, faGoogle,
+    faDiscord, faWhatsapp, faInstagram,
+    faFacebookF, faGoogle,
 } from '@fortawesome/free-brands-svg-icons';
 
 const list = [
@@ -21,7 +22,8 @@ const list = [
     faCalendarDay, faClock,
     faGamepad, faCog, faSignInAlt,
 
-    faDiscord, faWhatsapp, faInstagram, faGoogle,
+    faDiscord, faWhatsapp, faInstagram,
+    faFacebookF, faGoogle,
 ];
 
 library.add(...list);
