@@ -11,20 +11,36 @@ export default {
         {
             path: 'tournaments/list',
             name: 'admin/tournaments',
-            component: () => import(/* webpackChunkName: "admin-tournaments" */ '@/components/admin/Tournaments.vue'),
+            component: () => import(/* webpackChunkName: "admin-tournaments" */ '@/views/admin/Tournaments.vue'),
             meta: {
                 title: 'Tournaments',
                 requiresAuth: true,
             },
         },
         {
-            path: 'tournament/:id',
-            name: 'admin/tournament',
-            component: () => import(/* webpackChunkName: "admin-tournament" */ '@/components/admin/Tournament.vue'),
+            path: 'tournaments/:id',
+            component: () => import(/* webpackChunkName: "admin-tournaments-main" */ '@/views/admin/Tournament.vue'),
             meta: {
-                title: 'Tournament',
                 requiresAuth: true,
             },
+            children: [
+                {
+                    path: 'matches',
+                    name: 'admin/tournaments/matches',
+                    component: () => import(/* webpackChunkName: "admin-tournaments-main-matches" */ '@/components/admin/Matches.vue'),
+                    meta: {
+                        title: 'Tournament Matches',
+                    },
+                },
+                {
+                    path: 'teams',
+                    name: 'admin/tournaments/teams',
+                    component: () => import(/* webpackChunkName: "admin-tournaments-main-teams" */ '@/components/admin/Teams.vue'),
+                    meta: {
+                        title: 'Tournament Teams',
+                    },
+                },
+            ],
         },
         {
             path: 'users',

@@ -29,7 +29,7 @@
               <td>{{ tournament.status }}</td>
               <td>
                 <router-link
-                  :to="{ name: 'admin/tournament', params: { id: tournament._id }  }"
+                  :to="{ name: 'admin/tournaments/matches', params: { id: tournament._id }  }"
                   type="button"
                   class="btn btn-primary btn-sm"
                 >
@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import CreateTournament from "./CreateTournament.vue";
+import CreateTournament from "@/components/admin/CreateTournament.vue";
 import Table from "@/components/global/Table.vue";
 import { helpersMixin } from "@/mixins";
 import TournamentService from "@/api/tournament.api";

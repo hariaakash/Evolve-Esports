@@ -4,7 +4,7 @@
       <thead class="py-1 head">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">COMPETITOR</th>
+          <th scope="col">TEAM</th>
           <th scope="col">MATCHES</th>
           <th scope="col">KILLS</th>
           <th scope="col">POINTS</th>
