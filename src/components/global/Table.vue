@@ -71,10 +71,10 @@ export default {
       await this.$store.dispatch("ui/nextPage", { id: this.tableMeta.id });
     },
     async prevPage() {
-      await this.$store.dispatch("ui/nextPage", { id: this.tableMeta.id });
+      await this.$store.dispatch("ui/prevPage", { id: this.tableMeta.id });
     },
     async selectedPage(selectedPage) {
-      await this.$store.dispatch("ui/nextPage", {
+      await this.$store.dispatch("ui/selectedPage", {
         id: this.tableMeta.id,
         selectedPage,
       });
