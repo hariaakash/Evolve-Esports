@@ -13,6 +13,12 @@ class TournamentService extends MainService {
     remove(data) {
         return this.http.post(`admin/tournament/remove`, data);
     }
+    toggleStatus(data) {
+        return this.http.post(`admin/tournament/team/toggleStatus`, data);
+    }
+    kick(data) {
+        return this.http.post(`admin/tournament/team/kick`, data);
+    }
 }
 
 const tournamentService = new TournamentService;

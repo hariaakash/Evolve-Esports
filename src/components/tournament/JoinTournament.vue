@@ -107,6 +107,11 @@ export default {
         await this.$store.dispatch("ui/fetchTournament", {
           id: this.$route.params.id,
         });
+        await this.$store.dispatch("user/authUser");
+        this.$router.push({
+          name: "tournaments/info",
+          params: { id: this.$route.params.id },
+        });
         this.data = { teamName: "" };
         for (let i = 0; i < this.getTournament.teamSize; i++) {
           this.data[`members${i}`] = "";

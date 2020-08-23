@@ -17,13 +17,11 @@ import { mapGetters } from "vuex";
 import Nav from "@/components/account/Nav.vue";
 
 export default {
+  components: { Nav },
   created() {
     if (!this.profileSet && this.$route.name !== "account/edit") {
       this.$router.push({ name: "account/edit" });
     }
-  },
-  components: {
-    Nav,
   },
   computed: {
     ...mapGetters({
