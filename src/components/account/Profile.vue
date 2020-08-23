@@ -4,7 +4,7 @@
       <div class="col-md-4 pt-2">
         <div class="card bg-main">
           <div class="card-body text-center" v-if="getUser.info">
-            <img class="img-fluid round" :src="profile.imgSrc" />
+            <img class="img-fluid round" src="@/assets/img/extras/profile.jpg" />
             <h5 class="card-title text-white pt-4">Name: {{ getUser.info.name }}</h5>
             <h6 class="card-subtitle text-white pt-2">IGN: {{ getUser.info.gamerTag }}</h6>
             <p class="card-text text-white text-center pt-3">{{ getUser.info.desc }}</p>
@@ -58,10 +58,6 @@ export default {
       { name: "google", icon: "google", class: "google" },
       { name: "facebook", icon: "facebook-f", class: "facebook" },
     ],
-    profile: {
-      imgSrc:
-        "https://www.apklat.com/wp-content/uploads/2019/01/Database-Tracker-for-PUBG-Download-Latest-Version-APK.png",
-    },
   }),
   computed: {
     ...mapGetters({

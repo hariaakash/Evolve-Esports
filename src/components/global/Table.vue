@@ -28,7 +28,7 @@
         </tbody>
       </table>
     </div>
-    <nav v-if="tableData.page > 1" class="pt-4">
+    <nav v-if="tableData.totalPages > 1" class="pt-4">
       <ul class="pagination justify-content-center">
         <li class="page-item" :class="{ 'disabled': tableData.page === 1 }">
           <button class="page-link" @click="prevPage">Previous</button>

@@ -30,7 +30,6 @@ export default {
         },
         async fetchScore(ctx, { id }) {
             const { data } = await GlobalService.public.tournamentScore({ id });
-            console.log(data);
             ctx.commit('SET_SCORE', data);
         },
     },
