@@ -11,7 +11,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import {
     faDiscord, faWhatsapp, faInstagram,
-    faFacebookF, faGoogle,
+    faFacebookF, faGoogle, faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
 
 const list = [
@@ -23,7 +23,7 @@ const list = [
     faGamepad, faCog, faSignInAlt,
 
     faDiscord, faWhatsapp, faInstagram,
-    faFacebookF, faGoogle,
+    faFacebookF, faGoogle, faYoutube,
 ];
 
 library.add(...list);

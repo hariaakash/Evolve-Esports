@@ -68,6 +68,10 @@ export default {
         icon: "instagram",
         link: "https://www.instagram.com/evolveesports.xyz/",
       },
+      {
+        icon: "youtube",
+        link: "https://www.youtube.com/channel/UCu6zOuLv4wfdiLy7Ovqo0Mw",
+      },
     ],
   }),
 };
