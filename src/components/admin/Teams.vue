@@ -47,6 +47,9 @@
         </table>
       </div>
     </div>
+    <div class="card-footer">
+      <span v-if="getScore">{{getScore.map((x) => x.user.info.phone).join(', ')}}</span>
+    </div>
   </div>
 </template>
 
