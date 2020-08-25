@@ -13,6 +13,7 @@ export default [
             },
             {
                 path: ':id',
+                redirect: { name: 'tournaments/info' },
                 component: () => import(/* webpackChunkName: "tournaments-main" */ '@/views/Tournament.vue'),
                 children: [
                     {
