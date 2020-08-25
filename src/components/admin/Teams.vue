@@ -1,5 +1,8 @@
 <template>
   <div class="card bg-main">
+    <div class="card-header" v-if="getScore">
+      <span>{{ getScore.map((x) => x.user.info ? x.user.info.phone : x.user.email).join(', ') }}</span>
+    </div>
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-hover">
@@ -46,9 +49,6 @@
           </tbody>
         </table>
       </div>
-    </div>
-    <div class="card-footer">
-      <span v-if="getScore">{{getScore.map((x) => x.user.info.phone).join(', ')}}</span>
     </div>
   </div>
 </template>
