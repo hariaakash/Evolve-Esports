@@ -12,7 +12,10 @@ const guard = async (to, from, next) => {
     // route guard
     const requiresAuth = to.matched.some(x => x.meta.requiresAuth)
     if (requiresAuth && !$store.state.user.auth) next('/');
-    else next();
+    else {
+        if (!$store.state.user.info && to.name !== "account/edit") next({ name: "account/edit" });
+        else next();
+    }
 };
 
 export default guard;

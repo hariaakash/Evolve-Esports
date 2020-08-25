@@ -27,6 +27,7 @@
                   v-model="data[field.model]"
                   class="form-control"
                   :class="classes"
+                  :rows="data[field.model].split('\n').length"
                 />
                 <input
                   v-else

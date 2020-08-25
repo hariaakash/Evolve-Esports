@@ -79,11 +79,16 @@ export default {
     joinTournamentModalDispatcher() {
       if (this.getTournament.registration) {
         if (this.getUser.auth) {
-          if (
-            this.getUser.tournaments.some((x) => x === this.$route.params.id)
-          ) {
-            this.$swal("Info", "Already registered", "info");
-          } else this.toggleModal("tournament/joinTournament");
+          if (this.getUser.info) {
+            if (
+              this.getUser.tournaments.some((x) => x === this.$route.params.id)
+            ) {
+              this.$swal("Info", "Already registered", "info");
+            } else this.toggleModal("tournament/joinTournament");
+          } else {
+            this.$router.push({ name: "account/edit" });
+            this.$swal("Oops", "Set Profile information to continue", "info");
+          }
         } else this.$swal("Oops", "Login to join tournament", "warning");
       } else this.$swal("Oops", "Registration closed", "info");
     },
