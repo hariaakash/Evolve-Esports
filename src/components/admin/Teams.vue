@@ -25,7 +25,7 @@
               <td>{{ group.kills }}</td>
               <td>{{ group.points }}</td>
               <td class="font-weight-normal text-lowercase">{{ group.user.email }}</td>
-              <td class="font-weight-normal">{{ group.members.join('\n') }}</td>
+              <td class="font-weight-normal" v-html="group.members.join('<br>')"></td>
               <td>
                 <button
                   type="button"

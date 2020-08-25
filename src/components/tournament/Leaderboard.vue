@@ -8,15 +8,20 @@
           <th scope="col">MATCHES</th>
           <th scope="col">KILLS</th>
           <th scope="col">POINTS</th>
+          <th scope="col">Members</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(group, index) in getScore" :key="index">
           <th scope="row">{{ index+1 }}</th>
           <td>{{ group.teamName }}</td>
-          <td>{{ group.matches }}</td>
-          <td>{{ group.kills }}</td>
-          <td>{{ group.points }}</td>
+          <td colspan="3" v-if="!group.status" class="text-center">
+            <span class="badge badge-danger">Disqualified / Inactive</span>
+          </td>
+          <td v-if="group.status">{{ group.matches }}</td>
+          <td v-if="group.status">{{ group.kills }}</td>
+          <td v-if="group.status">{{ group.points }}</td>
+          <td v-html="group.members.join('<br>')" class="font-weight-lighter"></td>
         </tr>
       </tbody>
     </table>
@@ -32,7 +37,7 @@ export default {
     try {
       await this.$store.dispatch("ui/fetchScore");
     } catch (err) {
-      // this.$swal("Oops", "Fetching score failed, try again", "error");
+      this.$swal("Oops", "Fetching score failed, try reloading", "error");
     }
   },
   computed: {

@@ -10,7 +10,7 @@
             <thead class="head">
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Team Name</th>
+                <th scope="col">Team</th>
                 <th scope="col">Members</th>
                 <th scope="col">Status</th>
                 <th scope="col">Position</th>
@@ -22,8 +22,8 @@
               <tr v-for="(team, index) in data" :key="index">
                 <td>{{ index + 1 }}</td>
                 <td>{{ team.teamName }}</td>
-                <td>{{ team.members.join(', ') }}</td>
-                <td>{{ team.status }}</td>
+                <td v-html="team.members.join('<br>')"></td>
+                <td>{{ team.status ? 'Active': 'Disqualified' }}</td>
                 <td>
                   <ValidationProvider :rules="positionRule" v-slot="{ errors, classes }">
                     <input
@@ -31,6 +31,7 @@
                       type="number"
                       class="form-control"
                       placeholder="Position"
+                      :disabled="!team.status"
                       :class="classes"
                     />
                     <div v-if="errors[0]" class="invalid-feedback">Minimum value is -1</div>
@@ -43,6 +44,7 @@
                       type="number"
                       class="form-control"
                       placeholder="Kills"
+                      :disabled="!team.status"
                       :class="classes"
                     />
                     <div v-if="errors[0]" class="invalid-feedback">Minimum value is 0</div>
@@ -55,6 +57,7 @@
                       type="number"
                       class="form-control"
                       placeholder="Points"
+                      :disabled="!team.status"
                       :class="classes"
                     />
                     <div v-if="errors[0]" class="invalid-feedback">Minimum value is 0</div>
@@ -137,9 +140,11 @@ export default {
       if (this.getMatch.groups) {
         this.getMatch.groups.forEach((group) => {
           const index = this.data.findIndex((x) => x._id === group._id);
-          this.data[index].position = group.position;
-          this.data[index].kills = group.kills;
-          this.data[index].points = group.points;
+          if (index !== -1) {
+            this.data[index].position = group.position;
+            this.data[index].kills = group.kills;
+            this.data[index].points = group.points;
+          }
         });
       }
     },
