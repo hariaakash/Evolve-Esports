@@ -5,20 +5,19 @@
       <Table :tableMeta="tableMeta" class="pt-4">
         <template #header>
           <th scope="col">#</th>
-          <th
-            scope="col"
-            v-for="(item, index) in tableMeta.fields"
-            :key="'head' + index"
-          >{{ item.name }}</th>
+          <th scope="col">Name</th>
+          <th scope="col">Game</th>
+          <th scope="col">Mode</th>
+          <th scope="col">Team</th>
           <th scope="col">View</th>
         </template>
         <template #body="{docs, page, limit}">
           <tr v-for="(tournament, index) in docs" :key="'docs' + index">
             <td>{{ ((page-1) * limit) + index+1 }}</td>
-            <td
-              v-for="(item, index) in tableMeta.fields"
-              :key="'body' + index"
-            >{{ tournament[item.field] }}</td>
+            <td>{{ tournament.name }}</td>
+            <td>{{ tournament.game }}</td>
+            <td>{{ tournament.gameMode }}</td>
+            <td>{{ getTeam(tournament).teamName }}</td>
             <td>
               <router-link
                 type="button"
@@ -36,10 +35,13 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Table from "@/components/global/Table.vue";
+import { helpersMixin } from "@/mixins";
 
 export default {
   components: { Table },
+  mixins: [helpersMixin],
   data() {
     return {
       tableMeta: {
@@ -53,13 +55,20 @@ export default {
             type: "match",
           },
         ],
-        fields: [
-          { name: "Name", field: "name" },
-          { name: "Game", field: "game" },
-          { name: "Mode", field: "gameMode" },
-        ],
       },
+      viewTeam: null,
     };
+  },
+  methods: {
+    getTeam(tournament) {
+      const group = tournament.groups.find((x) => x.user === this.getUser.id);
+      return group;
+    },
+  },
+  computed: {
+    ...mapGetters({
+      getUser: "user/getUser",
+    }),
   },
 };
 </script>
