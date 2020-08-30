@@ -13,18 +13,20 @@ export default {
             desc: null,
             phone: null,
         },
+        payment: null,
         tournaments: [],
         role: null,
         social: {},
         auth: false,
     },
     mutations: {
-        SET_USER(state, { _id: id, email, info, role, social, tournaments }) {
+        SET_USER(state, { _id: id, email, info, role, social, tournaments, payment }) {
             state.id = id;
             state.email = email;
             state.info = info;
             state.role = role;
             state.social = social;
+            state.payment = payment;
             state.tournaments = tournaments;
             state.auth = true;
         },

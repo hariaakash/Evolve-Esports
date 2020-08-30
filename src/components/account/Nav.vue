@@ -19,6 +19,7 @@ export default {
   data: () => ({
     items: [
       { name: "Profile", route: "account/profile" },
+      { name: "Tournaments", route: "account/tournaments" },
       { name: "Edit", route: "account/edit" },
     ],
   }),

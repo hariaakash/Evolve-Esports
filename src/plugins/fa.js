@@ -8,6 +8,7 @@ import {
     faUsers, faHome, faEdit, faTimes, faPlus, faExclamation,
     faCalendarDay, faClock,
     faGamepad, faCog, faSignInAlt,
+    faWallet, faStar,
 } from '@fortawesome/free-solid-svg-icons';
 import {
     faDiscord, faWhatsapp, faInstagram,
@@ -21,6 +22,7 @@ const list = [
     faUsers, faHome, faEdit, faTimes, faPlus, faExclamation,
     faCalendarDay, faClock,
     faGamepad, faCog, faSignInAlt,
+    faWallet, faStar,
 
     faDiscord, faWhatsapp, faInstagram,
     faFacebookF, faGoogle, faYoutube,

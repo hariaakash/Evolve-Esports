@@ -1,6 +1,6 @@
 <template>
-  <div class="card red-border">
-    <div class="card-body bg-main">
+  <div class="card bg-main mt-3 mb-5">
+    <div class="card-body">
       <h3 class="font-weight-light text-center text-uppercase">Tournaments</h3>
       <Table :tableMeta="tableMeta" class="pt-4">
         <template #header>

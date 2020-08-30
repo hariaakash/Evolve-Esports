@@ -22,5 +22,14 @@ export default {
                 requiresAuth: true,
             },
         },
+        {
+            path: 'tournaments',
+            name: 'account/tournaments',
+            component: () => import(/* webpackChunkName: "account-tournaments" */ '@/components/account/Tournaments.vue'),
+            meta: {
+                title: 'Tournaments',
+                requiresAuth: true,
+            },
+        },
     ],
 };

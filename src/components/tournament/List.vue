@@ -26,9 +26,13 @@
               {{ tournament.dates.next | formatTime }} {{ ' IST'}}
             </span>
             <span
-              class="badge badge-primary font-weight-normal ml-1"
+              class="badge badge-secondary font-weight-normal ml-1"
               v-if="tournament.dates.next"
             >{{ tournament.dates.next | fromNow }}</span>
+            <span
+              class="badge badge-primary font-weight-normal ml-1"
+              v-if="tournament.dates.next"
+            >{{ tournament.payment === 0 ? 'FREE': `₹ ${tournament.payment}` }}</span>
             <router-link
               :to="{ name: 'tournaments/info', params: { id: tournament._id } }"
               class="btn btn-main float-right"
