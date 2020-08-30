@@ -27,7 +27,7 @@ export default {
         },
         TOGGLE_MODAL(state, id) {
             const modal = state.modals.find((x) => x.id === id);
-            modal.status = !modal.status;
+            if (modal) modal.status = !modal.status;
         },
         // Tables
         SET_TABLE(state, data) {

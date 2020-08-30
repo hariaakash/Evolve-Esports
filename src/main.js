@@ -11,6 +11,7 @@ import { store } from './store';
 
 Vue.use(VueCookies);
 Vue.$cookies.config('30d');
+Vue.Razorpay = window.Razorpay;
 
 Vue.config.productionTip = false;
 

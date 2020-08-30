@@ -47,7 +47,7 @@
         </div>
       </div>
       <div class="col-3">
-        <div class="card bg-danger clickable" @click="joinTournamentModalDispatcher()">
+        <div class="card bg-danger clickable" @click="toggleModal('user/addCash')">
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2 text-uppercase">
@@ -101,13 +101,18 @@
         </div>
       </div>
     </div>
+    <AddCash />
   </section>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+import { helpersMixin } from "@/mixins";
+import AddCash from "@/components/account/AddCash.vue";
 
 export default {
+  components: { AddCash },
+  mixins: [helpersMixin],
   data: () => ({
     socialAuth: [
       { name: "google", icon: "google", class: "google" },
