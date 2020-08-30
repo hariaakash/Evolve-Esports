@@ -81,10 +81,20 @@ export default {
         if (this.getUser.auth) {
           if (this.getUser.info) {
             if (
-              this.getUser.tournaments.some((x) => x === this.$route.params.id)
+              this.getUser.payment.cash.current >= this.getTournament.payment
             ) {
-              this.$swal("Info", "Already registered", "info");
-            } else this.toggleModal("tournament/joinTournament");
+              if (
+                this.getUser.tournaments.some(
+                  (x) => x === this.$route.params.id
+                )
+              ) {
+                this.$swal("Info", "Already registered", "info");
+              } else this.toggleModal("tournament/joinTournament");
+            } else {
+              this.$router.push({ name: "account/profile" });
+              this.$swal("Hold on", "Add money to your wallet", "warning");
+              this.toggleModal("user/addCash");
+            }
           } else {
             this.$router.push({ name: "account/edit" });
             this.$swal("Oops", "Set Profile information to continue", "info");
