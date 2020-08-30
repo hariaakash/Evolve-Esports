@@ -77,30 +77,37 @@ export default {
   mixins: [helpersMixin],
   methods: {
     joinTournamentModalDispatcher() {
-      if (this.getTournament.registration) {
-        if (this.getUser.auth) {
-          if (this.getUser.info) {
-            if (
-              this.getUser.payment.cash.current >= this.getTournament.payment
-            ) {
-              if (
-                this.getUser.tournaments.some(
-                  (x) => x === this.$route.params.id
-                )
-              ) {
-                this.$swal("Info", "Already registered", "info");
-              } else this.toggleModal("tournament/joinTournament");
-            } else {
-              this.$router.push({ name: "account/profile" });
-              this.$swal("Hold on", "Add money to your wallet", "warning");
-              this.toggleModal("user/addCash");
-            }
-          } else {
-            this.$router.push({ name: "account/edit" });
-            this.$swal("Oops", "Set Profile information to continue", "info");
-          }
-        } else this.$swal("Oops", "Login to join tournament", "warning");
-      } else this.$swal("Oops", "Registration closed", "info");
+      if (!this.getTournament.registration)
+        return this.$swal("Oops", "Registration closed", "info");
+
+      if (!this.getUser.auth) {
+        this.toggleModal("ui/TOGGLE_AUTHMODAL");
+        return this.$swal("Oops", "Login to join tournament", "info");
+      }
+
+      if (!this.getUser.info) {
+        this.$router.push({ name: "account/edit" });
+        return this.$swal(
+          "Oops",
+          "Set Profile information to continue",
+          "info"
+        );
+      }
+
+      if (
+        this.getUser.tournaments.findIndex((x) => x === this.$route.params.id) >
+        -1
+      ) {
+        return this.$swal("Info", "Already registered", "info");
+      }
+
+      if (this.getUser.payment.cash.current < this.getTournament.payment) {
+        this.$router.push({ name: "account/profile" });
+        this.toggleModal("user/addCash");
+        return this.$swal("Hold on", "Add money to your wallet", "warning");
+      }
+
+      this.toggleModal("tournament/joinTournament");
     },
   },
   computed: {
