@@ -146,6 +146,7 @@ export default {
             this.data[index].points = group.points;
           }
         });
+        this.data.sort((x, y) => y.status - x.status);
       }
     },
   },
