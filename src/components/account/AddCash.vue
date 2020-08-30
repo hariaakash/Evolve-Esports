@@ -58,9 +58,10 @@ import cloneDeep from "lodash/cloneDeep";
 
 import TransactionService from "@/api/transaction.api";
 
-const RAZOR_KEY = process.env.RAZOR_KEY_ID
-  ? process.env.RAZOR_KEY_ID
-  : "rzp_test_qsELKeb8emh8lr";
+const RAZOR_KEY =
+  process.env.NODE_ENV === "production"
+    ? "rzp_live_xdpnLugCR3vXMJ"
+    : "rzp_test_qsELKeb8emh8lr";
 
 export default {
   components: { Modal },
