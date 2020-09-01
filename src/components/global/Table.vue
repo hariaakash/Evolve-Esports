@@ -63,6 +63,7 @@ export default {
       limit: 10,
       totalPages: 1,
       page: 1,
+      options: {},
       ...this.tableMeta,
     });
   },

@@ -31,5 +31,14 @@ export default {
                 requiresAuth: true,
             },
         },
+        {
+            path: 'transactions',
+            name: 'account/transactions',
+            component: () => import(/* webpackChunkName: "account-transactions" */ '@/components/account/Transactions.vue'),
+            meta: {
+                title: 'Transactions',
+                requiresAuth: true,
+            },
+        },
     ],
 };

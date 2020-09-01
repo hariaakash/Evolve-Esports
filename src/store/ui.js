@@ -66,7 +66,7 @@ export default {
                 if (table) {
                     if (!page) page = table.page;
                     const ApiService = GlobalService[table.entity];
-                    const { data } = await ApiService[table.method]({
+                    const query = {
                         id: "list",
                         filters: table.filters,
                         options: {
@@ -76,7 +76,9 @@ export default {
                             limit: table.limit,
                             search: "",
                         },
-                    });
+                    };
+                    if (table.options.sort) query.options.sort = table.options.sort;
+                    const { data } = await ApiService[table.method](query);
                     table.docs = data.docs;
                     table.totalDocs = data.meta.totalDocs;
                     table.totalPages = data.meta.totalPages;
