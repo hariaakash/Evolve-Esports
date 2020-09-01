@@ -1,7 +1,10 @@
 <template>
   <div class="card bg-main">
-    <div class="card-header" v-if="getScore">
-      <span>{{ getScore.map((x) => x.user.info ? x.user.info.phone : x.user.email).join(', ') }}</span>
+    <div class="card-header">
+      <button
+        class="btn btn-primary float-right"
+        @click="toggleModal(modals.SMSTournament)"
+      >Send SMS</button>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -50,6 +53,7 @@
         </table>
       </div>
     </div>
+    <SMSTournament />
   </div>
 </template>
 
@@ -57,8 +61,17 @@
 import { mapGetters } from "vuex";
 import { helpersMixin } from "@/mixins";
 import TournamentService from "@/api/tournament.api";
+import AdminService from "@/api/admin.api";
+import SMSTournament from "@/components/admin/SMSTournament";
 
 export default {
+  components: { SMSTournament },
+  mixins: [helpersMixin],
+  data: () => ({
+    modals: {
+      SMSTournament: "admin/SMSTournament",
+    },
+  }),
   async created() {
     try {
       await this.$store.dispatch("admin/fetchScore", {
